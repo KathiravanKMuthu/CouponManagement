@@ -69,7 +69,7 @@
             }
         }
         /* New memchant information */
-        elseif(count($post_data) == 6)
+        elseif(count($post_data) == 7)
         {
                 $req_field_array = array('mem_firsname', 'mem_lastname', 'mem_email', 'mem_country', 'mem_phone', 'mem_password', 'token');
                 /* Check required fields */
