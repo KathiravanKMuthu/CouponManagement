@@ -35,6 +35,16 @@
  /* Common functions */
     function array_keys_exists(array $keys, array $arr) 
     {
-        return !array_diff_key(array_flip($keys), $arr);
+        $res = true;
+        $post_data_array = array_keys($arr);
+        foreach($keys as $key)
+        {
+            if(!in_array($key, $post_data_array) || empty($arr[$key]))
+            {
+                $res = false;
+                break;
+            }
+        }        
+        return $res;
     }
 
