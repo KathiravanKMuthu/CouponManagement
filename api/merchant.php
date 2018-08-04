@@ -76,8 +76,8 @@
                         if($response_array['return_code'] > 0)
                         {
                             $update_column_array = array('encrypted_password' => $new_enc_password);
+                            $response_array = $db->update($table_name, $update_column_array, $where_condition);
                         }
-                        $response_array = $db->update($table_name, $update_column_array, $where_condition);
                     }
                     /* Update merchant personal information */
                     elseif($post_data_count == 5)
