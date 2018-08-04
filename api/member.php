@@ -12,6 +12,7 @@
                                     );
 */
     $table_name = 'user_info';
+    $user_role = 'member';    
     $user_id = '';
     $request_method = $_SERVER["REQUEST_METHOD"];
     $req_field_array = array('mem_firstname', 'mem_lastname', 'mem_email', 'mem_country', 'mem_phone', 'mem_password', 'token');
