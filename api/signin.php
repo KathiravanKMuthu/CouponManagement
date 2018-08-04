@@ -1,82 +1,83 @@
 <?php
-    include('dbconfig.php');
-    include('database.php');
-    include('token.php');
-    $response_array = array(
-                        'return_code' => 0,
-                        'return_message' => 'Invalid Request!'
-                      ); 
+    include('config/app_config.php');
     $request_method = $_SERVER["REQUEST_METHOD"];
     if($request_method == 'POST')
     {
         $post_data = json_decode(file_get_contents('php://input'), true);
-        $user_role = $post_data['role'];
-        $response_array['return_message'] = 'Invalid Role!';
-
+        $user_role = trim_input($post_data['role']);
         $table_name = in_array($user_role, $role_array) ? $table_array[$user_role] : '';
-        if($user_role == 'member')
-        {
-            $email = trim($post_data['mem_email']);
-            $password = trim($post_data['mem_password']);
-            if($email != '' && $password != '')
-            {
-
-                $enc_password = base64_encode(base64_encode($password).'=');
-                $where_condition = ' WHERE '.$table_column_array[$role]['mem_email']." = '".$email."'";
-                $where_condition = ' AND '.$table_column_array[$role]['mem_password']." = '".$enc_password."'";
-            }
-        }
-        elseif($user_role == 'merchant')
-        {
-            $email = trim($post_data['mer_email']);
-            $password = trim($post_data['mer_password']);
-            if($email != '' && $password != '')
-            {
-
-                $enc_password = base64_encode(base64_encode($password).'=');
-                $where_condition = ' WHERE '.$table_column_array[$role]['mer_email']." = '".$email."'";
-                $where_condition = ' AND '.$table_column_array[$role]['mer_password']." = '".$enc_password."'";
-            }
-
-        }
-        elseif($user_role == 'moderator')
-        {
-            $username = trim($post_data['mod_username']);
-            $password = trim($post_data['mod_password']);
-            if($username != '' && $password != '')
-            {
-
-                $enc_password = base64_encode(base64_encode($password).'=');
-                $where_condition = ' WHERE '.$table_column_array[$role]['mod_username']." = '".$email."'";
-                $where_condition = ' AND '.$table_column_array[$role]['mod_password']." = '".$enc_password."'";
-            }
-        }
-        
+        $response_array['return_message'] = 'Invalid Role!';
+        /* Validate the Table Name  */
         if($table_name)
         {
-            /*Get the user information */
-            $response_array = $db->get($table_name, $where_condition);
-        }
- 
-        if($response_array['return_code'] > 0)
-        {
-            $id = $table_column_array[$user_role]['id'];
-            $user_id = $response_array['return_message'][0][$id];
-            $update_column_array = array('last_login_time' => time(), 'admin_login_status' => 1);
-            if($table_name != 'admin_info')
+            if($user_role == 'member' || $user_role == 'merchant')
             {
-                $update_column_array = array('last_login_time' => time(), 'last_login_status' => 1);
+                $req_field_array = array('mem_email', 'mem_password');
+                if($user_role == 'member')
+                {
+                    $email = trim_input($post_data['mem_email']);
+                    $password = trim_input($post_data['mem_password']);
+                }
+                else
+                {
+                    $req_field_array = array('mer_email', 'mer_password');
+                    $email = trim_input($post_data['mer_email']);
+                    $password = trim_input($post_data['mer_password']);                 
+                }
+                /*Validate the Required Fields */
+                $response_array = form_validation($req_field_array, $post_data);
+                if($response_array['return_code'] > 0)
+                {
+                    $enc_password = base64_encode(base64_encode($password).'=');
+                    $where_condition = ' WHERE '.$table_column_array['merchant']['mer_email']." = '".$email."'";
+                    $where_condition = ' AND '.$table_column_array['merchant']['mer_password']." = '".$enc_password."'";
+                    if($user_role != 'merchant')
+                    {
+                        $where_condition = ' WHERE '.$table_column_array['member']['mem_email']." = '".$email."'";
+                        $where_condition = ' AND '.$table_column_array['member']['mem_password']." = '".$enc_password."'";
+                    }
+                }
             }
-            $where_condition = $id.'= '.$user_id;
-            /*Update the user last login information */
-            $response_array = $db->update($table_name, $update_column_array, $where_condition);
+            elseif($user_role == 'moderator')
+            {
+                $req_field_array = array('mod_username', 'mod_password');
+                $response_array = form_validation($req_field_array, $post_data);
+                /*Validate the Required Fields */
+                if($response_array['return_code'] > 0)
+                {
+                    $username = trim_input($post_data['mod_username']);
+                    $password = trim_input($post_data['mod_password']);
+                    $enc_password = base64_encode(base64_encode($password).'=');
+                    $where_condition = ' WHERE '.$table_column_array[$role]['mod_username']." = '".$email."'";
+                    $where_condition = ' AND '.$table_column_array[$role]['mod_password']." = '".$enc_password."'";
+                }
+            }
+            /* Get the user information */
             if($response_array['return_code'] > 0)
             {
-                $tkn = $token->create_token($user_id, $user_role);
-                $response_array['token'] = $tkn;
+                $response_array = $db->get($table_name, $where_condition);
+                $response_array['return_message'] = 'Invalid Username or Password!';
+                /* Update the user last login information */
+                if($response_array['return_code'] > 0)
+                {
+                    $id = $table_column_array[$user_role]['id'];
+                    $user_id = $response_array['return_message'][0][$id];
+                    $update_column_array = array('last_login_time' => time(), 'admin_login_status' => 1);
+                    if($table_name != 'admin_info')
+                    {
+                        $update_column_array = array('last_login_time' => time(), 'last_login_status' => 1);
+                    }
+                    $where_condition = $id.'= '.$user_id;
+                    $response_array = $db->update($table_name, $update_column_array, $where_condition);
+                    if($response_array['return_code'] > 0)
+                    {
+                        $tkn = $token->create_token($user_id, $user_role);
+                        $response_array['token'] = $tkn;
+                    }
+                }
             }
         }
     }
-    
+    /*Print the JSON Output*/
     $token->json_response($response_array);
- 
+ ?>
