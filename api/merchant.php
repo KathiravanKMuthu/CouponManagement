@@ -1,4 +1,7 @@
 <?php
+header("Access-Control-Allow-Origin: *");
+header("Content-Type: application/json; charset=UTF-8");
+
     include('config/app_config.php');
     $request_method = $_SERVER["REQUEST_METHOD"];
     /*$table_column_array['merchant'] = array(
@@ -64,8 +67,8 @@
                     $user_id = $tkn_array['user_id'];
                     $user_role = $tkn_array['user_role'];
                     $id = $table_column_array[$user_role]['id'];
-                    $where_condition = $id.'= '.$user_id;            
-                    /* Update Password */        
+                    $where_condition = $id.'= '.$user_id;
+                    /* Update Password */
                     if($post_data_count == 2)
                     {
                         $req_field_array = array('mer_password', 'token');
@@ -109,22 +112,36 @@
             }
         }
     }
-    elseif($request_method == 'GET')
-    {
-        $user_id = $_GET['id'];
-        $id = $table_column_array[$user_role]['id'];
-        $where_condition = null;
-        $tkn = trim($_GET['token']);
-        if($tkn)
-        {
-            $response_array = $token->validate_token($tkn);
-            if($response_array['return_code'] > 0)
-            {
-                if($user_id)
-                {
-                    $where_condition = $id.'= '.$user_id;
-                }   
-                $response_array = $db->get($table_name, $where_condition);
+    elseif($request_method == 'GET') {
+      $action_data = $_GET['action'];
+
+      switch ($action_data) {
+          case "all" : // load all child deals for a given parent deal id
+          {
+              // Retrieve all merchant details for web / mobile applicaitons
+              $response_array = $db->get($table_name);
+              $token->json_response($response_array);
+              break;
+          }
+          default:
+          {
+              // retieve merchant based on login
+              $user_id = $_GET['id'];
+              $id = $table_column_array[$user_role]['id'];
+              $where_condition = null;
+              $tkn = trim($_GET['token']);
+              if($tkn)
+              {
+                  $response_array = $token->validate_token($tkn);
+                  if($response_array['return_code'] > 0)
+                  {
+                      if($user_id)
+                      {
+                          $where_condition = $id.'= '.$user_id;
+                      }
+                      $response_array = $db->get($table_name, $where_condition);
+                  }
+              }
             }
         }
     }

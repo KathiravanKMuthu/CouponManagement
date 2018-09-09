@@ -2,7 +2,7 @@
     include('config/app_config.php');
 /*
    $table_column_array['member'] = array(
-                                      'id' => 'user_id', 
+                                      'id' => 'user_id',
                                       'mem_firstname' => 'first_name',
                                       'mem_lastname' => 'last_name',
                                       'mem_email' => 'email',
@@ -12,7 +12,7 @@
                                     );
 */
     $table_name = 'user_info';
-    $user_role = 'member';    
+    $user_role = 'member';
     $user_id = '';
     $request_method = $_SERVER["REQUEST_METHOD"];
     $req_field_array = array('mem_firstname', 'mem_lastname', 'mem_email', 'mem_country', 'mem_phone', 'mem_password', 'token');
@@ -26,7 +26,7 @@
             /* New user information */
             if($post_data_count == 7)
             {
-                $req_field_array = array('mem_firsname', 'mem_lastname', 'mem_email', 'mem_country', 'mem_phone', 'mem_password', 'token');
+                $req_field_array = array('mem_firstname', 'mem_lastname', 'mem_email', 'mem_country', 'mem_phone', 'mem_password', 'token');
                 /* Check required fields */
                 $response_array = form_validation($req_field_array, $post_data);
                 if($response_array['return_code'] > 0)
@@ -66,8 +66,8 @@
                     $user_id = $tkn_array['user_id'];
                     $user_role = $tkn_array['user_role'];
                     $id = $table_column_array[$user_role]['id'];
-                    $where_condition = $id.'= '.$user_id;            
-                    /* Update Password */        
+                    $where_condition = $id.'= '.$user_id;
+                    /* Update Password */
                     if($post_data_count == 2)
                     {
                         $req_field_array = array('mem_password', 'token');
@@ -81,7 +81,7 @@
                             $response_array = $db->update($table_name, $update_column_array, $where_condition);
                         }
                     }
-                    /* Update user personal information */                   
+                    /* Update user personal information */
                     elseif($post_data_count == 6)
                     {
                         $req_field_array = array('mem_firsname', 'mem_lastname', 'mem_email', 'mem_country', 'mem_phone', 'token');
@@ -98,7 +98,7 @@
                                                     'phone_number' => trim($mem_phone),
                                                     'country' => trim($mem_country)
                                                    );
-                            
+
                             $email_column = $table_column_array[$user_role]['mem_email'];
                             $dup_where_condition = $id.'!= '.$user_id.' AND '.$email_column." = '".$email."'";
                             $response_array = $db->get($table_name, $dup_where_condition);
@@ -127,7 +127,7 @@
                 if($user_id)
                 {
                     $where_condition = $id.'= '.$user_id;
-                }   
+                }
                 $response_array = $db->get($table_name, $where_condition);
             }
         }

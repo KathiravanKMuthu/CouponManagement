@@ -21,7 +21,7 @@
                 $update_column_array = array('admin_login_status' => 0);
                 if($table_name != 'admin_info')
                 {
-                    $update_column_array = array('last_login_status' => 0);
+                    $update_column_array = array('login_status' => 0);
                 }
                 $where_condition = $id.'= '.$user_id;
                 /*Update the user information */

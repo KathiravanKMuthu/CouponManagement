@@ -22,19 +22,19 @@
                 {
                     $req_field_array = array('mer_email', 'mer_password');
                     $email = trim_input($post_data['mer_email']);
-                    $password = trim_input($post_data['mer_password']);                 
+                    $password = trim_input($post_data['mer_password']);
                 }
                 /*Validate the Required Fields */
                 $response_array = form_validation($req_field_array, $post_data);
                 if($response_array['return_code'] > 0)
                 {
                     $enc_password = base64_encode(base64_encode($password).'=');
-                    $where_condition = ' WHERE '.$table_column_array['merchant']['mer_email']." = '".$email."'";
-                    $where_condition = ' AND '.$table_column_array['merchant']['mer_password']." = '".$enc_password."'";
+                    $where_condition = $table_column_array['merchant']['mer_email']." = '".$email."'";
+                    $where_condition .= ' AND '.$table_column_array['merchant']['mer_password']." = '".$enc_password."'";
                     if($user_role != 'merchant')
                     {
-                        $where_condition = ' WHERE '.$table_column_array['member']['mem_email']." = '".$email."'";
-                        $where_condition = ' AND '.$table_column_array['member']['mem_password']." = '".$enc_password."'";
+                        $where_condition = $table_column_array['member']['mem_email']." = '".$email."'";
+                        $where_condition .= ' AND '.$table_column_array['member']['mem_password']." = '".$enc_password."'";
                     }
                 }
             }
@@ -48,15 +48,15 @@
                     $username = trim_input($post_data['mod_username']);
                     $password = trim_input($post_data['mod_password']);
                     $enc_password = base64_encode(base64_encode($password).'=');
-                    $where_condition = ' WHERE '.$table_column_array[$role]['mod_username']." = '".$email."'";
-                    $where_condition = ' AND '.$table_column_array[$role]['mod_password']." = '".$enc_password."'";
+                    $where_condition = $table_column_array[$role]['mod_username']." = '".$email."'";
+                    $where_condition .= ' AND '.$table_column_array[$role]['mod_password']." = '".$enc_password."'";
                 }
             }
             /* Get the user information */
             if($response_array['return_code'] > 0)
             {
                 $response_array = $db->get($table_name, $where_condition);
-                $response_array['return_message'] = 'Invalid Username or Password!';
+
                 /* Update the user last login information */
                 if($response_array['return_code'] > 0)
                 {
@@ -65,7 +65,7 @@
                     $update_column_array = array('last_login_time' => time(), 'admin_login_status' => 1);
                     if($table_name != 'admin_info')
                     {
-                        $update_column_array = array('last_login_time' => time(), 'last_login_status' => 1);
+                        $update_column_array = array('last_login_time' => time(), 'login_status' => 1);
                     }
                     $where_condition = $id.'= '.$user_id;
                     $response_array = $db->update($table_name, $update_column_array, $where_condition);
@@ -75,7 +75,11 @@
                         $response_array['token'] = $tkn;
                     }
                 }
+                else {
+                  $response_array['return_message'] = 'Invalid Username or Password!';
+                }
             }
+
         }
     }
     /*Print the JSON Output*/
