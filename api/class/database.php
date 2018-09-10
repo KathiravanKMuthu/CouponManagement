@@ -58,7 +58,7 @@
             $idx = 0;
             foreach($column as $key => $val)
             {
-                if(!empty($val))
+                //if(!empty($val))
                 {
                     $query .= ($idx > 0) ? ", ${key} = '${val}'" : "${key} = '${val}'";
                     $idx++;

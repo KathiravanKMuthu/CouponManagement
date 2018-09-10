@@ -16,14 +16,6 @@ if($request_method == 'GET')
     $where_condition = " end_date > DATE(NOW()) AND"; // this is required for all queries.
 
     switch ($action_data) {
-        case "child" : // load all child deals for a given parent deal id
-        {
-            $parent_deal_id = $_GET['parent_deal_id'];
-            $where_condition .= ' parent_deal_id = ' . $parent_deal_id;
-
-            $response_array = $db->get($table_name, $where_condition, $order_by);
-            break;
-        }
         case "user" : // load all child deals for a given parent deal id
         {
             $user_id = $_GET['user_id'];
@@ -59,15 +51,14 @@ if($request_method == 'GET')
         }
         case "expire":
         {
-            $where_condition = ' end_date <= DATE(NOW()) + 5 AND parent_deal_id = 0';
+            $where_condition = ' end_date > NOW() AND end_date <= DATE_ADD(NOW(), INTERVAL 5 DAY) AND parent_deal_id = 0';
             $response_array = $db->get($table_name, $where_condition, $order_by);
             break;
         }
         case "all":
         default:
         {
-            $where_condition .= ' parent_deal_id = 0';
-
+            $where_condition .= ' 1=1';
             $response_array = $db->get($table_name, $where_condition, $order_by);
             break;
         }
