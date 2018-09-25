@@ -43,6 +43,8 @@
             {
                $response_array['return_code'] = 0;
                $response_array['return_message'] = mysqli_error($this->link);
+            } else {
+                mysqli_commit($this->link);
             }
 
             $this->json_response($response_array);
@@ -74,8 +76,10 @@
             {
                $response_array['return_code'] = 0;
                $response_array['return_message'] = mysqli_error($this->link);
+            } else {
+                mysqli_commit($this->link);
             }
-            $response_array['condition'] = $query;
+            //$response_array['condition'] = $query;
 
             return $response_array;
             //$this->json_response($response_array);
@@ -98,6 +102,7 @@
                                 'return_code' => 0,
                                 'return_message' => 'No Record Found!'
                               );
+            //$response_array['query'] = $query;
             if(mysqli_num_rows($result) > 0)
             {
                 while($row = mysqli_fetch_assoc($result))

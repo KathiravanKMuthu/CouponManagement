@@ -30,7 +30,7 @@
                               );
             if($token_array['key'] == SECRET_KEY && in_array($token_array['user_role'], $role_array))
             {
-                if ((time() - $token_array['old_time']) <= VALIDITY_TIME)
+                //if ((time() - $token_array['old_time']) <= VALIDITY_TIME)
                 {
                     $response_array['return_code'] = 1;
                     $response_array['return_message'] = 'Token is valid';

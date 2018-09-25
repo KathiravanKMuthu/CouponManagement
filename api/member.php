@@ -1,4 +1,7 @@
 <?php
+header("Access-Control-Allow-Origin: *");
+header("Content-Type: application/json; charset=UTF-8");
+
     include('config/app_config.php');
 /*
    $table_column_array['member'] = array(
@@ -26,30 +29,35 @@
             /* New user information */
             if($post_data_count == 7)
             {
-                $req_field_array = array('mem_firstname', 'mem_lastname', 'mem_email', 'mem_country', 'mem_phone', 'mem_password', 'token');
+                //$req_field_array = array('mem_firstname', 'mem_lastname', 'mem_email', 'mem_country', 'mem_phone', 'mem_password', 'token');
+                $req_field_array = array('mem_email', 'mem_phone', 'mem_password', 'token');
                 /* Check required fields */
                 $response_array = form_validation($req_field_array, $post_data);
                 if($response_array['return_code'] > 0)
                 {
-                    extract($post_data);
-                    $password = trim($mem_password);
-                    $email = trim($mem_email);
+                    //extract($post_data);
+                    $password = trim($post_data['mem_password']);
+                    $email = trim($post_data['mem_email']);
                     $new_enc_password = base64_encode(base64_encode($password).'=');
                     $insert_column_array = array(
-                                        'first_name' => trim($mem_firstname),
-                                        'last_name' => trim($mem_lastname),
+                                        'first_name' => trim($post_data['mem_firstname']),
+                                        'last_name' => trim($post_data['mem_lastname']),
                                         'email' => $email,
-                                        'phone_number' => trim($mem_phone),
-                                        'country' => trim($mem_country),
+                                        'phone_number' => trim($post_data['mem_phone']),
+                                        'country' => trim($post_data['mem_country']),
                                         'encrypted_password' => $new_enc_password
                                        );
                     $email_column = $table_column_array[$user_role]['mem_email'];
                     $dup_where_condition = $email_column." = '".$email."'";
                     $response_array = $db->get($table_name, $dup_where_condition);
                     $response_array['return_message'] = 'Duplicate Email Address!';
-                    if($response_array['return_code'] == 0 )
+
+                    if($response_array['return_code'] == 0 ) // No duplicate records, so allow signup
                     {
                         $response_array = $db->insert($table_name, $insert_column_array);
+                    }
+                    else { // duplicate record found, so don't allow user to signup again
+                        $response_array['return_code'] = 2;
                     }
                 }
             }
@@ -84,7 +92,7 @@
                     /* Update user personal information */
                     elseif($post_data_count == 6)
                     {
-                        $req_field_array = array('mem_firsname', 'mem_lastname', 'mem_email', 'mem_country', 'mem_phone', 'token');
+                        $req_field_array = array('mem_firstname', 'mem_lastname', 'mem_email', 'mem_country', 'mem_phone', 'token');
                         /* Check required fields */
                         $response_array = form_validation($req_field_array, $post_data);
                         if($response_array['return_code'] > 0)
@@ -115,20 +123,43 @@
     }
     elseif($request_method == 'GET')
     {
-        $user_id = $_GET['id'];
-        $id = $table_column_array[$user_role]['id'];
-        $where_condition = null;
-        $tkn = trim($_GET['token']);
-        if($tkn)
-        {
-            $response_array = $token->validate_token($tkn);
-            if($response_array['return_code'] > 0)
+        $action_data = $_GET['action'];
+
+        switch ($action_data) {
+            case "token" : // Get user by login token
             {
-                if($user_id)
+                $response_array['return_code'] = 0;
+                $response_array['return_message'] = 'Invalid User!';
+                $tkn = trim($_GET['token']);
+                $response_array = $token->validate_token($tkn);
+                /* Validate the Token  */
+                if($response_array['return_code'] > 0)
                 {
-                    $where_condition = $id.'= '.$user_id;
+                    $tkn_array = $token->parse_token($tkn);
+                    $user_id = $tkn_array['user_id'];
+                    $where_condition = 'user_id = '.$user_id;
+                    $response_array = $db->get($table_name, $where_condition);
                 }
-                $response_array = $db->get($table_name, $where_condition);
+                break;
+            }
+            default:
+            {
+                $user_id = $_GET['id'];
+                $id = $table_column_array[$user_role]['id'];
+                $where_condition = null;
+                $tkn = trim($_GET['token']);
+                if($tkn)
+                {
+                    $response_array = $token->validate_token($tkn);
+                    if($response_array['return_code'] > 0)
+                    {
+                        if($user_id)
+                        {
+                            $where_condition = $id.'= '.$user_id;
+                        }
+                        $response_array = $db->get($table_name, $where_condition);
+                    }
+                }
             }
         }
     }

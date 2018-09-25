@@ -13,17 +13,25 @@ if($request_method == 'GET')
 {
     $order_by = " end_date ASC";
     $action_data = $_GET['action'];
-    $where_condition = " end_date > DATE(NOW()) AND"; // this is required for all queries.
+    $where_condition = " end_date > NOW() AND"; // this is required for all queries.
 
     switch ($action_data) {
         case "user" : // load all child deals for a given parent deal id
         {
-            $user_id = $_GET['user_id'];
+            $response_array['return_code'] = 0;
+            $response_array['return_message'] = 'Invalid User!';
+            $tkn = trim($_GET['token']);
+            $response_array = $token->validate_token($tkn);
+            /* Validate the Token  */
+            if($response_array['return_code'] > 0)
+            {
+                $tkn_array = $token->parse_token($tkn);
+                $user_id = $tkn_array['user_id'];
 
-            $query = "SELECT a.*, b.user_id, b.qrcode_string, b.is_redeemed, b.is_wished";
-            $query .= " FROM deal_info a, user_deals b WHERE b.deal_id = a.deal_id AND b.user_id = ".$user_id;
-            $response_array = $db->get_by_query($query);
-
+                $query = "SELECT a.*, b.user_id, b.qrcode_string, b.is_redeemed, b.is_wished";
+                $query .= " FROM deal_info a, user_deals b WHERE b.deal_id = a.deal_id AND b.user_id = ".$user_id;
+                $response_array = $db->get_by_query($query);
+            }
             break;
         }
         case "images":
@@ -64,31 +72,98 @@ if($request_method == 'GET')
         }
     }
 }
-elseif($request_method == 'POST')
+elseif($request_method == 'POST') // Update user accepted deal info
 {
+    //$action_data = $_POST['action'];
     $table_name = "user_deals";
     $post_data = json_decode(file_get_contents('php://input'), true);
-    $post_data_count = count($post_data);
-    $req_field_array = array('user_id', 'deal_id', 'qrcode_string');
-    $response_array = form_validation($req_field_array, $post_data);
+    $action_data = $post_data['action'];
+
+    $user_id = 0;
+    $response_array['return_code'] = 0;
+    $response_array['return_message'] = 'Invalid User!';
+    $tkn = trim($post_data['token']);
+    $response_array = $token->validate_token($tkn);
+    /* Validate the Token  */
     if($response_array['return_code'] > 0)
     {
-        extract($post_data);
-        $insert_column_array = array(
-                            'user_id' => trim($user_id),
-                            'deal_id' => trim($deal_id),
-                            'qrcode_string' => trim($qrcode_string)
-                           );
-        // Check if it is a duplicate entry
-        $dup_where_condition = " user_id = ".$user_id." and deal_id = ".$deal_id;
-        $response_array = $db->get($table_name, $dup_where_condition);
+        $tkn_array = $token->parse_token($tkn);
+        $user_id = $tkn_array['user_id'];
+    }
 
-        $response_array['return_message'] = 'Already Accepted this deal!';
-        if($response_array['return_code'] == 0 )
+    switch ($action_data) {
+        case "set_user_deal" : // load all child deals for a given parent deal id
         {
-            $response_array = $db->insert($table_name, $insert_column_array);
+            if($user_id > 0) {
+
+                $insert_column_array = array(
+                                'user_id' => trim($user_id),
+                                'deal_id' => trim($post_data['deal_id']),
+                                'qrcode_string' => trim($post_data['qrcode_string']),
+                                'is_wished' => $is_wished
+                               );
+                // Check if it is a duplicate entry
+                $dup_where_condition = " user_id = ".$user_id." and deal_id = ".$deal_id;
+                $response_array = $db->get($table_name, $dup_where_condition);
+
+                $response_array['return_message'] = 'Already Accepted this deal!';
+                if($response_array['return_code'] == 0 )
+                {
+                    $response_array = $db->insert($table_name, $insert_column_array);
+                }
+            }
+            break;
         }
-      }
+        case "set_wish_deal" :
+        {
+            $is_wished = $post_data['is_wished'] ? trim($post_data['is_wished']) : 0;
+            $deal_id = trim($post_data['deal_id']);
+            if($user_id > 0) {
+                $update_column_array = array(
+                                'user_id' => trim($user_id),
+                                'deal_id' => $deal_id,
+                                'is_wished' => $is_wished
+                               );
+                // Check if it is a duplicate entry
+                $where_condition = " user_id = ".$user_id." and deal_id = ".$deal_id;
+                $response_array = $db->get($table_name, $where_condition);
+
+                if($response_array['return_code'] > 0) {
+                    $response_array = $db->update($table_name, $update_column_array, $where_condition);
+                }
+                else {
+                    $response_array = $db->insert($table_name, $update_column_array);
+                }
+            }
+            break;
+        }
+        case "redeem_deal" :
+        {
+            // TODO: Update deal table with redemption count
+            if($user_id > 0) {
+                $update_column_array = array(
+                                'user_id' => trim($user_id),
+                                'deal_id' => trim($post_data['deal_id']),
+                                'is_redeemed' => trim($post_data['is_redeemed'])
+                               );
+                // Check if it is a duplicate entry
+                $where_condition = " user_id = ".$user_id." and deal_id = ".$deal_id;
+                $response_array = $db->get($table_name, $where_condition);
+
+                if($response_array['return_code'] > 0)
+                {
+                    $response_array = $db->update($table_name, $update_column_array, $where_condition);
+                }
+            }
+            break;
+        }
+        default:
+        {
+            $response_array['return_code'] = 0;
+            $response_array['return_message'] = 'Invalid Operation!';
+            break;
+        }
+    }
 }
 
 /*Print the JSON Output*/

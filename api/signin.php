@@ -1,4 +1,7 @@
 <?php
+header("Access-Control-Allow-Origin: *");
+header("Content-Type: application/json; charset=UTF-8");
+
     include('config/app_config.php');
     $request_method = $_SERVER["REQUEST_METHOD"];
     if($request_method == 'POST')
@@ -56,7 +59,6 @@
             if($response_array['return_code'] > 0)
             {
                 $response_array = $db->get($table_name, $where_condition);
-
                 /* Update the user last login information */
                 if($response_array['return_code'] > 0)
                 {

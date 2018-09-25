@@ -12,7 +12,7 @@
     $role_array = array('member', 'merchant', 'moderator');
     $table_array = array('member' => 'user_info', 'merchant' => 'merchant_info', 'moderator' => 'admin_info');
     $table_column_array['member'] = array(
-                                      'id' => 'user_id', 
+                                      'id' => 'user_id',
                                       'mem_firstname' => 'first_name',
                                       'mem_lastname' => 'last_name',
                                       'mem_email' => 'email',
@@ -33,7 +33,7 @@
     $table_column_array['moderator'] = array(
                                         'id' => 'admin_id',
                                         'mod_username' => 'admin_login_name',
-                                        'mod_password' => 'encrypted_password'  
+                                        'mod_password' => 'encrypted_password'
                                        );
     $label_array = array(
                     'mem_firstname' => 'First Name',
@@ -56,9 +56,9 @@
     $response_array = array(
                         'return_code' => 0,
                         'return_message' => 'Invalid Request!'
-                      );     
+                      );
  /* Common functions */
-    function array_keys_exists(array $keys, array $arr) 
+    function array_keys_exists(array $keys, array $arr)
     {
         $res = true;
         $post_data_array = array_keys($arr);
@@ -69,7 +69,7 @@
                 $res = false;
                 break;
             }
-        }        
+        }
         return $res;
     }
 
@@ -81,7 +81,7 @@
             case 'email':
                 $var = substr($var, 0, 254);
                 $var = filter_var($var, FILTER_SANITIZE_EMAIL);
-                $filter = FILTER_VALIDATE_EMAIL; 
+                $filter = FILTER_VALIDATE_EMAIL;
                 break;
             case 'int':
                 $filter = FILTER_VALIDATE_INT;
@@ -109,7 +109,7 @@
         $result_array = array(
                         'return_code' => 1,
                         'return_message' => 'All inputs are valid'
-                      ); 
+                      );
         foreach($req_field_array as $req_field)
         {
             $req_val = trim_input($post_data[$req_field]);
@@ -130,7 +130,7 @@
                 }
             }
         }
-        return $result_array;        
+        return $result_array;
     }
 
     function trim_input($input)
