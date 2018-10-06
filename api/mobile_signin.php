@@ -3,6 +3,8 @@ header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 
 include('config/app_config.php');
+include('uploadImage.php');
+
 $request_method = $_SERVER["REQUEST_METHOD"];
 if($request_method == 'POST')
 {
@@ -115,6 +117,48 @@ if($request_method == 'POST')
                         $tkn = $token->create_token($user_id, $user_role);
                         $response_array['token'] = $tkn;
                     }
+                }
+            }
+            break;
+        }
+        case "upload_image": // Signup + Signin using social login id
+        {
+            $user_id = 0;
+            $response_array['return_code'] = 0;
+            $response_array['return_message'] = 'Invalid User!';
+            $tkn = trim($post_data['token']);
+            $response_array = $token->validate_token($tkn);
+            /* Validate the Token  */
+            if($response_array['return_code'] > 0)
+            {
+                $tkn_array = $token->parse_token($tkn);
+                $user_id = $tkn_array['user_id'];
+                // Validate the input
+                $image_data = $post_data['image'];
+                try {
+                  $decoded_file = base64_decode($image_data);
+                  //$mime_type = finfo_buffer(finfo_open(), $decoded_file, FILEINFO_MIME_TYPE);
+                  $extension = 'png'; //mime2ext($mime_type);
+                  $file = $user_id .'.'. $extension;
+                  $file_dir = "../images/users/" . $file;
+                  file_put_contents($file_dir, $decoded_file); // Save the file
+
+                  // Where condition to check if user exists
+                  $where_condition = "user_id = ".$user_id;
+                  // Checking if user exists in the system
+                  $response_array = $db->get($table_name, $where_condition);
+
+                  /* If user exists Update the user last login information */
+                  if($response_array['return_code'] > 0)
+                  {
+                      $update_column_array = array('image' => "images/users/". $file);
+                      $response_array = $db->update($table_name, $update_column_array, $where_condition);
+                      if($response_array['return_code'] > 0) {
+                          $response_array['return_message'] = "images/users/". $file;
+                      }
+                  }
+                } catch (Exception $e) {
+                    $response_array['return_message'] = json_encode($e->getMessage());
                 }
             }
             break;
