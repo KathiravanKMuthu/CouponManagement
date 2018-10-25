@@ -27,7 +27,7 @@ header("Content-Type: application/json; charset=UTF-8");
         if($post_data_count >= 2)
         {
             /* New user information */
-            if($post_data_count == 7)
+            if($post_data_count == 4)
             {
                 //$req_field_array = array('mem_firstname', 'mem_lastname', 'mem_email', 'mem_country', 'mem_phone', 'mem_password', 'token');
                 $req_field_array = array('mem_email', 'mem_phone', 'mem_password', 'token');

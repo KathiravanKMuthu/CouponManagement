@@ -59,7 +59,23 @@ if($request_method == 'GET')
         }
         case "expire":
         {
-            $where_condition = ' end_date > NOW() AND end_date <= DATE_ADD(NOW(), INTERVAL 5 DAY) AND parent_deal_id = 0';
+            $where_condition = ' end_date > NOW() AND end_date <= DATE_ADD(NOW(), INTERVAL 7 DAY) AND parent_deal_id = 0';
+            $response_array = $db->get($table_name, $where_condition, $order_by);
+            break;
+        }
+        case "merchant" : // load all deals for a given Merchants
+        {
+            $response_array['return_code'] = 0;
+            $response_array['return_message'] = 'Invalid Merchant!';
+            $merchant_id = trim($_GET['merchant_id']);
+            $query = "SELECT a.*, b.user_id, b.qrcode_string, b.is_redeemed, b.is_wished";
+            $query .= " FROM deal_info a, user_deals b WHERE b.deal_id = a.deal_id AND a.merchant_id = ".$merchant_id;
+            $response_array = $db->get_by_query($query);
+            break;
+        }
+        case "all_and_expire":
+        {
+            $where_condition = ' 1=1';
             $response_array = $db->get($table_name, $where_condition, $order_by);
             break;
         }
@@ -139,7 +155,7 @@ elseif($request_method == 'POST') // Update user accepted deal info
         }
         case "redeem_deal" :
         {
-            // TODO: Update deal table with redemption count
+            $user_id = $post_data['user_id'] ? trim($post_data['user_id']) : 0;
             if($user_id > 0) {
                 $update_column_array = array(
                                 'user_id' => trim($user_id),
@@ -153,6 +169,8 @@ elseif($request_method == 'POST') // Update user accepted deal info
                 if($response_array['return_code'] > 0)
                 {
                     $response_array = $db->update($table_name, $update_column_array, $where_condition);
+
+                    //TODO: Increase the redeem count ????????????????????
                 }
             }
             break;
