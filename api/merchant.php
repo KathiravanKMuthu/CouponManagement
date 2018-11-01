@@ -116,7 +116,7 @@ header("Content-Type: application/json; charset=UTF-8");
       $action_data = $_GET['action'];
 
       switch ($action_data) {
-          case "all" : // load all child deals for a given parent deal id
+          case "all" : // Retrieve all merchant details for web / mobile applicaitons
           {
               // Retrieve all merchant details for web / mobile applicaitons
               $response_array = $db->get($table_name);

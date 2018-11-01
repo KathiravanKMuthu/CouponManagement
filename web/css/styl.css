@@ -1,0 +1,3178 @@
+@media (max-width: 768px){ 
+	h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+			display: block ;
+			line-height: 1.4 ;
+			font-weight: 400 ;
+			margin: 0 ;
+			text-rendering: optimizeLegibility ;
+		}
+		a{			
+			color:#f11010 ;
+			padding:5px ;
+		}
+		a:hover{
+			color:#1010f1 ;
+		}
+		.btn.btn-o:hover, .btn.btn-o.hover, .btn.btn-o:focus, .btn.btn-o.focus, .btn.btn-o:active, .btn.btn-o.active {
+			border-color: #f11 ;
+			background-color:#f11 ;
+			color:#fff ;
+		}
+		.text-muted{
+			text-overflow:ellipsis ;
+			overflow:hidden ;
+			width:90% ;
+			display:inline-block ;
+			white-space:nowrap ;
+		}
+		.top2-bar{			
+			padding:10px ;
+			background-color: #e9ebee ;
+		}
+		#header{
+			font-size:11pt ;
+			background-color:#fff ;
+		}
+		#header form .input-group{
+			margin-left:1px ;
+			margin-top:6% ;
+			border:2px solid #f00 ;			
+		}
+		#header .form-control{
+			font-size:12pt ;
+		}
+		#header form .input-group input[type="text"]{
+			border:1px solid #f00 ;			
+			border-radius:0px ;
+			width:40% ;		
+		}
+		#header form .input-group select{
+			border:1px solid #f00 ;			
+			border-radius:0px ;
+			width:40% ;
+			
+		}
+		#header form .input-group button{
+			border:1px solid #f00 ;			
+			border-radius:0px ;
+			width:20% ;
+			color:#fff ;
+			background-color:#f11 ;
+		}
+		#header form .input-group button:hover{
+			color:#fff ;
+			background-color:#d11 ;
+		}
+		
+		.navbar-default{
+			margin-top:1%;
+			border:#314555 ;
+			border-radius:5px ;
+			background-color: #314555 !important ;
+			color:#314555;
+		}		
+		.navbar-default .navbar-header button{
+			left:12%;
+			background-color: #314555 !important;
+		}
+		.navbar-default .navbar-header button:hover{
+			background-color: #ff0000 !important;
+		}
+		.navbar-default .navbar-collapse{
+			background-color: #314555;
+			border-radius:5px ;
+		}
+		.navbar-default .navbar-collapse .navbar-nav li a{
+			color:#fff;
+		}
+		.navbar-default .navbar-collapse .navbar-nav li.current a{
+			background-color: #f00 !important ;
+			color:#fff !important ;
+		}
+		.navbar-default .navbar-collapse .navbar-nav li a:hover{
+			background-color: #f00 !important ;
+			color:#fff !important ;
+		}
+		
+		.nav-panel li{
+			background-color:#fff ;
+			border-bottom:1px solid #f1f1f1 ;
+		}
+		.nav-panel li a{
+			color:#000 ;
+			background-color:transprent ;
+		}
+		.nav-panel li a:hover{
+			color:#000 ;
+			left:10px ;
+			background-color:transparent !important ;
+		}
+		.nav-panel li a:hover span,
+		.nav-panel li a:hover i{
+			color:#f00 ;
+		}
+		
+		#myCarousel{
+			height:300px ;
+			width:90% ;
+			margin-left:5% ;
+		}
+		#myCarousel .carousel-inner item:hover{
+			background-color:#fff ;
+		}
+		#myCarousel .carousel-control{
+			width:10% ;
+			height:100% ;
+			padding-top:38% ;
+			color:#fff ;
+			opacity:0.2 ;	
+		}
+		#myCarousel .carousel-control span{
+			color:#000 ;
+			font-size:30px ;
+			font-weight:bolder ;
+		}
+		#myCarousel .carousel-inner .item .item-img{
+			width:100% ;
+		}
+		#myCarousel .carousel-inner .item .carousel-caption{
+			color:#000 ;						
+			position:relative;
+			right: 5% ;
+			bottom: 7% ;
+			left: 5% ;
+			z-index: 10 ;
+			padding-top: 20px ;
+			padding-bottom: 20px ;
+			color: #fff ;
+		}
+		#myCarousel .carousel-inner .item .carousel-caption .deal-title{
+			text-align:left ;
+			font-size:15pt;
+		}
+		#myCarousel .carousel-inner .item .carousel-caption .deal-title a{
+			color: #d4d4d4 ;
+			text-decoration:none ;
+			text-align:left ;
+		}
+		#myCarousel .carousel-inner .item .carousel-caption .deal-title a:hover{
+			color: #000 ;
+		}
+		#myCarousel .carousel-inner .item .label-discount{
+			top:10px ;
+			right:10px ;
+			color: #fff ;
+			font-size: 15px ;
+			height: 50px ;
+			width: 50px ;
+			line-height: 49px ;
+			text-align: center ;
+			display: block ;
+			position: absolute ;
+			z-index: 1 ;
+			text-transform: uppercase ;
+			white-space: nowrap ;
+			vertical-align: baseline ;
+			border-radius: 999px ;
+			background-color: #3BAC44 ;
+			border: 1px dashed #fff ;
+			-webkit-box-shadow: 0 0 0 2px #3BAC44 ;
+			box-shadow: 0 0 0 2px #3BAC44 ;
+		}
+		.explain-process-area{
+			padding-top:30px ;
+			padding-bottom:30px ;
+		}
+		.explain-process-area .row{ 
+			right:10px ;
+			left:10px ;
+		}
+		.explain-process-area .row .panel{ 
+			height:200px ;
+			padding-top:20px ;
+			padding-bottom:20px ;
+			padding-left:15px ;
+			padding-right:15px ;
+		}
+		.explain-process-area .row .panel .row{ 
+			right:5px ;
+			left:5px ;
+		}
+		.explain-process-area .row .panel .row img{ 
+			padding:10px ;
+			width:100px ;
+			margin-top:10% ;
+		}
+		.explain-process-area .row .panel .row h5{ 
+			padding-top:5px ;
+		}
+		.latest-deals-area{ 
+			padding-bottom:30px ;
+			padding-top:30px ;
+		}
+		.latest-deals-area .header-panel{ 
+			background-color:#fff ;
+			padding:10px ;
+			position:relative ;
+			margin-bottom:50px ;
+		    border-radius: 3px ;
+			overflow: hidden ; 
+			box-shadow: none ;  
+			border: 0 ;
+		}
+		.latest-deals-area .header-panel .section-title{ 
+			font-weight:lighter ;
+			margin-left:10px ;
+			font-size:20px ;
+			width:97% ;
+		}	
+		.latest-deals-area .header-panel .header-panel-btn{
+			padding:2px ;
+			padding-left:5px ;
+			padding-right:5px ;
+			text-transform:uppercase ;
+			font-size:13px ;
+			float:right ;
+			border:2px solid #f00 ;
+			border-radius:4px ;
+			
+		}
+		.latest-deals-area .row-masnory{
+			margin-top: -20px ;
+			margin-bottom: -20px ;
+		}
+		.latest-deals-area .row-masnory .deal-single{ 
+			border-radius: 3px ;
+			overflow: hidden ; 
+			margin-bottom:20px ;
+			box-shadow: 5px 5px 8px #555 ;
+			border: 0 ;
+		}
+		.latest-deals-area .row-masnory .deal-single figure{ 
+			background-size:cover ;
+			background-repeat:no-repeat ;
+		}
+		.latest-deals-area .row-masnory .deal-single figure .label-discount{
+			left:20px ;
+			top:10px ;
+			right: 10px ;    
+			color: #fff ;    
+			font-size: 18px ;    
+			height: 70px ;    
+			width: 70px ;    
+			line-height: 69px ;    
+			text-align: center ;
+			display: block ;    
+			position: absolute ;    
+			z-index: 1 ;    
+			text-transform: uppercase ;    
+			white-space: nowrap ;    
+			vertical-align: baseline ;
+			border-radius: 999px ;   
+			background-color: #3BAC44 ;    
+			border: 1px dashed #fff ;    
+			-webkit-box-shadow: 0 0 0 2px #3BAC44 ;
+			box-shadow: 0 0 0 2px #3BAC44 ;
+		}
+		.latest-deals-area .row-masnory .deal-single figure .deal-actions{ 
+			margin-top:4% ;
+			margin-left:65% ;
+		}
+		.latest-deals-area .row-masnory .deal-single figure .deal-actions span{ 
+			display: inline-block ;
+			width: 28px ;
+			height: 28px ;
+			line-height: 28px ;
+			border-radius: 4px ;
+			background-color: #000 ; 
+			opacity: 0.6 ; 
+			filter: alpha(opacity=60) ; 
+			text-align: center ;
+			color:#fff ;
+		}
+		.latest-deals-area .row-masnory .deal-single figure .time-left{ 
+			text-transform:uppercase ;
+			font-size:12px ;
+			bottom:15px ;
+			right:20px ;
+			font-size: 14px ;
+			float:right ;
+			margin-right:2% ;
+			margin-top:35% ;
+			color:#fff ;
+		}
+		.latest-deals-area .row-masnory .deal-single figure .time-left span i{ 
+			margin-right: 5px ;
+			
+		}
+		.latest-deals-area .row-masnory .deal-single figure .deal-store-logo{
+			margin-top:32% ;
+			margin-left:4% ;
+		}
+		.latest-deals-area .row-masnory .deal-single figure .deal-store-logo img{
+			width:17.5% ;
+			border-radius: 3px ;			
+		}
+		.latest-deals-area .row-masnory .deal-single .deal-dets{
+			background-color:white ;
+			padding-top:10px ;
+			padding-left:20px ;
+			padding-right:15px ;
+			padding-bottom:10px ;
+		}
+		.latest-deals-area .row-masnory .deal-single .deal-dets div .deal-title{
+			 font-size: 20px ;text-overflow:ellipsis ;overflow:hidden ;width:90% ;display:inline-block ;white-space:nowrap ;
+		}
+		.latest-deals-area .row-masnory .deal-single .deal-dets div a{
+			text-decoration:none ;
+		}
+		.latest-deals-area .row-masnory .deal-single .deal-dets div a .deal-meta{
+			margin-bottom:10px ;color: #717f86 ;
+		}
+		.latest-deals-area .row-masnory .deal-single .deal-dets div a .deal-meta i{
+			padding-right:5px ;
+		}
+		.latest-deals-area .row-masnory .deal-single .deal-dets .text-muted{
+			text-overflow:ellipsis ;overflow:hidden ;width:90% ;display:inline-block ;white-space:nowrap ;
+		}
+		.latest-deals-area .header-panel .list-control-view {
+			margin-bottom:-0.2% ;			
+			margin-left:2% ;
+			vertical-align: middle !important ;
+			font-size:20px ;
+		}
+		#lightbox{			
+			height:150px;	
+			margin-left:-155%;
+		}
+		#lightbox .modal-body{
+			height:100px;
+		}
+		
+		#lightbox .carousel-inner item:hover{
+			background-color:#fff ;
+		}
+		#lightbox .carousel-control{
+			color:#ddd ;
+			margin-top:13% ;
+			width:10% ;
+			height:40% ;
+			padding-top:3%;
+		}
+		#lightbox .carousel-control span{
+			width:70%;
+			color:#fff ;
+			font-size:30px ;
+			font-weight:bolder ;
+		}
+		
+		.stores-area{ 
+			padding-bottom:30px ;
+			padding-top:30px ;
+		}
+		.stores-area .header-panel{ 
+			background-color:#fff ;
+			padding:10px ;
+			position:relative ;
+			margin-bottom:30px ;
+			border-radius: 3px ;
+			overflow: hidden ; 
+			box-shadow: none ;  
+			border: 0 ;
+		}
+		.stores-area .header-panel .section-title{ 
+			font-weight:lighter ;
+			margin-left:10px ;
+			font-size:20px ;
+			width:97% ;
+		}	
+		.stores-area .header-panel-btn{
+			padding:2px ;
+			padding-left:5px ;
+			padding-right:5px ;
+			text-transform:uppercase ;
+			font-size:13px ;
+			float:right ;
+			border:2px solid #f00 ;
+			border-radius:4px ;
+		}
+		
+		.stores-area .merchants-lists{  
+			margin-bottom:50px ;
+		}
+		.stores-area #myCarouselmer .carousel-inner{  
+			padding-left:1.5% ;
+		}
+		.stores-area #myCarouselmer .carousel-inner .item-list{ 			
+			width:16% ;
+			height:80px ;
+			background-color:#f1f1f1 ;
+			float:left ;
+			margin-right:0.5% ;			
+			padding-left:5px ;
+			padding-right:5px ;
+			
+		}
+		.stores-area #myCarouselmer .carousel-inner .item-list a img{
+		
+		}
+		.stores-area #myCarouselmer .carousel-inner .item-list a .store-name{
+			font-size:15px ;
+			color:#000 ;
+			margin-top:3px ;
+		}
+		.stores-area #myCarouselmer .carousel-control{ 
+			color:#ddd ;			
+			width:2% ;		
+			padding-top:5%;
+		}
+		.stores-area #myCarouselmer .carousel-control span{
+			
+			color:#fff ;
+			font-size:30px ;
+			font-weight:bolder ;
+		} 
+		.stores-area .merchants-lists{
+			padding-bottom:10% ;
+		}
+		
+		.subscribe-area{ 
+			text-align:center ;
+			color:#fff ;
+			padding-bottom:10px ;
+			padding-top:10px ;
+		}	
+		
+		.subscribe-area	.newsletter-form h4{ 
+			margin-bottom:20px ;
+		}		
+		.subscribe-area	.newsletter-form h4 i{
+			color:#fff ;
+			margin-right:10px ;
+		}
+		.subscribe-area	.newsletter-form p{ 
+			margin-bottom:20px ;
+			color:color: #717f86 ;
+		}
+		.subscribe-area	.newsletter-form .input-group{
+			margin-bottom:10px ;
+			width:90% ;
+			margin-left:5% ;
+		}
+		.subscribe-area	.newsletter-form .form-control{
+			background-color:#f0f0f0 ;
+			border:2px solid #000 ;
+			border-radius:0px ;
+		}
+		.subscribe-area	.newsletter-form .form-control:hover,
+		.subscribe-area	.newsletter-form .form-control:focus{
+			background-color:#fff ;
+			color:#000 ;
+			font-size:15px ;
+			border:2px solid #0f0 ;
+			border-radius:0px ;
+		}
+		.contact-info .contact-list li span{
+			font-size:18pt;
+			color:#00f;
+			position:absolute;
+		
+		}
+		
+		footer{ 
+			text-align: center ;
+			background: #1e2b35 ; 
+			
+		}
+		footer p{ 
+			font-size: 15px ;
+			line-height: 26px ;
+			color: #647d89 ;
+			padding:2px;
+		}
+		.download-panel{
+			margin-top:5% ;
+			margin-bottom:5% ;			
+			background-color:#fafafa ;
+			border-radius: 3px ;
+			overflow: hidden ;
+			-webkit-box-shadow: none ;
+			box-shadow: none ;
+			border: 0 ;
+			padding:40px ;
+		}
+		.download-panel .sign-title {
+			margin-bottom: 20px ;
+			padding-bottom: 10px ;
+			border-bottom: 1px solid #eee ;
+		}
+		.download-panel .col-left{
+			border-right: 1px solid #eee ;
+		}
+		.social-login{
+			padding: 30px ;
+		}
+		.social-login p{
+			margin-bottom:20px ;
+		}
+		.social-login .top{
+			margin-bottom:20px ;
+		}
+		.social-login .down{
+			text-align:center ;
+			color: #717f86 ;
+		}
+		
+		/* sign area*/
+		.sign-area{
+			margin-top:5% ;
+			margin-bottom:5% ;
+			padding-top: 2% ;
+			padding-bottom: 2% ;
+			background-color:#fff ;
+		}
+		.sign-area .sign-title {
+			margin-bottom: 20px ;
+			padding-left: 3% ; ;
+			padding-bottom: 10px ;
+			border-bottom: 1px solid #eee ;
+		}
+		.sign-area .col-top {
+			margin-bottom:20px ;
+			border-bottom: 1px dotted #eee ;
+		}
+		.sign-area label {
+			font-weight: normal ;
+		}
+		.sign-area .col-top .or {
+			text-align: center ;
+			position: relative ;
+			top: 20px ;
+			left: 50% ;
+			width: 40px ;
+			line-height: 40px ;
+			line-width: 40px ;
+			background-color: #fff ;
+			margin-right: -20px ;
+			color: #97a4ad ;
+			text-transform: uppercase ;
+		}
+		.btn-signin{
+			font-family: Poppins-Medium ;
+			font-size: 18px ;
+			background-color:#3d3 ;
+			color:#000 ;
+			margin-left:10% ;
+		}
+		.btn-signin:hover,
+		.btn-signin:focus{
+			background-color:#1f1 ;
+			color:#fff ;
+		}
+		.btn-social {
+			font-family: Poppins-Medium ;
+			font-size: 18px ;
+		}
+		.btn-social .fa {		
+			font-size: 20px ;
+			position: relative ;
+			right:2px ;
+		}
+		.btn-facebook{
+			text-transform: capitalize ;
+			text-align:center ;
+			margin-bottom:3% ;
+			margin-left:38% ;
+			position: relative ;
+			border: 0 ;
+			width:60% ;
+			color:#010 ;
+			background-color: #344e87 ;
+		}
+		.btn-facebook:hover,
+		.btn-facebook:focus {
+			background-color: #0000aa ;
+			color:#fff ;
+		}	
+		.btn-googleplus{
+			text-transform: capitalize ;
+			margin-bottom:3% ;
+			margin-left:8% ;
+			position: relative ;
+			letter-spacing: 0.5px ;
+			border: 0 ;
+			width:60% ;
+			color:#000 ;
+			background-color: #aa4444 ;
+		}
+		.btn-googleplus:hover,
+		.btn-googleplus:focus {
+			background-color: #ff4444 ;
+			color:#fff ;
+		}
+		.mycheckbox{
+			display: block ;
+			position: relative ;
+			padding-top:3px ;
+			padding-left: 14% ;
+			margin-bottom: 12px ;
+			cursor: pointer ;
+			font-size: 16px ;
+			-webkit-user-select: none ;
+			-moz-user-select: none ;
+			-ms-user-select: none ;
+			user-select: none ;
+		}
+		/* Hide the browser's default checkbox */
+		.mycheckbox input {
+			position: absolute ;
+			opacity: 0 ;
+			cursor: pointer ;
+		}
+		.mycheckbox b{
+			margin-left:10% ;
+			//position: relative ;
+			opacity: 9 ;
+			cursor: pointer ;
+		}
+		/* Create a custom checkbox */
+		.checkmark {
+			margin-left:10% ;
+			margin-top:2px ;
+			position: absolute ;
+			top: 0 ;
+			left: 0 ;
+			height: 20px ;
+			width: 20px ;
+			background-color: #eee ;
+			border-radius:5px ;
+		}
+		/* On mouse-over, add a grey background color */
+		.mycheckbox:hover input ~ .checkmark {
+			background-color: #ccc ;
+			border:1px solid #f1f1f1 ;
+		}
+		/* When the checkbox is checked, add a blue background */
+		.mycheckbox input:checked ~ .checkmark {
+			background-color: #2196F3 ;
+		}
+		/* Create the checkmark/indicator (hidden when not checked) */
+		.checkmark:after {
+			content: "" ;
+			position: absolute ;
+			display: none ;
+		}
+		/* Show the checkmark when checked */
+		.mycheckbox input:checked ~ .checkmark:after {
+			display: block ;
+		}
+		/* Style the checkmark/indicator */
+		.mycheckbox .checkmark:after {
+			left: 7px ;
+			top: 4px ;
+			width: 5px ;
+			height: 10px ;
+			border: solid white ;
+			border-width: 0 3px 3px 0 ;
+			-webkit-transform: rotate(45deg) ;
+			-ms-transform: rotate(45deg) ;
+			transform: rotate(45deg) ;
+		}
+		.input100 {
+			display: block ;				
+			margin-left:10% ;				
+			height: 50px ;
+			width: 80% ;				
+			padding: 0 0 0 10px ;
+			background: #e6e6e6 ;
+			color: #686868 ;
+			border-radius: 3px ;
+			border:0px solid #686868 ;
+			font-family: Raleway-SemiBold ;
+			font-size: 18px ;
+			line-height: 10 ;//.2		
+			cursor:pointer ;
+		}
+		.input100:focus{
+			display: block ;				
+			margin-left:10% ;				
+			height: 50px ;
+			width: 80% ;				
+			padding: 0 0 0 10px ;
+			background: #e6e6e6 ;
+			color: #000 ;
+			border-radius: 3px ;
+			border:2px solid rgba(211,63,141, 0.6) ;
+			font-family: Raleway-SemiBold ;
+			font-size: 18px ;
+			//line-height: 10 ;//.2		
+		}
+		
+		
+		.checkout-area{
+			position: relative ;
+			margin-top:5% ;
+			margin-left:20% ;
+			margin-bottom:5% ;
+			width:60% ;
+			padding-right:30px ;
+			padding-left:30px ;
+			padding-top:20px ;
+			padding-bottom:40px ;
+		}
+		.checkout-area form .form-group label,
+		.checkout-area form .form-group input{
+			font-size:13pt ;
+		}
+		.checkout-area form .form-group .btn-prof{
+			font-size: 15pt ;
+			background-color:#3d3 ;
+			color:#000 ;
+			
+		}
+		.checkout-area form .form-group .btn-prof:hover,
+		.checkout-area form .form-group .btn-prof:focus{
+			background-color:#1f1 ;
+			color:#fff ;
+		}
+		
+		.social-icons__item .fa {
+  font-size: 15px ;
+  margin: 0 ;
+  height: 32px ;
+  width: 32px ;
+  line-height: 32px ;
+  text-align: center ;
+  border-radius: 3px ;
+  color: #F5F5F5 ;
+  background-color: rgba(49, 69, 85, 0.25) ;
+}
+.social-icons__item .fa:hover {
+  background-color: rgba(49, 69, 85, 0.4) ;
+}
+.social-icons--colored .social-icons__item i.fa-facebook {
+  background-color: #3b5998 ;
+}
+.social-icons--colored .social-icons__item i.fa-facebook:hover {
+  background-color: #344e86 ;
+}
+.social-icons--colored .social-icons__item i.fa-twitter {
+  background-color: #1da1f2 ;
+}
+.social-icons--colored .social-icons__item i.fa-twitter:hover {
+  background-color: #0d95e8 ;
+}
+.social-icons--colored .social-icons__item i.fa-google-plus {
+  background-color: #dd4b39 ;
+}
+.social-icons--colored .social-icons__item i.fa-google-plus:hover {
+  background-color: #d73925 ;
+}
+.social-icons--colored .social-icons__item i.fa-linkedin {
+  background-color: #0077b5 ;
+}
+.social-icons--colored .social-icons__item i.fa-linkedin:hover {
+  background-color: #00669c ;
+}
+.social-icons--colored .social-icons__item i.fa-pinterest {
+  background-color: #cc2222 ;
+}
+.social-icons--colored .social-icons__item i.fa-pinterest:hover {
+  background-color: #b61e1e ;
+}
+	#cart_list{
+		/*width:100px;*/
+		padding-bottom:-50px !important;
+	}
+	
+}
+@media (min-width: 768px) and (max-width: 992px){ 
+	h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+			display: block ;
+			line-height: 1.4 ;
+			font-weight: 400 ;
+			margin: 0 ;
+			text-rendering: optimizeLegibility ;
+		}
+		a{			
+			color:#f11010 ;
+			padding:5px ;
+		}
+		a:hover{
+			color:#1010f1 ;
+		}
+		.btn.btn-o:hover, .btn.btn-o.hover, .btn.btn-o:focus, .btn.btn-o.focus, .btn.btn-o:active, .btn.btn-o.active {
+			border-color: #f11 ;
+			background-color:#f11 ;
+			color:#fff ;
+		}
+		.text-muted{
+			text-overflow:ellipsis ;
+			overflow:hidden ;
+			width:90% ;
+			display:inline-block ;
+			white-space:nowrap ;
+		}
+		.top2-bar{			
+			padding:10px ;
+			background-color: #e9ebee ;
+		}
+		#header{
+			font-size:11pt ;
+			background-color:#fff ;
+		}
+		#header form .input-group{
+			margin-left:1px ;
+			margin-top:6% ;
+			border:2px solid #f00 ;			
+		}
+		#header .form-control{
+			font-size:12pt ;
+		}
+		#header form .input-group input[type="text"]{
+			border:1px solid #f00 ;			
+			border-radius:0px ;
+			width:40% ;		
+		}
+		#header form .input-group select{
+			border:1px solid #f00 ;			
+			border-radius:0px ;
+			width:40% ;
+			
+		}
+		#header form .input-group button{
+			border:1px solid #f00 ;			
+			border-radius:0px ;
+			width:20% ;
+			color:#fff ;
+			background-color:#f11 ;
+		}
+		#header form .input-group button:hover{
+			color:#fff ;
+			background-color:#d11 ;
+		}
+		
+		.navbar-default{
+			margin-top:1%;
+			border:#314555 ;
+			border-radius:5px ;
+			background-color: #314555 !important ;
+			color:#314555;
+		}		
+		.navbar-default .navbar-header button{
+			left:12%;
+			background-color: #314555 !important;
+		}
+		.navbar-default .navbar-header button:hover{
+			background-color: #ff0000 !important;
+		}
+		.navbar-default .navbar-collapse{
+			background-color: #314555;
+			border-radius:5px ;
+		}
+		.navbar-default .navbar-collapse .navbar-nav li a{
+			color:#fff;
+		}
+		.navbar-default .navbar-collapse .navbar-nav li.current a{
+			background-color: #f00 !important ;
+			color:#fff !important ;
+		}
+		.navbar-default .navbar-collapse .navbar-nav li a:hover{
+			background-color: #f00 !important ;
+			color:#fff !important ;
+		}
+		
+		.nav-panel li{
+			background-color:#fff ;
+			border-bottom:1px solid #f1f1f1 ;
+		}
+		.nav-panel li a{
+			color:#000 ;
+			background-color:transprent ;
+		}
+		.nav-panel li a:hover{
+			color:#000 ;
+			left:10px ;
+			background-color:transparent !important ;
+		}
+		.nav-panel li a:hover span,
+		.nav-panel li a:hover i{
+			color:#f00 ;
+		}
+		
+		#myCarousel{
+			height:300px ;
+			width:90% ;
+			margin-left:5% ;
+		}
+		#myCarousel .carousel-inner item:hover{
+			background-color:#fff ;
+		}
+		#myCarousel .carousel-control{
+			width:10% ;
+			height:100% ;
+			padding-top:38% ;
+			color:#fff ;
+			opacity:0.2 ;	
+		}
+		#myCarousel .carousel-control span{
+			color:#000 ;
+			font-size:30px ;
+			font-weight:bolder ;
+		}
+		#myCarousel .carousel-inner .item .item-img{
+			width:100% ;
+		}
+		#myCarousel .carousel-inner .item .carousel-caption{
+			color:#000 ;						
+			position:relative;
+			right: 5% ;
+			bottom: 7% ;
+			left: 5% ;
+			z-index: 10 ;
+			padding-top: 20px ;
+			padding-bottom: 20px ;
+			color: #fff ;
+		}
+		#myCarousel .carousel-inner .item .carousel-caption .deal-title{
+			text-align:left ;
+			font-size:15pt;
+		}
+		#myCarousel .carousel-inner .item .carousel-caption .deal-title a{
+			color: #d4d4d4 ;
+			text-decoration:none ;
+			text-align:left ;
+		}
+		#myCarousel .carousel-inner .item .carousel-caption .deal-title a:hover{
+			color: #000 ;
+		}
+		#myCarousel .carousel-inner .item .label-discount{
+			top:10px ;
+			right:10px ;
+			color: #fff ;
+			font-size: 15px ;
+			height: 50px ;
+			width: 50px ;
+			line-height: 49px ;
+			text-align: center ;
+			display: block ;
+			position: absolute ;
+			z-index: 1 ;
+			text-transform: uppercase ;
+			white-space: nowrap ;
+			vertical-align: baseline ;
+			border-radius: 999px ;
+			background-color: #3BAC44 ;
+			border: 1px dashed #fff ;
+			-webkit-box-shadow: 0 0 0 2px #3BAC44 ;
+			box-shadow: 0 0 0 2px #3BAC44 ;
+		}
+		.explain-process-area{
+			padding-top:30px ;
+			padding-bottom:30px ;
+		}
+		.explain-process-area .row{ 
+			right:10px ;
+			left:10px ;
+		}
+		.explain-process-area .row .panel{ 
+			height:200px ;
+			padding-top:20px ;
+			padding-bottom:20px ;
+			padding-left:15px ;
+			padding-right:15px ;
+		}
+		.explain-process-area .row .panel .row{ 
+			right:5px ;
+			left:5px ;
+		}
+		.explain-process-area .row .panel .row img{ 
+			padding:10px ;
+			width:100px ;
+			margin-top:10% ;
+		}
+		.explain-process-area .row .panel .row h5{ 
+			padding-top:5px ;
+		}
+		.latest-deals-area{ 
+			padding-bottom:30px ;
+			padding-top:30px ;
+		}
+		.latest-deals-area .header-panel{ 
+			background-color:#fff ;
+			padding:10px ;
+			position:relative ;
+			margin-bottom:50px ;
+		    border-radius: 3px ;
+			overflow: hidden ; 
+			box-shadow: none ;  
+			border: 0 ;
+		}
+		.latest-deals-area .header-panel .section-title{ 
+			font-weight:lighter ;
+			margin-left:10px ;
+			font-size:20px ;
+			width:97% ;
+		}	
+		.latest-deals-area .header-panel .header-panel-btn{
+			padding:2px ;
+			padding-left:5px ;
+			padding-right:5px ;
+			text-transform:uppercase ;
+			font-size:13px ;
+			float:right ;
+			border:2px solid #f00 ;
+			border-radius:4px ;
+			
+		}
+		.latest-deals-area .row-masnory{
+			margin-top: -20px ;
+			margin-bottom: -20px ;
+		}
+		.latest-deals-area .row-masnory .deal-single{ 
+			border-radius: 3px ;
+			overflow: hidden ; 
+			margin-bottom:20px ;
+			box-shadow: 5px 5px 8px #555 ;
+			border: 0 ;
+		}
+		.latest-deals-area .row-masnory .deal-single figure{ 
+			background-size:cover ;
+			background-repeat:no-repeat ;
+		}
+		.latest-deals-area .row-masnory .deal-single figure .label-discount{
+			left:20px ;
+			top:10px ;
+			right: 10px ;    
+			color: #fff ;    
+			font-size: 18px ;    
+			height: 70px ;    
+			width: 70px ;    
+			line-height: 69px ;    
+			text-align: center ;
+			display: block ;    
+			position: absolute ;    
+			z-index: 1 ;    
+			text-transform: uppercase ;    
+			white-space: nowrap ;    
+			vertical-align: baseline ;
+			border-radius: 999px ;   
+			background-color: #3BAC44 ;    
+			border: 1px dashed #fff ;    
+			-webkit-box-shadow: 0 0 0 2px #3BAC44 ;
+			box-shadow: 0 0 0 2px #3BAC44 ;
+		}
+		.latest-deals-area .row-masnory .deal-single figure .deal-actions{ 
+			margin-top:4% ;
+			margin-left:65% ;
+		}
+		.latest-deals-area .row-masnory .deal-single figure .deal-actions span{ 
+			display: inline-block ;
+			width: 28px ;
+			height: 28px ;
+			line-height: 28px ;
+			border-radius: 4px ;
+			background-color: #000 ; 
+			opacity: 0.6 ; 
+			filter: alpha(opacity=60) ; 
+			text-align: center ;
+			color:#fff ;
+		}
+		.latest-deals-area .row-masnory .deal-single figure .time-left{ 
+			text-transform:uppercase ;
+			font-size:12px ;
+			bottom:15px ;
+			right:20px ;
+			font-size: 14px ;
+			float:right ;
+			margin-right:2% ;
+			margin-top:35% ;
+			color:#fff ;
+		}
+		.latest-deals-area .row-masnory .deal-single figure .time-left span i{ 
+			margin-right: 5px ;
+			
+		}
+		.latest-deals-area .row-masnory .deal-single figure .deal-store-logo{
+			margin-top:32% ;
+			margin-left:4% ;
+		}
+		.latest-deals-area .row-masnory .deal-single figure .deal-store-logo img{
+			width:17.5% ;
+			border-radius: 3px ;			
+		}
+		.latest-deals-area .row-masnory .deal-single .deal-dets{
+			background-color:white ;
+			padding-top:10px ;
+			padding-left:20px ;
+			padding-right:15px ;
+			padding-bottom:10px ;
+		}
+		.latest-deals-area .row-masnory .deal-single .deal-dets div .deal-title{
+			 font-size: 20px ;text-overflow:ellipsis ;overflow:hidden ;width:90% ;display:inline-block ;white-space:nowrap ;
+		}
+		.latest-deals-area .row-masnory .deal-single .deal-dets div a{
+			text-decoration:none ;
+		}
+		.latest-deals-area .row-masnory .deal-single .deal-dets div a .deal-meta{
+			margin-bottom:10px ;color: #717f86 ;
+		}
+		.latest-deals-area .row-masnory .deal-single .deal-dets div a .deal-meta i{
+			padding-right:5px ;
+		}
+		.latest-deals-area .row-masnory .deal-single .deal-dets .text-muted{
+			text-overflow:ellipsis ;overflow:hidden ;width:90% ;display:inline-block ;white-space:nowrap ;
+		}
+		.latest-deals-area .header-panel .list-control-view {
+			margin-bottom:-0.2% ;			
+			margin-left:2% ;
+			vertical-align: middle !important ;
+			font-size:20px ;
+		}
+		#lightbox{			
+			height:150px;	
+			margin-left:-155%;
+		}
+		#lightbox .modal-body{
+			height:100px;
+		}
+		
+		#lightbox .carousel-inner item:hover{
+			background-color:#fff ;
+		}
+		#lightbox .carousel-control{
+			color:#ddd ;
+			margin-top:13% ;
+			width:10% ;
+			height:40% ;
+			padding-top:3%;
+		}
+		#lightbox .carousel-control span{
+			width:70%;
+			color:#fff ;
+			font-size:30px ;
+			font-weight:bolder ;
+		}
+		
+		.stores-area{ 
+			padding-bottom:30px ;
+			padding-top:30px ;
+		}
+		.stores-area .header-panel{ 
+			background-color:#fff ;
+			padding:10px ;
+			position:relative ;
+			margin-bottom:30px ;
+			border-radius: 3px ;
+			overflow: hidden ; 
+			box-shadow: none ;  
+			border: 0 ;
+		}
+		.stores-area .header-panel .section-title{ 
+			font-weight:lighter ;
+			margin-left:10px ;
+			font-size:20px ;
+			width:97% ;
+		}	
+		.stores-area .header-panel-btn{
+			padding:2px ;
+			padding-left:5px ;
+			padding-right:5px ;
+			text-transform:uppercase ;
+			font-size:13px ;
+			float:right ;
+			border:2px solid #f00 ;
+			border-radius:4px ;
+		}
+		
+		.stores-area .merchants-lists{  
+			margin-bottom:50px ;
+		}
+		.stores-area #myCarouselmer .carousel-inner{  
+			padding-left:1.5% ;
+		}
+		.stores-area #myCarouselmer .carousel-inner .item-list{ 			
+			width:16% ;
+			height:80px ;
+			background-color:#f1f1f1 ;
+			float:left ;
+			margin-right:0.5% ;			
+			padding-left:5px ;
+			padding-right:5px ;
+			
+		}
+		.stores-area #myCarouselmer .carousel-inner .item-list a img{
+		
+		}
+		.stores-area #myCarouselmer .carousel-inner .item-list a .store-name{
+			font-size:15px ;
+			color:#000 ;
+			margin-top:3px ;
+		}
+		.stores-area #myCarouselmer .carousel-control{ 
+			color:#ddd ;			
+			width:2% ;		
+			padding-top:5%;
+		}
+		.stores-area #myCarouselmer .carousel-control span{
+			
+			color:#fff ;
+			font-size:30px ;
+			font-weight:bolder ;
+		} 
+		.stores-area .merchants-lists{
+			padding-bottom:10% ;
+		}
+		
+		.subscribe-area{ 
+			text-align:center ;
+			color:#fff ;
+			padding-bottom:10px ;
+			padding-top:10px ;
+		}	
+		
+		.subscribe-area	.newsletter-form h4{ 
+			margin-bottom:20px ;
+		}		
+		.subscribe-area	.newsletter-form h4 i{
+			color:#fff ;
+			margin-right:10px ;
+		}
+		.subscribe-area	.newsletter-form p{ 
+			margin-bottom:20px ;
+			color:color: #717f86 ;
+		}
+		.subscribe-area	.newsletter-form .input-group{
+			margin-bottom:10px ;
+			width:90% ;
+			margin-left:5% ;
+		}
+		.subscribe-area	.newsletter-form .form-control{
+			background-color:#f0f0f0 ;
+			border:2px solid #000 ;
+			border-radius:0px ;
+		}
+		.subscribe-area	.newsletter-form .form-control:hover,
+		.subscribe-area	.newsletter-form .form-control:focus{
+			background-color:#fff ;
+			color:#000 ;
+			font-size:15px ;
+			border:2px solid #0f0 ;
+			border-radius:0px ;
+		}
+		.contact-info .contact-list li span{
+			font-size:18pt;
+			color:#00f;
+			position:absolute;
+		
+		}
+		
+		footer{ 
+			text-align: center ;
+			background: #1e2b35 ; 
+			
+		}
+		footer p{ 
+			font-size: 15px ;
+			line-height: 26px ;
+			color: #647d89 ;
+			padding:2px;
+		}
+		.download-panel{
+			margin-top:5% ;
+			margin-bottom:5% ;			
+			background-color:#fafafa ;
+			border-radius: 3px ;
+			overflow: hidden ;
+			-webkit-box-shadow: none ;
+			box-shadow: none ;
+			border: 0 ;
+			padding:40px ;
+		}
+		.download-panel .sign-title {
+			margin-bottom: 20px ;
+			padding-bottom: 10px ;
+			border-bottom: 1px solid #eee ;
+		}
+		.download-panel .col-left{
+			border-right: 1px solid #eee ;
+		}
+		.social-login{
+			padding: 30px ;
+		}
+		.social-login p{
+			margin-bottom:20px ;
+		}
+		.social-login .top{
+			margin-bottom:20px ;
+		}
+		.social-login .down{
+			text-align:center ;
+			color: #717f86 ;
+		}
+		
+		/* sign area*/
+		.sign-area{
+			margin-top:5% ;
+			margin-bottom:5% ;
+			padding-top: 2% ;
+			padding-bottom: 2% ;
+			background-color:#fff ;
+		}
+		.sign-area .sign-title {
+			margin-bottom: 20px ;
+			padding-left: 3% ; ;
+			padding-bottom: 10px ;
+			border-bottom: 1px solid #eee ;
+		}
+		.sign-area .col-top {
+			margin-bottom:20px ;
+			border-bottom: 1px dotted #eee ;
+		}
+		.sign-area label {
+			font-weight: normal ;
+		}
+		.sign-area .col-top .or {
+			text-align: center ;
+			position: relative ;
+			top: 20px ;
+			left: 50% ;
+			width: 40px ;
+			line-height: 40px ;
+			line-width: 40px ;
+			background-color: #fff ;
+			margin-right: -20px ;
+			color: #97a4ad ;
+			text-transform: uppercase ;
+		}
+		.btn-signin{
+			font-family: Poppins-Medium ;
+			font-size: 18px ;
+			background-color:#3d3 ;
+			color:#000 ;
+			margin-left:10% ;
+		}
+		.btn-signin:hover,
+		.btn-signin:focus{
+			background-color:#1f1 ;
+			color:#fff ;
+		}
+		.btn-social {
+			font-family: Poppins-Medium ;
+			font-size: 18px ;
+		}
+		.btn-social .fa {		
+			font-size: 20px ;
+			position: relative ;
+			right:2px ;
+		}
+		.btn-facebook{
+			text-transform: capitalize ;
+			text-align:center ;
+			margin-bottom:3% ;
+			margin-left:38% ;
+			position: relative ;
+			border: 0 ;
+			width:60% ;
+			color:#010 ;
+			background-color: #344e87 ;
+		}
+		.btn-facebook:hover,
+		.btn-facebook:focus {
+			background-color: #0000aa ;
+			color:#fff ;
+		}	
+		.btn-googleplus{
+			text-transform: capitalize ;
+			margin-bottom:3% ;
+			margin-left:8% ;
+			position: relative ;
+			letter-spacing: 0.5px ;
+			border: 0 ;
+			width:60% ;
+			color:#000 ;
+			background-color: #aa4444 ;
+		}
+		.btn-googleplus:hover,
+		.btn-googleplus:focus {
+			background-color: #ff4444 ;
+			color:#fff ;
+		}
+		.mycheckbox{
+			display: block ;
+			position: relative ;
+			padding-top:3px ;
+			padding-left: 14% ;
+			margin-bottom: 12px ;
+			cursor: pointer ;
+			font-size: 16px ;
+			-webkit-user-select: none ;
+			-moz-user-select: none ;
+			-ms-user-select: none ;
+			user-select: none ;
+		}
+		/* Hide the browser's default checkbox */
+		.mycheckbox input {
+			position: absolute ;
+			opacity: 0 ;
+			cursor: pointer ;
+		}
+		.mycheckbox b{
+			margin-left:10% ;
+			//position: relative ;
+			opacity: 9 ;
+			cursor: pointer ;
+		}
+		/* Create a custom checkbox */
+		.checkmark {
+			margin-left:10% ;
+			margin-top:2px ;
+			position: absolute ;
+			top: 0 ;
+			left: 0 ;
+			height: 20px ;
+			width: 20px ;
+			background-color: #eee ;
+			border-radius:5px ;
+		}
+		/* On mouse-over, add a grey background color */
+		.mycheckbox:hover input ~ .checkmark {
+			background-color: #ccc ;
+			border:1px solid #f1f1f1 ;
+		}
+		/* When the checkbox is checked, add a blue background */
+		.mycheckbox input:checked ~ .checkmark {
+			background-color: #2196F3 ;
+		}
+		/* Create the checkmark/indicator (hidden when not checked) */
+		.checkmark:after {
+			content: "" ;
+			position: absolute ;
+			display: none ;
+		}
+		/* Show the checkmark when checked */
+		.mycheckbox input:checked ~ .checkmark:after {
+			display: block ;
+		}
+		/* Style the checkmark/indicator */
+		.mycheckbox .checkmark:after {
+			left: 7px ;
+			top: 4px ;
+			width: 5px ;
+			height: 10px ;
+			border: solid white ;
+			border-width: 0 3px 3px 0 ;
+			-webkit-transform: rotate(45deg) ;
+			-ms-transform: rotate(45deg) ;
+			transform: rotate(45deg) ;
+		}
+		.input100 {
+			display: block ;				
+			margin-left:10% ;				
+			height: 50px ;
+			width: 80% ;				
+			padding: 0 0 0 10px ;
+			background: #e6e6e6 ;
+			color: #686868 ;
+			border-radius: 3px ;
+			border:0px solid #686868 ;
+			font-family: Raleway-SemiBold ;
+			font-size: 18px ;
+			line-height: 10 ;//.2		
+			cursor:pointer ;
+		}
+		.input100:focus{
+			display: block ;				
+			margin-left:10% ;				
+			height: 50px ;
+			width: 80% ;				
+			padding: 0 0 0 10px ;
+			background: #e6e6e6 ;
+			color: #000 ;
+			border-radius: 3px ;
+			border:2px solid rgba(211,63,141, 0.6) ;
+			font-family: Raleway-SemiBold ;
+			font-size: 18px ;
+			//line-height: 10 ;//.2		
+		}
+		
+		
+		.checkout-area{
+			position: relative ;
+			margin-top:5% ;
+			margin-left:20% ;
+			margin-bottom:5% ;
+			width:60% ;
+			padding-right:30px ;
+			padding-left:30px ;
+			padding-top:20px ;
+			padding-bottom:40px ;
+		}
+		.checkout-area form .form-group label,
+		.checkout-area form .form-group input{
+			font-size:13pt ;
+		}
+		.checkout-area form .form-group .btn-prof{
+			font-size: 15pt ;
+			background-color:#3d3 ;
+			color:#000 ;
+			
+		}
+		.checkout-area form .form-group .btn-prof:hover,
+		.checkout-area form .form-group .btn-prof:focus{
+			background-color:#1f1 ;
+			color:#fff ;
+		}
+		
+		.social-icons__item .fa {
+  font-size: 15px ;
+  margin: 0 ;
+  height: 32px ;
+  width: 32px ;
+  line-height: 32px ;
+  text-align: center ;
+  border-radius: 3px ;
+  color: #F5F5F5 ;
+  background-color: rgba(49, 69, 85, 0.25) ;
+}
+.social-icons__item .fa:hover {
+  background-color: rgba(49, 69, 85, 0.4) ;
+}
+.social-icons--colored .social-icons__item i.fa-facebook {
+  background-color: #3b5998 ;
+}
+.social-icons--colored .social-icons__item i.fa-facebook:hover {
+  background-color: #344e86 ;
+}
+.social-icons--colored .social-icons__item i.fa-twitter {
+  background-color: #1da1f2 ;
+}
+.social-icons--colored .social-icons__item i.fa-twitter:hover {
+  background-color: #0d95e8 ;
+}
+.social-icons--colored .social-icons__item i.fa-google-plus {
+  background-color: #dd4b39 ;
+}
+.social-icons--colored .social-icons__item i.fa-google-plus:hover {
+  background-color: #d73925 ;
+}
+.social-icons--colored .social-icons__item i.fa-linkedin {
+  background-color: #0077b5 ;
+}
+.social-icons--colored .social-icons__item i.fa-linkedin:hover {
+  background-color: #00669c ;
+}
+.social-icons--colored .social-icons__item i.fa-pinterest {
+  background-color: #cc2222 ;
+}
+.social-icons--colored .social-icons__item i.fa-pinterest:hover {
+  background-color: #b61e1e ;
+}
+	#cart_list{
+	
+		padding-bottom:-50px !important;
+	}
+}
+@media (min-width: 992px) and (max-width: 1200px){
+	h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+			display: block ;
+			line-height: 1.4 ;
+			font-weight: 400 ;
+			margin: 0 ;
+			text-rendering: optimizeLegibility ;
+		}
+		a{			
+			color:#f11010 ;
+			padding:5px ;
+		}
+		a:hover{
+			color:#1010f1 ;
+		}
+		.btn.btn-o:hover, .btn.btn-o.hover, .btn.btn-o:focus, .btn.btn-o.focus, .btn.btn-o:active, .btn.btn-o.active {
+			border-color: #f11 ;
+			background-color:#f11 ;
+			color:#fff ;
+		}
+		.text-muted{
+			text-overflow:ellipsis ;
+			overflow:hidden ;
+			width:90% ;
+			display:inline-block ;
+			white-space:nowrap ;
+		}
+		.top2-bar{			
+			padding:10px ;
+			background-color: #e9ebee ;
+		}
+		#header{
+			font-size:11pt ;
+			background-color:#fff ;
+		}
+		#header form .input-group{
+			margin-left:1px ;
+			margin-top:6% ;
+			border:2px solid #f00 ;			
+		}
+		#header .form-control{
+			font-size:12pt ;
+		}
+		#header form .input-group input[type="text"]{
+			border:1px solid #f00 ;			
+			border-radius:0px ;
+			width:40% ;		
+		}
+		#header form .input-group select{
+			border:1px solid #f00 ;			
+			border-radius:0px ;
+			width:40% ;
+			
+		}
+		#header form .input-group button{
+			border:1px solid #f00 ;			
+			border-radius:0px ;
+			width:20% ;
+			color:#fff ;
+			background-color:#f11 ;
+		}
+		#header form .input-group button:hover{
+			color:#fff ;
+			background-color:#d11 ;
+		}
+		
+		.navbar-default{
+			margin-top:1%;
+			border:#314555 ;
+			border-radius:5px ;
+			background-color: #314555 !important ;
+			color:#314555;
+		}		
+		.navbar-default .navbar-header button{
+			left:12%;
+			background-color: #314555 !important;
+		}
+		.navbar-default .navbar-header button:hover{
+			background-color: #ff0000 !important;
+		}
+		.navbar-default .navbar-collapse{
+			background-color: #314555;
+			border-radius:5px ;
+		}
+		.navbar-default .navbar-collapse .navbar-nav li a{
+			color:#fff;
+		}
+		.navbar-default .navbar-collapse .navbar-nav li.current a{
+			background-color: #f00 !important ;
+			color:#fff !important ;
+		}
+		.navbar-default .navbar-collapse .navbar-nav li a:hover{
+			background-color: #f00 !important ;
+			color:#fff !important ;
+		}
+		
+		.nav-panel li{
+			background-color:#fff ;
+			border-bottom:1px solid #f1f1f1 ;
+		}
+		.nav-panel li a{
+			color:#000 ;
+			background-color:transprent ;
+		}
+		.nav-panel li a:hover{
+			color:#000 ;
+			left:10px ;
+			background-color:transparent !important ;
+		}
+		.nav-panel li a:hover span,
+		.nav-panel li a:hover i{
+			color:#f00 ;
+		}
+		
+		#myCarousel{
+			height:300px ;
+			width:90% ;
+			margin-left:5% ;
+		}
+		#myCarousel .carousel-inner item:hover{
+			background-color:#fff ;
+		}
+		#myCarousel .carousel-control{
+			width:10% ;
+			height:100% ;
+			padding-top:38% ;
+			color:#fff ;
+			opacity:0.2 ;	
+		}
+		#myCarousel .carousel-control span{
+			color:#000 ;
+			font-size:30px ;
+			font-weight:bolder ;
+		}
+		#myCarousel .carousel-inner .item .item-img{
+			width:100% ;
+		}
+		#myCarousel .carousel-inner .item .carousel-caption{
+			color:#000 ;						
+			position:relative;
+			right: 5% ;
+			bottom: 7% ;
+			left: 5% ;
+			z-index: 10 ;
+			padding-top: 20px ;
+			padding-bottom: 20px ;
+			color: #fff ;
+		}
+		#myCarousel .carousel-inner .item .carousel-caption .deal-title{
+			text-align:left ;
+			font-size:15pt;
+		}
+		#myCarousel .carousel-inner .item .carousel-caption .deal-title a{
+			color: #d4d4d4 ;
+			text-decoration:none ;
+			text-align:left ;
+		}
+		#myCarousel .carousel-inner .item .carousel-caption .deal-title a:hover{
+			color: #000 ;
+		}
+		#myCarousel .carousel-inner .item .label-discount{
+			top:10px ;
+			right:10px ;
+			color: #fff ;
+			font-size: 15px ;
+			height: 50px ;
+			width: 50px ;
+			line-height: 49px ;
+			text-align: center ;
+			display: block ;
+			position: absolute ;
+			z-index: 1 ;
+			text-transform: uppercase ;
+			white-space: nowrap ;
+			vertical-align: baseline ;
+			border-radius: 999px ;
+			background-color: #3BAC44 ;
+			border: 1px dashed #fff ;
+			-webkit-box-shadow: 0 0 0 2px #3BAC44 ;
+			box-shadow: 0 0 0 2px #3BAC44 ;
+		}
+		.explain-process-area{
+			padding-top:30px ;
+			padding-bottom:30px ;
+		}
+		.explain-process-area .row{ 
+			right:10px ;
+			left:10px ;
+		}
+		.explain-process-area .row .panel{ 
+			height:200px ;
+			padding-top:20px ;
+			padding-bottom:20px ;
+			padding-left:15px ;
+			padding-right:15px ;
+		}
+		.explain-process-area .row .panel .row{ 
+			right:5px ;
+			left:5px ;
+		}
+		.explain-process-area .row .panel .row img{ 
+			padding:10px ;
+			width:100px ;
+			margin-top:10% ;
+		}
+		.explain-process-area .row .panel .row h5{ 
+			padding-top:5px ;
+		}
+		.latest-deals-area{ 
+			padding-bottom:30px ;
+			padding-top:30px ;
+		}
+		.latest-deals-area .header-panel{ 
+			background-color:#fff ;
+			padding:10px ;
+			position:relative ;
+			margin-bottom:50px ;
+		    border-radius: 3px ;
+			overflow: hidden ; 
+			box-shadow: none ;  
+			border: 0 ;
+		}
+		.latest-deals-area .header-panel .section-title{ 
+			font-weight:lighter ;
+			margin-left:10px ;
+			font-size:20px ;
+			width:97% ;
+		}	
+		.latest-deals-area .header-panel .header-panel-btn{
+			padding:2px ;
+			padding-left:5px ;
+			padding-right:5px ;
+			text-transform:uppercase ;
+			font-size:13px ;
+			float:right ;
+			border:2px solid #f00 ;
+			border-radius:4px ;
+			
+		}
+		.latest-deals-area .row-masnory{
+			margin-top: -20px ;
+			margin-bottom: -20px ;
+		}
+		.latest-deals-area .row-masnory .deal-single{ 
+			border-radius: 3px ;
+			overflow: hidden ; 
+			margin-bottom:20px ;
+			box-shadow: 5px 5px 8px #555 ;
+			border: 0 ;
+		}
+		.latest-deals-area .row-masnory .deal-single figure{ 
+			background-size:cover ;
+			background-repeat:no-repeat ;
+		}
+		.latest-deals-area .row-masnory .deal-single figure .label-discount{
+			left:20px ;
+			top:10px ;
+			right: 10px ;    
+			color: #fff ;    
+			font-size: 18px ;    
+			height: 70px ;    
+			width: 70px ;    
+			line-height: 69px ;    
+			text-align: center ;
+			display: block ;    
+			position: absolute ;    
+			z-index: 1 ;    
+			text-transform: uppercase ;    
+			white-space: nowrap ;    
+			vertical-align: baseline ;
+			border-radius: 999px ;   
+			background-color: #3BAC44 ;    
+			border: 1px dashed #fff ;    
+			-webkit-box-shadow: 0 0 0 2px #3BAC44 ;
+			box-shadow: 0 0 0 2px #3BAC44 ;
+		}
+		.latest-deals-area .row-masnory .deal-single figure .deal-actions{ 
+			margin-top:4% ;
+			margin-left:65% ;
+		}
+		.latest-deals-area .row-masnory .deal-single figure .deal-actions span{ 
+			display: inline-block ;
+			width: 28px ;
+			height: 28px ;
+			line-height: 28px ;
+			border-radius: 4px ;
+			background-color: #000 ; 
+			opacity: 0.6 ; 
+			filter: alpha(opacity=60) ; 
+			text-align: center ;
+			color:#fff ;
+		}
+		.latest-deals-area .row-masnory .deal-single figure .time-left{ 
+			text-transform:uppercase ;
+			font-size:12px ;
+			bottom:15px ;
+			right:20px ;
+			font-size: 14px ;
+			float:right ;
+			margin-right:2% ;
+			margin-top:35% ;
+			color:#fff ;
+		}
+		.latest-deals-area .row-masnory .deal-single figure .time-left span i{ 
+			margin-right: 5px ;
+			
+		}
+		.latest-deals-area .row-masnory .deal-single figure .deal-store-logo{
+			margin-top:32% ;
+			margin-left:4% ;
+		}
+		.latest-deals-area .row-masnory .deal-single figure .deal-store-logo img{
+			width:17.5% ;
+			border-radius: 3px ;			
+		}
+		.latest-deals-area .row-masnory .deal-single .deal-dets{
+			background-color:white ;
+			padding-top:10px ;
+			padding-left:20px ;
+			padding-right:15px ;
+			padding-bottom:10px ;
+		}
+		.latest-deals-area .row-masnory .deal-single .deal-dets div .deal-title{
+			 font-size: 20px ;text-overflow:ellipsis ;overflow:hidden ;width:90% ;display:inline-block ;white-space:nowrap ;
+		}
+		.latest-deals-area .row-masnory .deal-single .deal-dets div a{
+			text-decoration:none ;
+		}
+		.latest-deals-area .row-masnory .deal-single .deal-dets div a .deal-meta{
+			margin-bottom:10px ;color: #717f86 ;
+		}
+		.latest-deals-area .row-masnory .deal-single .deal-dets div a .deal-meta i{
+			padding-right:5px ;
+		}
+		.latest-deals-area .row-masnory .deal-single .deal-dets .text-muted{
+			text-overflow:ellipsis ;overflow:hidden ;width:90% ;display:inline-block ;white-space:nowrap ;
+		}
+		.latest-deals-area .header-panel .list-control-view {
+			margin-bottom:-0.2% ;			
+			margin-left:2% ;
+			vertical-align: middle !important ;
+			font-size:20px ;
+		}
+		#lightbox{			
+			height:150px;	
+			margin-left:-155%;
+		}
+		#lightbox .modal-body{
+			height:100px;
+		}
+		
+		#lightbox .carousel-inner item:hover{
+			background-color:#fff ;
+		}
+		#lightbox .carousel-control{
+			color:#ddd ;
+			margin-top:13% ;
+			width:10% ;
+			height:40% ;
+			padding-top:3%;
+		}
+		#lightbox .carousel-control span{
+			width:70%;
+			color:#fff ;
+			font-size:30px ;
+			font-weight:bolder ;
+		}
+		
+		.stores-area{ 
+			padding-bottom:30px ;
+			padding-top:30px ;
+		}
+		.stores-area .header-panel{ 
+			background-color:#fff ;
+			padding:10px ;
+			position:relative ;
+			margin-bottom:30px ;
+			border-radius: 3px ;
+			overflow: hidden ; 
+			box-shadow: none ;  
+			border: 0 ;
+		}
+		.stores-area .header-panel .section-title{ 
+			font-weight:lighter ;
+			margin-left:10px ;
+			font-size:20px ;
+			width:97% ;
+		}	
+		.stores-area .header-panel-btn{
+			padding:2px ;
+			padding-left:5px ;
+			padding-right:5px ;
+			text-transform:uppercase ;
+			font-size:13px ;
+			float:right ;
+			border:2px solid #f00 ;
+			border-radius:4px ;
+		}
+		
+		.stores-area .merchants-lists{  
+			margin-bottom:50px ;
+		}
+		.stores-area #myCarouselmer .carousel-inner{  
+			padding-left:1.5% ;
+		}
+		.stores-area #myCarouselmer .carousel-inner .item-list{ 			
+			width:16% ;
+			height:80px ;
+			background-color:#f1f1f1 ;
+			float:left ;
+			margin-right:0.5% ;			
+			padding-left:5px ;
+			padding-right:5px ;
+			
+		}
+		.stores-area #myCarouselmer .carousel-inner .item-list a img{
+		
+		}
+		.stores-area #myCarouselmer .carousel-inner .item-list a .store-name{
+			font-size:15px ;
+			color:#000 ;
+			margin-top:3px ;
+		}
+		.stores-area #myCarouselmer .carousel-control{ 
+			color:#ddd ;			
+			width:2% ;		
+			padding-top:5%;
+		}
+		.stores-area #myCarouselmer .carousel-control span{
+			
+			color:#fff ;
+			font-size:30px ;
+			font-weight:bolder ;
+		} 
+		.stores-area .merchants-lists{
+			padding-bottom:10% ;
+		}
+		
+		.subscribe-area{ 
+			text-align:center ;
+			color:#fff ;
+			padding-bottom:10px ;
+			padding-top:10px ;
+		}	
+		
+		.subscribe-area	.newsletter-form h4{ 
+			margin-bottom:20px ;
+		}		
+		.subscribe-area	.newsletter-form h4 i{
+			color:#fff ;
+			margin-right:10px ;
+		}
+		.subscribe-area	.newsletter-form p{ 
+			margin-bottom:20px ;
+			color:color: #717f86 ;
+		}
+		.subscribe-area	.newsletter-form .input-group{
+			margin-bottom:10px ;
+			width:90% ;
+			margin-left:5% ;
+		}
+		.subscribe-area	.newsletter-form .form-control{
+			background-color:#f0f0f0 ;
+			border:2px solid #000 ;
+			border-radius:0px ;
+		}
+		.subscribe-area	.newsletter-form .form-control:hover,
+		.subscribe-area	.newsletter-form .form-control:focus{
+			background-color:#fff ;
+			color:#000 ;
+			font-size:15px ;
+			border:2px solid #0f0 ;
+			border-radius:0px ;
+		}
+		.contact-info .contact-list li span{
+			font-size:18pt;
+			color:#00f;
+			position:absolute;
+		
+		}
+		
+		footer{ 
+			text-align: center ;
+			background: #1e2b35 ; 
+			
+		}
+		footer p{ 
+			font-size: 15px ;
+			line-height: 26px ;
+			color: #647d89 ;
+			padding:2px;
+		}
+		.download-panel{
+			margin-top:5% ;
+			margin-bottom:5% ;			
+			background-color:#fafafa ;
+			border-radius: 3px ;
+			overflow: hidden ;
+			-webkit-box-shadow: none ;
+			box-shadow: none ;
+			border: 0 ;
+			padding:40px ;
+		}
+		.download-panel .sign-title {
+			margin-bottom: 20px ;
+			padding-bottom: 10px ;
+			border-bottom: 1px solid #eee ;
+		}
+		.download-panel .col-left{
+			border-right: 1px solid #eee ;
+		}
+		.social-login{
+			padding: 30px ;
+		}
+		.social-login p{
+			margin-bottom:20px ;
+		}
+		.social-login .top{
+			margin-bottom:20px ;
+		}
+		.social-login .down{
+			text-align:center ;
+			color: #717f86 ;
+		}
+		
+		/* sign area*/
+		.sign-area{
+			margin-top:5% ;
+			margin-bottom:5% ;
+			padding-top: 2% ;
+			padding-bottom: 2% ;
+			background-color:#fff ;
+		}
+		.sign-area .sign-title {
+			margin-bottom: 20px ;
+			padding-left: 3% ; ;
+			padding-bottom: 10px ;
+			border-bottom: 1px solid #eee ;
+		}
+		.sign-area .col-top {
+			margin-bottom:20px ;
+			border-bottom: 1px dotted #eee ;
+		}
+		.sign-area label {
+			font-weight: normal ;
+		}
+		.sign-area .col-top .or {
+			text-align: center ;
+			position: relative ;
+			top: 20px ;
+			left: 50% ;
+			width: 40px ;
+			line-height: 40px ;
+			line-width: 40px ;
+			background-color: #fff ;
+			margin-right: -20px ;
+			color: #97a4ad ;
+			text-transform: uppercase ;
+		}
+		.btn-signin{
+			font-family: Poppins-Medium ;
+			font-size: 18px ;
+			background-color:#3d3 ;
+			color:#000 ;
+			margin-left:10% ;
+		}
+		.btn-signin:hover,
+		.btn-signin:focus{
+			background-color:#1f1 ;
+			color:#fff ;
+		}
+		.btn-social {
+			font-family: Poppins-Medium ;
+			font-size: 18px ;
+		}
+		.btn-social .fa {		
+			font-size: 20px ;
+			position: relative ;
+			right:2px ;
+		}
+		.btn-facebook{
+			text-transform: capitalize ;
+			text-align:center ;
+			margin-bottom:3% ;
+			margin-left:38% ;
+			position: relative ;
+			border: 0 ;
+			width:60% ;
+			color:#010 ;
+			background-color: #344e87 ;
+		}
+		.btn-facebook:hover,
+		.btn-facebook:focus {
+			background-color: #0000aa ;
+			color:#fff ;
+		}	
+		.btn-googleplus{
+			text-transform: capitalize ;
+			margin-bottom:3% ;
+			margin-left:8% ;
+			position: relative ;
+			letter-spacing: 0.5px ;
+			border: 0 ;
+			width:60% ;
+			color:#000 ;
+			background-color: #aa4444 ;
+		}
+		.btn-googleplus:hover,
+		.btn-googleplus:focus {
+			background-color: #ff4444 ;
+			color:#fff ;
+		}
+		.mycheckbox{
+			display: block ;
+			position: relative ;
+			padding-top:3px ;
+			padding-left: 14% ;
+			margin-bottom: 12px ;
+			cursor: pointer ;
+			font-size: 16px ;
+			-webkit-user-select: none ;
+			-moz-user-select: none ;
+			-ms-user-select: none ;
+			user-select: none ;
+		}
+		/* Hide the browser's default checkbox */
+		.mycheckbox input {
+			position: absolute ;
+			opacity: 0 ;
+			cursor: pointer ;
+		}
+		.mycheckbox b{
+			margin-left:10% ;
+			//position: relative ;
+			opacity: 9 ;
+			cursor: pointer ;
+		}
+		/* Create a custom checkbox */
+		.checkmark {
+			margin-left:10% ;
+			margin-top:2px ;
+			position: absolute ;
+			top: 0 ;
+			left: 0 ;
+			height: 20px ;
+			width: 20px ;
+			background-color: #eee ;
+			border-radius:5px ;
+		}
+		/* On mouse-over, add a grey background color */
+		.mycheckbox:hover input ~ .checkmark {
+			background-color: #ccc ;
+			border:1px solid #f1f1f1 ;
+		}
+		/* When the checkbox is checked, add a blue background */
+		.mycheckbox input:checked ~ .checkmark {
+			background-color: #2196F3 ;
+		}
+		/* Create the checkmark/indicator (hidden when not checked) */
+		.checkmark:after {
+			content: "" ;
+			position: absolute ;
+			display: none ;
+		}
+		/* Show the checkmark when checked */
+		.mycheckbox input:checked ~ .checkmark:after {
+			display: block ;
+		}
+		/* Style the checkmark/indicator */
+		.mycheckbox .checkmark:after {
+			left: 7px ;
+			top: 4px ;
+			width: 5px ;
+			height: 10px ;
+			border: solid white ;
+			border-width: 0 3px 3px 0 ;
+			-webkit-transform: rotate(45deg) ;
+			-ms-transform: rotate(45deg) ;
+			transform: rotate(45deg) ;
+		}
+		.input100 {
+			display: block ;				
+			margin-left:10% ;				
+			height: 50px ;
+			width: 80% ;				
+			padding: 0 0 0 10px ;
+			background: #e6e6e6 ;
+			color: #686868 ;
+			border-radius: 3px ;
+			border:0px solid #686868 ;
+			font-family: Raleway-SemiBold ;
+			font-size: 18px ;
+			line-height: 10 ;//.2		
+			cursor:pointer ;
+		}
+		.input100:focus{
+			display: block ;				
+			margin-left:10% ;				
+			height: 50px ;
+			width: 80% ;				
+			padding: 0 0 0 10px ;
+			background: #e6e6e6 ;
+			color: #000 ;
+			border-radius: 3px ;
+			border:2px solid rgba(211,63,141, 0.6) ;
+			font-family: Raleway-SemiBold ;
+			font-size: 18px ;
+			//line-height: 10 ;//.2		
+		}
+		
+		
+		.checkout-area{
+			position: relative ;
+			margin-top:5% ;
+			margin-left:20% ;
+			margin-bottom:5% ;
+			width:60% ;
+			padding-right:30px ;
+			padding-left:30px ;
+			padding-top:20px ;
+			padding-bottom:40px ;
+		}
+		.checkout-area form .form-group label,
+		.checkout-area form .form-group input{
+			font-size:13pt ;
+		}
+		.checkout-area form .form-group .btn-prof{
+			font-size: 15pt ;
+			background-color:#3d3 ;
+			color:#000 ;
+			
+		}
+		.checkout-area form .form-group .btn-prof:hover,
+		.checkout-area form .form-group .btn-prof:focus{
+			background-color:#1f1 ;
+			color:#fff ;
+		}
+		
+		.social-icons__item .fa {
+  font-size: 15px ;
+  margin: 0 ;
+  height: 32px ;
+  width: 32px ;
+  line-height: 32px ;
+  text-align: center ;
+  border-radius: 3px ;
+  color: #F5F5F5 ;
+  background-color: rgba(49, 69, 85, 0.25) ;
+}
+.social-icons__item .fa:hover {
+  background-color: rgba(49, 69, 85, 0.4) ;
+}
+.social-icons--colored .social-icons__item i.fa-facebook {
+  background-color: #3b5998 ;
+}
+.social-icons--colored .social-icons__item i.fa-facebook:hover {
+  background-color: #344e86 ;
+}
+.social-icons--colored .social-icons__item i.fa-twitter {
+  background-color: #1da1f2 ;
+}
+.social-icons--colored .social-icons__item i.fa-twitter:hover {
+  background-color: #0d95e8 ;
+}
+.social-icons--colored .social-icons__item i.fa-google-plus {
+  background-color: #dd4b39 ;
+}
+.social-icons--colored .social-icons__item i.fa-google-plus:hover {
+  background-color: #d73925 ;
+}
+.social-icons--colored .social-icons__item i.fa-linkedin {
+  background-color: #0077b5 ;
+}
+.social-icons--colored .social-icons__item i.fa-linkedin:hover {
+  background-color: #00669c ;
+}
+.social-icons--colored .social-icons__item i.fa-pinterest {
+  background-color: #cc2222 ;
+}
+.social-icons--colored .social-icons__item i.fa-pinterest:hover {
+  background-color: #b61e1e ;
+}
+	#cart_list{
+	
+		padding-bottom:-50px !important;
+	}
+}	
+@media (min-width: 1200px) {
+		
+		h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+			display: block ;
+			line-height: 1.4 ;
+			font-weight: 400 ;
+			margin: 0 ;
+			text-rendering: optimizeLegibility ;
+		}
+		a{			
+			color:#f11010 ;
+			padding:5px ;
+		}
+		a:hover{
+			color:#1010f1 ;
+		}
+		.btn.btn-o:hover, .btn.btn-o.hover, .btn.btn-o:focus, .btn.btn-o.focus, .btn.btn-o:active, .btn.btn-o.active {
+			border-color: #f11 ;
+			background-color:#f11 ;
+			color:#fff ;
+		}
+		.text-muted{
+			text-overflow:ellipsis ;
+			overflow:hidden;
+			/*width:90% ;*/
+			display:inline-block ;white-space:nowrap ;
+		}		
+		.top2-bar{			
+			padding:10px ;
+			background-color: #e9ebee ;
+		}		
+		#header{
+			font-size:11pt ;
+			background-color:#fff ;
+			height:120px ;
+		}
+	
+		#header form .input-group{
+			margin-left:1px ;
+			margin-top:6% ;
+			border:2px solid #f00 ;			
+		}
+		#header .form-control{
+			font-size:12pt ;
+		}
+		#header form .input-group input[type="text"]{
+			border:1px solid #f00 ;			
+			border-radius:0px ;
+			width:40% ;		
+		}
+		#header form .input-group select{
+			border:1px solid #f00 ;			
+			border-radius:0px ;
+			width:40% ;
+			
+		}
+		#header form .input-group button{
+			border:1px solid #f00 ;			
+			border-radius:0px ;
+			width:20% ;
+			color:#fff ;
+			background-color:#f11 ;
+		}
+		#header form .input-group button:hover{
+			color:#fff ;
+			background-color:#d11 ;
+		}
+		.header-menu{
+			background-color: #314555 !important ;
+			height:50px ;
+		}
+		.navbar-default{
+			background-color: #314555 !important ;
+			border:#314555 ;
+			border-radius:0px ;
+			//color:#fff !important ;
+		}		
+		.navbar-default .navbar-collapse{
+			background-color: #314555 !important ;
+		}
+		.navbar-default .navbar-collapse .navbar-nav li a{
+			color:#fff !important ;
+		}
+		.navbar-default .navbar-collapse .navbar-nav li.current a{
+			background-color: #f00 !important ;
+			color:#fff !important ;
+		}
+		.navbar-default .navbar-collapse .navbar-nav li a:hover{
+			background-color: #f00 !important ;
+			color:#fff !important ;
+		}
+		
+		
+		/* side nav and carousel */
+		.page-container .deals-header-area{
+			padding-top:30px ;
+			padding-bottom:30px ;
+		}	
+		
+		.nav-panel li{
+			background-color:#fff ;
+			border-bottom:1px solid #f1f1f1 ;
+		}
+		.nav-panel li a{
+			color:#000 ;
+			background-color:transprent ;
+		}
+		.nav-panel li a:hover{
+			color:#000 ;
+			left:10px ;
+			background-color:transparent !important ;
+		}
+		.nav-panel li a:hover span,
+		.nav-panel li a:hover i{
+			color:#f00 ;
+		}
+		
+		
+		#myCarousel{
+			height:450px ;
+			width:90% ;
+			margin-left:5% ;
+		}
+		#myCarousel .carousel-inner item:hover{
+			background-color:#fff ;
+		}
+		#myCarousel .carousel-control{
+			width:10% ;
+			height:100% ;
+			padding-top:25% ;
+			color:#fff ;
+			opacity:0.2 ;	
+		}
+		#myCarousel .carousel-control span{
+			color:#000 ;
+			font-size:30px ;
+			font-weight:bolder ;
+		}
+		#myCarousel .carousel-inner .item .item-img{
+			height:450px ;
+			width:100% ;
+		}
+		#myCarousel .carousel-inner .item .carousel-caption{
+			color:#000 ;
+			
+			position: absolute ;
+			right: 5% ;
+			bottom: 7% ;
+			left: 5% ;
+			z-index: 10 ;
+			padding-top: 20px ;
+			padding-bottom: 20px ;
+			color: #fff ;
+		}
+		#myCarousel .carousel-inner .item .carousel-caption .deal-title{
+			text-align:left ;
+		}
+		#myCarousel .carousel-inner .item .carousel-caption .deal-title a{
+			color: #d4d4d4 ;
+			text-decoration:none ;
+			text-align:left ;
+		}
+		#myCarousel .carousel-inner .item .carousel-caption .deal-title a:hover{
+			color: #000 ;
+		}
+		#myCarousel .carousel-inner .item .label-discount{
+			top:10px ;
+			right:10px ;
+			color: #fff ;
+			font-size: 18px ;
+			height: 70px ;
+			width: 70px ;
+			line-height: 69px ;
+			text-align: center ;
+			display: block ;
+			position: absolute ;
+			z-index: 1 ;
+			text-transform: uppercase ;
+			white-space: nowrap ;
+			vertical-align: baseline ;
+			border-radius: 999px ;
+			background-color: #3BAC44 ;
+			border: 1px dashed #fff ;
+			-webkit-box-shadow: 0 0 0 2px #3BAC44 ;
+			box-shadow: 0 0 0 2px #3BAC44 ;
+		}
+		
+		.explain-process-area{
+			padding-top:30px ;
+			padding-bottom:30px ;
+		}
+		.explain-process-area .row{ 
+			right:10px ;
+			left:10px ;
+		}
+		.explain-process-area .row .panel{ 
+			height:200px ;
+			padding-top:20px ;
+			padding-bottom:20px ;
+			padding-left:15px ;
+			padding-right:15px ;
+		}
+		.explain-process-area .row .panel .row{ 
+			right:5px ;
+			left:5px ;
+		}
+		.explain-process-area .row .panel .row img{ 
+			padding:10px ;
+			width:100px ;
+			margin-top:10% ;
+		}
+		.explain-process-area .row .panel .row h5{ 
+			padding-top:5px ;
+		}
+		
+		.latest-deals-area{ 
+			padding-bottom:30px ;
+			padding-top:30px ;
+		}
+		.latest-deals-area .header-panel{ 
+			background-color:#fff ;
+			padding:10px ;
+			position:relative ;
+			margin-bottom:50px ;
+		    border-radius: 3px ;
+			overflow: hidden ; 
+			box-shadow: none ;  
+			border: 0 ;
+		}
+		.latest-deals-area .header-panel .section-title{ 
+			font-weight:lighter ;
+			margin-left:10px ;
+			font-size:20px ;
+			width:97% ;
+		}	
+		.latest-deals-area .header-panel .header-panel-btn{
+			padding:2px ;
+			padding-left:5px ;
+			padding-right:5px ;
+			text-transform:uppercase ;
+			font-size:13px ;
+			float:right ;
+			border:2px solid #f00 ;
+			border-radius:4px ;
+			
+		}
+		.latest-deals-area .row-masnory{
+			margin-top: -20px ;
+			margin-bottom: -20px ;
+		}
+		.latest-deals-area .row-masnory .deal-single{ 
+			border-radius: 3px ;
+			overflow: hidden ; 
+			margin-bottom:20px ;
+			box-shadow: 5px 5px 8px #555 ;
+			border: 0 ;
+		}
+		.latest-deals-area .row-masnory .deal-single figure{ 
+			background-size:cover ;
+			background-repeat:no-repeat ;
+		}
+		.latest-deals-area .row-masnory .deal-single figure .label-discount{
+			left:20px ;
+			top:10px ;
+			right: 10px ;    
+			color: #fff ;    
+			font-size: 18px ;    
+			height: 70px ;    
+			width: 70px ;    
+			line-height: 69px ;    
+			text-align: center ;
+			display: block ;    
+			position: absolute ;    
+			z-index: 1 ;    
+			text-transform: uppercase ;    
+			white-space: nowrap ;    
+			vertical-align: baseline ;
+			border-radius: 999px ;   
+			background-color: #3BAC44 ;    
+			border: 1px dashed #fff ;    
+			-webkit-box-shadow: 0 0 0 2px #3BAC44 ;
+			box-shadow: 0 0 0 2px #3BAC44 ;
+		}
+		.latest-deals-area .row-masnory .deal-single figure .deal-actions{ 
+			margin-top:4% ;
+			margin-left:65% ;
+		}
+		.latest-deals-area .row-masnory .deal-single figure .deal-actions span{ 
+			display: inline-block ;
+			width: 28px ;
+			height: 28px ;
+			line-height: 28px ;
+			border-radius: 4px ;
+			background-color: #000 ; 
+			opacity: 0.6 ; 
+			filter: alpha(opacity=60) ; 
+			text-align: center ;
+			color:#fff ;
+		}
+		.latest-deals-area .row-masnory .deal-single figure .time-left{ 
+			text-transform:uppercase ;
+			font-size:12px ;
+			bottom:15px ;
+			right:20px ;
+			font-size: 14px ;
+			float:right ;
+			margin-right:2% ;
+			margin-top:35% ;
+			color:#fff ;
+		}
+		.latest-deals-area .row-masnory .deal-single figure .time-left span i{ 
+			margin-right: 5px ;
+			
+		}
+		.latest-deals-area .row-masnory .deal-single figure .deal-store-logo{
+			margin-top:32% ;
+			margin-left:4% ;
+		}
+		.latest-deals-area .row-masnory .deal-single figure .deal-store-logo img{
+			width:17.5% ;
+			border-radius: 3px ;			
+		}
+		.latest-deals-area .row-masnory .deal-single .deal-dets{
+			background-color:white ;
+			padding-top:10px ;
+			padding-left:20px ;
+			padding-right:15px ;
+			padding-bottom:10px ;
+		}
+		.latest-deals-area .row-masnory .deal-single .deal-dets div .deal-title{
+			 font-size: 20px ;text-overflow:ellipsis ;overflow:hidden ;width:90% ;display:inline-block ;white-space:nowrap ;
+		}
+		.latest-deals-area .row-masnory .deal-single .deal-dets div a{
+			text-decoration:none ;
+		}
+		.latest-deals-area .row-masnory .deal-single .deal-dets div a .deal-meta{
+			margin-bottom:10px ;color: #717f86 ;
+		}
+		.latest-deals-area .row-masnory .deal-single .deal-dets div a .deal-meta i{
+			padding-right:5px ;
+		}
+		.latest-deals-area .row-masnory .deal-single .deal-dets .text-muted{
+			text-overflow:ellipsis ;overflow:hidden ;width:90% ;display:inline-block ;white-space:nowrap ;
+		}
+		.latest-deals-area .header-panel .list-control-view {
+			margin-bottom:-0.2% ;			
+			margin-left:2% ;
+			vertical-align: middle !important ;
+			font-size:20px ;
+		}
+		
+		#lightbox{
+			height:500px ;
+			width:90% ;
+			margin-left:5% ;
+		}
+		#lightbox .modal-body{
+			height:400px ;
+		}
+		
+		#lightbox .carousel-inner item:hover{
+			background-color:#fff ;
+		}
+		#lightbox .carousel-control{
+			color:#ddd ;
+			margin-top:18% ;
+			width:10% ;
+			height:40% ;
+			padding-top:10%;
+		}
+		#lightbox .carousel-control span{
+			color:#fff ;
+			font-size:30px ;
+			font-weight:bolder ;
+		} 	
+		
+		.stores-area{ 
+			padding-bottom:60px ;
+			padding-top:30px ;
+		}
+		.stores-area .header-panel{ 
+			background-color:#fff ;
+			padding:10px ;
+			position:relative ;
+			margin-bottom:30px ;
+			border-radius: 3px ;
+			overflow: hidden ; 
+			box-shadow: none ;  
+			border: 0 ;
+		}
+		.stores-area .header-panel .section-title{ 
+			font-weight:lighter ;
+			margin-left:10px ;
+			font-size:20px ;
+			width:97% ;
+		}	
+		.stores-area .header-panel-btn{
+			padding:2px ;
+			padding-left:5px ;
+			padding-right:5px ;
+			text-transform:uppercase ;
+			font-size:13px ;
+			float:right ;
+			border:2px solid #f00 ;
+			border-radius:4px ;
+		}
+		.stores-area .merchants-lists{  
+			/*
+			padding:10px ;
+			margin-bottom:50px ;
+			*/
+		}
+		.stores-area #myCarouselmer .carousel-inner{  
+			padding-left:1.5% ;
+		}
+		.stores-area #myCarouselmer .carousel-inner .item .item-list{ 
+			
+			width:16% ;
+			height:150px ;
+			background-color:#f1f1f1 ;
+			float:left ;
+			margin-right:0.5% ;			
+			padding-left:5px ;
+			padding-right:5px ;
+			margin-bottom:20px ;
+			
+		}
+		.stores-area #myCarouselmer .carousel-inner .item-list a img{
+			
+		}
+		.stores-area #myCarouselmer .carousel-inner .item-list a .store-name{
+			font-size:15px ;
+			color:#000 ;
+			margin-top:3px ;
+		}
+		.stores-area #myCarouselmer .carousel-control{ 
+			color:#ddd ;
+			margin-top:3.5% ;
+			width:2% ;
+			height:33% ;
+			
+			
+		}
+		.stores-area #myCarouselmer .carousel-control span{
+			color:#fff ;
+			font-size:30px ;
+			font-weight:bolder ;
+		} 
+		.stores-area .merchants-lists{
+			padding-bottom:10% ;
+		}
+		
+		
+			
+		.tooltip > .tooltip-inner{
+			width: 100% ;
+			background-color: #26CC71 ;
+			color: #fff ;
+			text-align: center ;
+			border-radius: 6px ;
+			padding: 5px 0 ;
+			font-size:20px ;
+		}
+		.tooltip.bottom >.tooltip-arrow{
+			border-bottom-color: #26CC71 ;
+		}
+		.modal.and.carousel {
+			position: fixed ; /* Needed because the carousel overrides the position property */
+		}
+		
+		.subscribe-area{ 
+			text-align:center ;
+			color:#fff ;
+			padding-bottom:10px ;
+			padding-top:10px ;
+		}			
+		.subscribe-area	.newsletter-form h4{ 
+			margin-bottom:20px ;
+		}		
+		.subscribe-area	.newsletter-form h4 i{
+			color:#fff ;
+			margin-right:10px ;
+		}
+		.subscribe-area	.newsletter-form p{ 
+			margin-bottom:20px ;
+			color:color: #717f86 ;
+		}
+		.subscribe-area	.newsletter-form .input-group{
+			margin-bottom:10px ;
+			width:50% ;
+			margin-left:25% ;
+		}
+		.subscribe-area	.newsletter-form .form-control{
+			background-color:#f0f0f0 ;
+			border:2px solid #000 ;
+			border-radius:0px ;
+		}
+		.subscribe-area	.newsletter-form .form-control:hover,
+		.subscribe-area	.newsletter-form .form-control:focus{
+			background-color:#fff ;
+			color:#000 ;
+			font-size:15px ;
+			border:2px solid #0f0 ;
+			border-radius:0px ;
+		}
+		.contact-info .contact-list li span{
+			font-size:40px;
+			color:#00f;
+			margin-right:30px;
+			position:absolute;
+		}
+		footer{ 
+			text-align: center ;
+			background: #1e2b35 ; 
+			height: 60px ;
+		}
+		footer p{ 
+			font-size: 15px ;
+			line-height: 26px ;
+			color: #647d89 ;
+			margin: 17px 0 0 0 ;
+		}
+		.download-panel{
+			margin-top:5% ;
+			margin-bottom:5% ;			
+			background-color:#fafafa ;
+			border-radius: 3px ;
+			overflow: hidden ;
+			-webkit-box-shadow: none ;
+			box-shadow: none ;
+			border: 0 ;
+			padding:40px ;
+		}
+		.download-panel .sign-title {
+			margin-bottom: 20px ;
+			padding-bottom: 10px ;
+			border-bottom: 1px solid #eee ;
+		}
+		.download-panel .col-left{
+			border-right: 1px solid #eee ;
+		}
+		.social-login{
+			padding: 30px ;
+		}
+		.social-login p{
+			margin-bottom:20px ;
+		}
+		.social-login .top{
+			margin-bottom:20px ;
+		}
+		.social-login .down{
+			text-align:center ;
+			color: #717f86 ;
+		}
+		
+		/* sign area*/
+		.sign-area{
+			margin-top:5% ;
+			margin-bottom:5% ;
+			padding-top: 2% ;
+			padding-bottom: 2% ;
+			background-color:#fff ;
+		}
+		.sign-area .sign-title {
+			margin-bottom: 20px ;
+			padding-left: 3% ; ;
+			padding-bottom: 10px ;
+			border-bottom: 1px solid #eee ;
+		}
+		.sign-area .col-top {
+			margin-bottom:20px ;
+			border-bottom: 1px dotted #eee ;
+		}
+		.sign-area label {
+			font-weight: normal ;
+		}
+		.sign-area .col-top .or {
+			text-align: center ;
+			position: relative ;
+			top: 20px ;
+			left: 50% ;
+			width: 40px ;
+			line-height: 40px ;
+			line-width: 40px ;
+			background-color: #fff ;
+			margin-right: -20px ;
+			color: #97a4ad ;
+			text-transform: uppercase ;
+		}
+		.btn-signin{
+			font-family: Poppins-Medium ;
+			font-size: 18px ;
+			background-color:#3d3 ;
+			color:#000 ;
+			margin-left:10% ;
+		}
+		.btn-signin:hover,
+		.btn-signin:focus{
+			background-color:#1f1 ;
+			color:#fff ;
+		}
+		.btn-social {
+			font-family: Poppins-Medium ;
+			font-size: 18px ;
+		}
+		.btn-social .fa {		
+			font-size: 20px ;
+			position: relative ;
+			right:2px ;
+		}
+		.btn-facebook{
+			text-transform: capitalize ;
+			text-align:center ;
+			margin-bottom:3% ;
+			margin-left:38% ;
+			position: relative ;
+			border: 0 ;
+			width:60% ;
+			color:#010 ;
+			background-color: #344e87 ;
+		}
+		.btn-facebook:hover,
+		.btn-facebook:focus {
+			background-color: #0000aa ;
+			color:#fff ;
+		}	
+		.btn-googleplus{
+			text-transform: capitalize ;
+			margin-bottom:3% ;
+			margin-left:8% ;
+			position: relative ;
+			letter-spacing: 0.5px ;
+			border: 0 ;
+			width:60% ;
+			color:#000 ;
+			background-color: #aa4444 ;
+		}
+		.btn-googleplus:hover,
+		.btn-googleplus:focus {
+			background-color: #ff4444 ;
+			color:#fff ;
+		}
+		.mycheckbox{
+			display: block ;
+			position: relative ;
+			padding-top:3px ;
+			padding-left: 14% ;
+			margin-bottom: 12px ;
+			cursor: pointer ;
+			font-size: 16px ;
+			-webkit-user-select: none ;
+			-moz-user-select: none ;
+			-ms-user-select: none ;
+			user-select: none ;
+		}
+		/* Hide the browser's default checkbox */
+		.mycheckbox input {
+			position: absolute ;
+			opacity: 0 ;
+			cursor: pointer ;
+		}
+		.mycheckbox b{
+			margin-left:10% ;
+			//position: relative ;
+			opacity: 9 ;
+			cursor: pointer ;
+		}
+		/* Create a custom checkbox */
+		.checkmark {
+			margin-left:10% ;
+			margin-top:2px ;
+			position: absolute ;
+			top: 0 ;
+			left: 0 ;
+			height: 20px ;
+			width: 20px ;
+			background-color: #eee ;
+			border-radius:5px ;
+		}
+		/* On mouse-over, add a grey background color */
+		.mycheckbox:hover input ~ .checkmark {
+			background-color: #ccc ;
+			border:1px solid #f1f1f1 ;
+		}
+		/* When the checkbox is checked, add a blue background */
+		.mycheckbox input:checked ~ .checkmark {
+			background-color: #2196F3 ;
+		}
+		/* Create the checkmark/indicator (hidden when not checked) */
+		.checkmark:after {
+			content: "" ;
+			position: absolute ;
+			display: none ;
+		}
+		/* Show the checkmark when checked */
+		.mycheckbox input:checked ~ .checkmark:after {
+			display: block ;
+		}
+		/* Style the checkmark/indicator */
+		.mycheckbox .checkmark:after {
+			left: 7px ;
+			top: 4px ;
+			width: 5px ;
+			height: 10px ;
+			border: solid white ;
+			border-width: 0 3px 3px 0 ;
+			-webkit-transform: rotate(45deg) ;
+			-ms-transform: rotate(45deg) ;
+			transform: rotate(45deg) ;
+		}
+		.input100 {
+			display: block ;				
+			margin-left:10% ;				
+			height: 50px ;
+			width: 80% ;				
+			padding: 0 0 0 10px ;
+			background: #e6e6e6 ;
+			color: #686868 ;
+			border-radius: 3px ;
+			border:0px solid #686868 ;
+			font-family: Raleway-SemiBold ;
+			font-size: 18px ;
+			line-height: 10 ;//.2		
+			cursor:pointer ;
+		}
+		.input100:focus{
+			display: block ;				
+			margin-left:10% ;				
+			height: 50px ;
+			width: 80% ;				
+			padding: 0 0 0 10px ;
+			background: #e6e6e6 ;
+			color: #000 ;
+			border-radius: 3px ;
+			border:2px solid rgba(211,63,141, 0.6) ;
+			font-family: Raleway-SemiBold ;
+			font-size: 18px ;
+			//line-height: 10 ;//.2		
+		}
+		
+		
+		.checkout-area{
+			position: relative ;
+			margin-top:5% ;
+			margin-left:20% ;
+			margin-bottom:5% ;
+			width:60% ;
+			padding-right:30px ;
+			padding-left:30px ;
+			padding-top:20px ;
+			padding-bottom:40px ;
+		}
+		.checkout-area form .form-group label,
+		.checkout-area form .form-group input{
+			font-size:13pt ;
+		}
+		.checkout-area form .form-group .btn-prof{
+			font-size: 15pt ;
+			background-color:#3d3 ;
+			color:#000 ;
+			
+		}
+		.checkout-area form .form-group .btn-prof:hover,
+		.checkout-area form .form-group .btn-prof:focus{
+			background-color:#1f1 ;
+			color:#fff ;
+		}
+		
+		.social-icons__item .fa {
+  font-size: 15px ;
+  margin: 0 ;
+  height: 32px ;
+  width: 32px ;
+  line-height: 32px ;
+  text-align: center ;
+  border-radius: 3px ;
+  color: #F5F5F5 ;
+  background-color: rgba(49, 69, 85, 0.25) ;
+}
+.social-icons__item .fa:hover {
+  background-color: rgba(49, 69, 85, 0.4) ;
+}
+.social-icons--colored .social-icons__item i.fa-facebook {
+  background-color: #3b5998 ;
+}
+.social-icons--colored .social-icons__item i.fa-facebook:hover {
+  background-color: #344e86 ;
+}
+.social-icons--colored .social-icons__item i.fa-twitter {
+  background-color: #1da1f2 ;
+}
+.social-icons--colored .social-icons__item i.fa-twitter:hover {
+  background-color: #0d95e8 ;
+}
+.social-icons--colored .social-icons__item i.fa-google-plus {
+  background-color: #dd4b39 ;
+}
+.social-icons--colored .social-icons__item i.fa-google-plus:hover {
+  background-color: #d73925 ;
+}
+.social-icons--colored .social-icons__item i.fa-linkedin {
+  background-color: #0077b5 ;
+}
+.social-icons--colored .social-icons__item i.fa-linkedin:hover {
+  background-color: #00669c ;
+}
+.social-icons--colored .social-icons__item i.fa-pinterest {
+  background-color: #cc2222 ;
+}
+.social-icons--colored .social-icons__item i.fa-pinterest:hover {
+  background-color: #b61e1e ;
+}
+
+			   
+}
+

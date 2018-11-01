@@ -50,7 +50,8 @@ if($request_method == 'GET')
             $parts = explode('/',$url);
 
             foreach($images as $image) {
-                $image_arr[] = substr_replace($image, $root . $parts[1] . "/", 0, strpos($image, "../")+3);
+                #$image_arr[] = substr_replace($image, $root . $parts[1] . "/", 0, strpos($image, "../")+3);
+                $image_arr[] = substr_replace($image, $root . $parts[1] . "/" . $parts[2] . "/", 0, strpos($image, "../")+3); // for live
             }
 
             $response_array["return_code"] = "1";

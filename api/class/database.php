@@ -142,6 +142,32 @@
             //$this->json_response($response_array);
         }
 
+        function delete($table_name, $where_condition)
+        {
+            $response_array = array(
+                                'return_code' => 1,
+                                'return_message' => 'The Record Deleted Successfully.'
+                              );
+            $query = "DELETE FROM ${table_name} ";
+
+            if($where_condition)
+            {
+                $query .=" WHERE ${where_condition} ";
+            }
+            $res = mysqli_query($this->link, $query);
+
+            if(!$res)
+            {
+               $response_array['return_code'] = 0;
+               $response_array['return_message'] = mysqli_error($this->link);
+            } else {
+                mysqli_commit($this->link);
+            }
+            //$response_array['condition'] = $query;
+
+            return $response_array;
+        }
+
         // Return JSON response
         function json_response($response_array)
         {
