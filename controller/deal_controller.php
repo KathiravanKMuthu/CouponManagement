@@ -100,7 +100,12 @@ elseif($request_method == 'GET')
             // Retrieve all merchant details for web / mobile applicaitons
             $response_array = $db->get_by_query($query);
 
-            $data = $response_array["return_message"];
+            $data = [];
+            
+            if($response_array["return_code"] == 1) {
+                $data = $response_array["return_message"];
+            }
+
             $response_array = array(
                 "sEcho" => 1,
                 "iTotalRecords" => count($data),
@@ -123,6 +128,52 @@ elseif($request_method == 'GET')
                 $response_array['where_condition'] = $where_condition;
                 $response_array = $db->delete($table_name, $where_condition);
             }           
+            break;
+        }
+        case "load_user_accepted_deals":
+        {
+            $response_array['return_message'] = 'Failed to delete deal details!';
+
+            $query = "SELECT a.*, m.business_name, u.first_name, u.last_name, b.user_id, b.qrcode_string, b.is_redeemed, b.is_wished";
+            $query .= " FROM deal_info a, user_deals b, merchant_info m, user_info u WHERE b.deal_id = a.deal_id ";
+            $query .= " AND (b.is_redeemed <> 1 or is_redeemed is null)";
+            $query .= " AND (b.is_wished <> 1 or is_wished is null) AND b.user_id = u.user_id and a.merchant_id = m.merchant_id";
+            $response_array = $db->get_by_query($query);
+
+            $data = [];
+
+            if($response_array["return_code"] == 1) {
+                $data = $response_array["return_message"];
+            }
+
+            $response_array = array(
+                "sEcho" => 1,
+                "iTotalRecords" => count($data),
+                "iTotalDisplayRecords" => count($data),
+                "aaData"=>$data);
+
+            break;
+        }
+        case "load_user_redeemed_deals":
+        {
+            $response_array['return_message'] = 'Failed to delete deal details!';
+
+            // retieve merchant based on user_id
+            $query = "SELECT a.*, m.business_name, u.first_name, u.last_name, b.user_id, b.qrcode_string, b.is_redeemed, b.is_wished";
+            $query .= " FROM deal_info a, user_deals b, merchant_info m, user_info u WHERE b.deal_id = a.deal_id AND ";
+            $query .= " b.is_redeemed = 1 AND b.user_id = u.user_id and a.merchant_id = m.merchant_id ";
+            $response_array = $db->get_by_query($query);
+
+            $data = [];
+            if($response_array["return_code"] == 1) {
+                $data = $response_array["return_message"];
+            }
+            $response_array = array(
+                "sEcho" => 1,
+                "iTotalRecords" => count($data),
+                "iTotalDisplayRecords" => count($data),
+                "aaData"=>$data);
+
             break;
         }
         default:

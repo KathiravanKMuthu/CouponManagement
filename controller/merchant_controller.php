@@ -112,6 +112,14 @@ elseif($request_method == 'GET')
                 "aaData"=>$data);
             break;
         }
+        case "all_merchants_for_dropdown" :
+        {
+            $response_array['return_message'] = 'Failed to retrieve merchant details!';
+
+            // Retrieve all merchant details for web / mobile applicaitons
+            $response_array = $db->get($table_name);
+            break;
+        }
         case "delete_merchant":
         {
             $response_array['return_message'] = 'Failed to delete merchant details!';

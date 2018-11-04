@@ -31,28 +31,28 @@
                         <li>
                         </li>
                         <li>
-                            <a href="merchant.php"><i class="fa fa-table fa-fw"></i> Merchant Management</a>
+                            <a href="merchant.php"><i class="fa fa-globe fa-fw"></i> Merchants Management</a>
                         </li>
                         <li>
-                            <a href="deals.php"><i class="fa fa-edit fa-fw"></i> Deals Management</a>
+                            <a href="deals.php"><i class="fa fa-tags fa-fw"></i> Deals Management</a>
                         </li>
                         <li>
-                            <a href="deals.php"><i class="fa fa-edit fa-fw"></i> User Management</a>
+                            <a href="users.php"><i class="fa fa-users fa-fw"></i> Users Management</a>
                         </li>
                         <li>
-                            <a href="categories.php"><i class="fa fa-edit fa-fw"></i> Category Management</a>
+                            <a href="categories.php"><i class="fa fa-hashtag fa-fw"></i> Categories Management</a>
                         </li>
                         <li>
-                            <a href="accepted_deals.php"><i class="fa fa-edit fa-fw"></i> Accepted Deals</a>
+                            <a href="accepted_deals.php"><i class="fa fa-check-circle fa-fw"></i> Accepted Deals</a>
                         </li>
                         <li>
-                            <a href="redeemed_deals.php"><i class="fa fa-edit fa-fw"></i> Redeemed Deals</a>
+                            <a href="redeemed_deals.php"><i class="fa fa-money fa-fw"></i> Redeemed Deals</a>
                         </li>
                         <!--li>
-                            <a href="notifications.php"><i class="fa fa-edit fa-fw"></i> Notifications</a>
+                            <a href="notifications.php"><i class="fa fa-envelope-open fa-fw"></i> Notifications</a>
                         </li>
                         <li>
-                            <a href="activity_log.php"><i class="fa fa-edit fa-fw"></i> Activity Log</a>
+                            <a href="activity_log.php"><i class="fa fa-xclamation-triangle fa-fw"></i> Activity Log</a>
                         </li-->
                     </ul>
                 </div>

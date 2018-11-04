@@ -13,7 +13,7 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Merchant Management</h1>
+                    <h1 class="page-header">Merchants Management</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -159,7 +159,7 @@
             <div class="row">
                     <div class="col-lg-12">
                         <div class="panel panel-default">
-                            <div class="panel-heading">Merchant Details</div>
+                            <div class="panel-heading">List of Merchants</div>
                             <div class="panel-body">
                                 <table id="merchantTable"  class="display compact table table-striped table-bordered" style="width:100%">
                                     <thead>
