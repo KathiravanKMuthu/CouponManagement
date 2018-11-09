@@ -20,7 +20,7 @@
             <!-- /.row -->
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="panel panel-default">
+                    <div class="panel panel-info">
                         <div class="panel-heading">
                             Add / Edit Category <p class="statusMsg"></p>
                         </div>
@@ -41,13 +41,13 @@
                             </div> <!-- row -->
                             </form>
                         </div> <!-- panel-body -->
-                    </div> <!-- panel panel-default -->
+                    </div> <!-- panel panel-info -->
                 </div> <!-- col-lg-12 -->
             </div> <!-- row -->
 
             <div class="row">
                     <div class="col-lg-12">
-                        <div class="panel panel-default">
+                        <div class="panel panel-info">
                             <div class="panel-heading">List of Categories</div>
                             <div class="panel-body">
                                 <table id="categoryTable" class="display compact table table-striped table-bordered" style="width:100%">
@@ -61,7 +61,7 @@
                                     </thead>
                                 </table>
                             </div> <!-- panel-body -->
-                        </div> <!-- panel panel-default -->
+                        </div> <!-- panel panel-info -->
                     </div><!-- /.col-lg-12 -->
             </div> <!-- row -->
         </div> <!-- /#wrapper -->

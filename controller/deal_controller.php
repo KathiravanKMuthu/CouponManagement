@@ -12,8 +12,13 @@ if($request_method == 'POST')
 {
     $action_data = $_POST['action'];
 
+    if(empty($_GET) && empty($_POST)){
+        $post_data = json_decode(file_get_contents('php://input'), true);
+        $action_data = $post_data['action'];
+    }
+
     switch ($action_data) {
-        case "add_deal" :
+        case "add_parent_deal" :
         {
             $response_array['return_message'] = 'Adding a Deal is failed!';
 
@@ -73,13 +78,16 @@ if($request_method == 'POST')
             $response_array['return_message'] = 'Failed to delete merchant details!';
 
             // retieve merchant based on deal_id
-            $merchant_id = $_GET['deal_id'];
+            $deal_id = $post_data['deal_id'];
             $where_condition = null;
             if($deal_id)
             {
+                $column_array = array(
+                    'is_active' => ($post_data['is_active'] == "1") ? "0" : "1",
+                );
                 $where_condition = 'deal_id= '.$deal_id;
-                $response_array = $db->delete($table_name, $where_condition);
-            }           
+                $response_array = $db->update($table_name, $column_array, $where_condition);
+            }  
             break;
         }
         default:
@@ -113,7 +121,50 @@ elseif($request_method == 'GET')
                 "aaData"=>$data);
             break;
         }
-        case "delete_deal":
+        case "load_parent_deals" :
+        {
+            $response_array['return_message'] = 'Failed to retrieve deal details!';
+            $query = "SELECT a.merchant_email, a.business_name, b.* FROM merchant_info a, deal_info b WHERE a.merchant_id = b.merchant_id AND b.parent_deal_id = 0";
+            // Retrieve all merchant details for web / mobile applicaitons
+            $response_array = $db->get_by_query($query);
+
+            $data = [];
+            
+            if($response_array["return_code"] == 1) {
+                $data = $response_array["return_message"];
+            }
+
+            $response_array = array(
+                "sEcho" => 1,
+                "iTotalRecords" => count($data),
+                "iTotalDisplayRecords" => count($data),
+                "aaData"=>$data);
+            break;
+        }
+        case "load_child_deals" :
+        {
+            $response_array['return_message'] = 'Failed to retrieve deal details!';
+            $parent_deal_id = $_GET["deal_id"];
+
+            $query = "SELECT a.merchant_email, a.business_name, b.* FROM merchant_info a, deal_info b ";
+            $query .= "WHERE a.merchant_id = b.merchant_id AND b.parent_deal_id = " . $parent_deal_id;
+            // Retrieve all merchant details for web / mobile applicaitons
+            $response_array = $db->get_by_query($query);
+
+            $data = [];
+            
+            if($response_array["return_code"] == 1) {
+                $data = $response_array["return_message"];
+            }
+
+            $response_array = array(
+                "sEcho" => 1,
+                "iTotalRecords" => count($data),
+                "iTotalDisplayRecords" => count($data),
+                "aaData"=>$data);
+            break;
+        }
+       /* case "delete_deal":
         {
             $response_array['return_message'] = 'Failed to delete deal details!';
 
@@ -129,7 +180,7 @@ elseif($request_method == 'GET')
                 $response_array = $db->delete($table_name, $where_condition);
             }           
             break;
-        }
+        }*/
         case "load_user_accepted_deals":
         {
             $response_array['return_message'] = 'Failed to delete deal details!';
@@ -178,10 +229,10 @@ elseif($request_method == 'GET')
         }
         default:
         {
-            // retieve merchant based on merchant_id
+            // retieve deal based on deal_id
             $deal_id = $_GET['deal_id'];
             $where_condition = null;
-            if($merchant_id)
+            if($deal_id)
             {
                 $where_condition = 'deal_id= '.$deal_id;
                 $response_array = $db->get($table_name, $where_condition);

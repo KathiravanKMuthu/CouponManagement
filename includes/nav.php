@@ -26,7 +26,7 @@
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li>
-                            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                            <a href="dashboard.php"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
                         <li>
                         </li>
@@ -46,7 +46,7 @@
                             <a href="accepted_deals.php"><i class="fa fa-check-circle fa-fw"></i> Accepted Deals</a>
                         </li>
                         <li>
-                            <a href="redeemed_deals.php"><i class="fa fa-money fa-fw"></i> Redeemed Deals</a>
+                            <a href="redeemed_deals.php"><i class="fa fa-money fa-fw"></i> Claimed Deals</a>
                         </li>
                         <!--li>
                             <a href="notifications.php"><i class="fa fa-envelope-open fa-fw"></i> Notifications</a>

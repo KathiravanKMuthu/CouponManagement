@@ -20,12 +20,12 @@
             <!-- /.row -->
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="panel panel-default">
+                    <div class="panel panel-info">
                         <div class="panel-heading">
                             Add / Edit Merchant <p class="statusMsg"></p>
                         </div>
                         <div class="panel-body">
-                        <form role="form" enctype="multipart/form-data" name="merchantForm" id="merchantForm">
+                        <form role="form" method="post" enctype="multipart/form-data" name="merchantForm" id="merchantForm">
                             <input type="hidden" value="add_merchant" name="action" id="action"/>
                             <input type="hidden" value="" name="merchant_id" id="merchant_id"/>
                             <div class="row">
@@ -39,8 +39,13 @@
 
                                     <div class="form-group">
                                         <label class="col-md-4 control-label" for="password">Merchant Password</label>
-                                        <div class="col-md-8">
+                                        <div class="col-md-6">
                                             <input id="password" name="password" type="password" placeholder="Merchant Password" class="form-control input-md" required="">
+                                        </div>
+                                        <div class="col-md-2">
+                                            <button id="show_password" class="btn btn-default" type="button">
+                                                <span class="glyphicon glyphicon-eye-close"></span>
+                                            </button>
                                         </div>
                                     </div>
 
@@ -59,15 +64,15 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="col-md-4 control-label" for="addess1">Address</label>  
+                                        <label class="col-md-4 control-label" for="address1">Address</label>  
                                         <div class="col-md-8">
-                                            <input id="addess1" name="addess1" type="text" placeholder="Door no / Building name" class="form-control input-md" required="">
+                                            <input id="address1" name="address1" type="text" placeholder="Door no / Building name" class="form-control input-md" required="">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-md-4 control-label" for="addess2"></label>  
+                                        <label class="col-md-4 control-label" for="address2"></label>  
                                         <div class="col-md-8">
-                                            <input id="addess2" name="addess2" type="text" placeholder="Street" class="form-control input-md" required="">
+                                            <input id="address2" name="address2" type="text" placeholder="Street" class="form-control input-md">
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -91,15 +96,17 @@
                                             </select>
                                         </div>
                                     </div>
-                                </div> <!-- col-lg-6 -->
-                                
-                                <div class="col-lg-6">
+
                                     <div class="form-group">
                                         <label class="col-md-4 control-label" for="operating_time">Operating Hours</label>  
                                         <div class="col-md-8">
                                             <input id="operating_time" name="operating_time" type="text" placeholder="Operating Hours" class="form-control input-md" required="">
                                         </div>
                                     </div>
+
+                                </div> <!-- col-lg-6 -->
+                                
+                                <div class="col-lg-6">
 
                                     <div class="form-group">
                                         <label class="col-md-4 control-label" for="website">Website</label>  
@@ -132,33 +139,65 @@
                                     <div class="form-group">
                                         <label class="col-md-4 control-label" for="description">Business Description</label>
                                         <div class="col-md-8">                     
-                                            <textarea class="form-control" id="description" name="description" required=""></textarea>
+                                            <textarea class="form-control" id="description" name="description" required="" rows=5></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label" for="latitude">Map Location</label>  
+                                        <div class="col-md-8">
+                                            <input id="latitude" name="latitude" type="text" placeholder="Latitude" class="form-control input-md" required="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label" for="longitude"></label>  
+                                        <div class="col-md-8">
+                                            <input id="longitude" name="longitude" type="text" placeholder="Longitude" class="form-control input-md" required="">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label" for="is_active">Status</label>
+                                        <div class="col-md-8 input-group">
+                                            <label class="radio-inline">
+                                                <input type="radio" name="is_active" id="status_active" value="1" checked>Active
+                                            </label>
+                                            <label class="radio-inline">
+                                                <input type="radio" name="is_active" id="status_inactive" value="0">Inactive
+                                            </label>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="col-md-4 control-label" for="image_dir">Upload Image</label>
                                         <div class="col-md-8">
-                                            <input id="image_dir" name="image_dir" class="input-file" type="file" required="">
+                                            <input id="image_dir" name="image_dir" class="input-file" type="file">
                                         </div>
+                                    </div>
+
+                                    <div class="append_pre_p_v">
+                                        <div class="filearray"> </div>
                                     </div>
                                 </div> <!-- col-lg-6 -->
                             </div> <!-- row -->
+                            <br/>
                             <div class="row">
-                                <div class="col-lg-12">
-                                    <input type="submit" name="submit" class="btn btn-danger submitBtn" value="Save Merchant Details"/>
-                                    <input type="reset" name="reset" class="btn btn-info submitBtn" value="Reset"/>
+                                <div class="col-lg-5"></div>
+                                <div class="col-lg-2">
+                                    <input type="submit" name="submit" id="submit" class="btn btn-danger submitBtn" value="Submit"/>
+                                    <input type="button" name="resetBtn" id="resetBtn" class="btn btn-info submitBtn" value="Reset"/>
                                 </div>
+                                <div class="col-lg-5"></div>
                             </div> <!-- row -->
                             </form>
                         </div> <!-- panel-body -->
-                    </div> <!-- panel panel-default -->
+                    </div> <!-- panel panel-info -->
                 </div> <!-- col-lg-12 -->
             </div> <!-- row -->
 
             <div class="row">
                     <div class="col-lg-12">
-                        <div class="panel panel-default">
+                        <div class="panel panel-info">
                             <div class="panel-heading">List of Merchants</div>
                             <div class="panel-body">
                                 <table id="merchantTable"  class="display compact table table-striped table-bordered" style="width:100%">
@@ -171,13 +210,14 @@
                                         <th>State</th>
                                         <th>Country</th>
                                         <th>Postal Code</th>
+                                        <th>Status</th>
                                         <th>Image</th>
                                         <th>Action</th>
                                     </tr>
                                     </thead>
                                 </table>
                             </div> <!-- panel-body -->
-                        </div> <!-- panel panel-default -->
+                        </div> <!-- panel panel-info -->
                     </div><!-- /.col-lg-12 -->
             </div> <!-- row -->
         </div> <!-- /#wrapper -->
@@ -187,7 +227,24 @@
     <script>
         $(document).ready(function(e){
             var selected = [];
-            var dataTable = $('#merchantTable').dataTable({
+
+            $("#show_password").hover(function functionName() { // Show Hide password
+                    //Change the attribute to text
+                    $("#password").attr("type", "text");
+                    $(".glyphicon")
+                    .removeClass("glyphicon-eye-close")
+                    .addClass("glyphicon-eye-open");
+                },
+                function() {
+                    //Change the attribute back to password
+                    $("#password").attr("type", "password");
+                    $(".glyphicon")
+                    .removeClass("glyphicon-eye-open")
+                    .addClass("glyphicon-eye-close");
+                }
+            );
+
+            var dataTable = $('#merchantTable').DataTable({
                 "bProcessing": true,
                 "sAjaxSource": "../controller/merchant_controller.php?action=all_merchants",
                 "rowCallback": function( row, data ) {
@@ -203,30 +260,37 @@
                     { mData: 'state' },
                     { mData: 'country' },
                     { mData: 'postal_code' },
+                    {"mRender": function ( data, type, row ) {
+                        return (row.is_active == true) ? "Active" : "Inactive"; 
+                        } // end function
+                    },
                     { mData: 'image_dir',
                         render: function(mData) {
                             return '<img src="../'+mData+'" style="width:80px;height:50px">'
                         }
                     },
                     {"mRender": function ( data, type, row ) {
-                        return '<a class="editForm" href="#" data-id='+row.merchant_id+'>Edit</a> / <a class="deleteForm" href="#" data-id='+row.merchant_id+'>Delete</a>';}
+                            var retStr = '<a class="editForm" href="#" data-id='+row.merchant_id+'>Edit</a> ';
+                            retStr += '/ <a class="deleteForm" href="#" data-active='+row.is_active+' data-id='+row.merchant_id+'>Toggle Status</a>';
+                            return retStr;
+                        } // end of function
                     }
                 ]
             }); 
 
             $(document).on('click',".deleteForm",function(){
                 $.ajax({
-                    type: 'GET',
-                    url: '../controller/merchant_controller.php?action=delete_merchant&merchant_id=' + $(this).data('id'),
-                    contentType: false,
-                    cache: false,
-                    processData:false,
+                    type: 'POST',
+                    url: '../controller/merchant_controller.php', //?action=delete_merchant&merchant_id=' + $(this).data('id'),
+                    data: JSON.stringify({action: "delete_merchant", merchant_id: $(this).data('id'), "is_active": $(this).data('active')}),
+                    contentType: 'application/json; charset=utf-8',
                     success: function(msg){
                         $('.statusMsg').html('');
                         if(msg.return_code == 1){
                             $('.statusMsg').html('<span style="font-size:18px;color:#34A853">Merchant record deleted successfully.</span>');
-                            $('#merchantForm')[0].reset();
-                            dataTable.ajax.reload();
+                            $('#merchantTable').DataTable().ajax.reload();
+                            $(".filearray").html("");
+                            $("#resetBtn").click();
                         }else{
                             $('.statusMsg').html('<span style="font-size:18px;color:#EA4335">Some problem occurred, please try again.</span>');
                         }
@@ -245,11 +309,12 @@
                         $('.statusMsg').html('');
                         if(msg.return_code == 1 && msg.return_message[0] != undefined){
                             var merchantObj = msg.return_message[0];
+                            $('#action').val("update_merchant");
                             $('#merchant_id').val(merchantObj.merchant_id);
                             $('#merchant_email').val(merchantObj.merchant_email);
                             $('#password').val(merchantObj.encrypted_password);
-                            $("#password").prop('disabled', true);
                             $('#business_name').val(merchantObj.business_name);
+                            $('#phone_number').val(merchantObj.phone_number);
                             $('#address1').val(merchantObj.address1);
                             $('#address2').val(merchantObj.address2);
                             $('#state').val(merchantObj.state);
@@ -261,6 +326,14 @@
                             $('#youtube').val(merchantObj.youtube);
                             $('#instagram').val(merchantObj.instagram);
                             $('#description').val(merchantObj.description);
+                            var mapObj = $.parseJSON(merchantObj.map_position);
+                            $('#latitude').val(mapObj.latitude);
+                            $('#longitude').val(mapObj.longitude);
+                            $("input[name=is_active][value=" + merchantObj.is_active + "]").prop('checked', true);
+
+                            //$('#image_dir').val(merchantObj.image_dir);
+
+                            $(".filearray").html("<img src='../" + $.trim(merchantObj.image_dir) + "' style='width:80px;height:80px'>");
                         }else{
                             $('.statusMsg').html('<span style="font-size:18px;color:#EA4335">Some problem occurred, please try again.</span>');
                         }
@@ -284,9 +357,10 @@
                     success: function(msg){
                         $('.statusMsg').html('');
                         if(msg.return_code == 1){
-                            $('#merchantForm')[0].reset();
-                            $('.statusMsg').html('<span style="font-size:18px;color:#34A853">Merchant record added successfully.</span>');
-                            dataTable.ajax.reload();
+                            $('#action').val("add_merchant");
+                            $('.statusMsg').html('<span style="font-size:18px;color:#34A853">Merchant info is added/updated successfully.</span>');
+                            $('#merchantTable').DataTable().ajax.reload();
+                            $("#resetBtn").click();
                         }else{
                             $('.statusMsg').html('<span style="font-size:18px;color:#EA4335">Some problem occurred, please try again.</span>');
                         }
@@ -296,8 +370,14 @@
                 });
             });
             
+            $("#resetBtn").on('click', function(e){ 
+                $(".filearray").html("");
+                $("#merchantForm")[0].reset();
+            });
+
             //file type validation
             $("#image_dir").change(function() {
+                $(".filearray").html("");
                 var file = this.files[0];
                 var imagefile = file.type;
                 var match= ["image/jpeg","image/png","image/jpg"];
@@ -306,6 +386,16 @@
                     $("#image_dir").val('');
                     return false;
                 }
+                var filereader = new FileReader();
+                var $img=jQuery.parseHTML("<img src=''>");
+                filereader.onload = function(){
+                    $img[0].src=this.result;
+                    $img[0].style.width="80px";
+                    $img[0].style.height="80px";
+                    $img[0].style.padding="5px";
+                };
+                filereader.readAsDataURL(this.files[0]);
+                $(".filearray").html($img);
             });
         });
     </script>

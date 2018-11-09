@@ -20,7 +20,7 @@
 
             <div class="row">
                     <div class="col-lg-12">
-                        <div class="panel panel-default">
+                        <div class="panel panel-info">
                             <div class="panel-heading">User Details<p class="statusMsg"></p></div>
                             <div class="panel-body">
                                 <table id="userTable"  class="display compact table table-striped table-bordered" style="width:100%">
@@ -39,7 +39,7 @@
                                     </thead>
                                 </table>
                             </div> <!-- panel-body -->
-                        </div> <!-- panel panel-default -->
+                        </div> <!-- panel panel-info -->
                     </div><!-- /.col-lg-12 -->
             </div> <!-- row -->
         </div> <!-- /#wrapper -->
@@ -56,7 +56,7 @@
                     <div class="modal-body">
                     <div class="row">
                         <div class="col-lg-12">
-                            <div class="panel panel-default">
+                            <div class="panel panel-info">
                                 <div class="panel-heading">Accepted Deals<p class="statusMsg"></p></div>
                                     <div class="panel-body">
                                         <table id="acceptedDealTable"  class="display compact table table-striped table-bordered" style="width:100%">
@@ -74,12 +74,12 @@
                                             </thead>
                                         </table>
                                     </div> <!-- panel-body -->
-                                </div> <!-- panel panel-default -->
+                                </div> <!-- panel panel-info -->
                             </div><!-- /.col-lg-12 -->
                         </div> <!-- row -->
                         <div class="row">
                         <div class="col-lg-12">
-                            <div class="panel panel-default">
+                            <div class="panel panel-info">
                                 <div class="panel-heading">Redeemed Deals<p class="statusMsg"></p></div>
                                     <div class="panel-body">
                                         <table id="redeemedDealTable"  class="display compact table table-striped table-bordered" style="width:100%">
@@ -97,12 +97,12 @@
                                             </thead>
                                         </table>
                                     </div> <!-- panel-body -->
-                                </div> <!-- panel panel-default -->
+                                </div> <!-- panel panel-info -->
                             </div><!-- /.col-lg-12 -->
                         </div> <!-- row -->
                         <div class="row">
                         <div class="col-lg-12">
-                            <div class="panel panel-default">
+                            <div class="panel panel-info">
                                 <div class="panel-heading">Favourite Deals<p class="statusMsg"></p></div>
                                     <div class="panel-body">
                                         <table id="favDealTable"  class="display compact table table-striped table-bordered" style="width:100%">
@@ -120,7 +120,7 @@
                                             </thead>
                                         </table>
                                     </div> <!-- panel-body -->
-                                </div> <!-- panel panel-default -->
+                                </div> <!-- panel panel-info -->
                             </div><!-- /.col-lg-12 -->
                         </div> <!-- row -->
                     </div>
@@ -155,9 +155,29 @@
                         { mData: 'title' },
                         { mData: 'start_date' },
                         { mData: 'end_date' },
-                        { mData: 'actual_amount' },
-                        { mData: 'deal_amount' },
-                        { mData: 'percentage' }
+                        { "mRender": function(data, type, row) {
+                                if(row.actual_amount) {
+                                    var currency = row.currency ? row.currency.toLowerCase(): 'gbp';
+                                    return '<i class="fa fa-'+currency+'"></i> ' + row.actual_amount;
+                                }
+                                return "";
+                            } // end of function
+                        },
+                        { "mRender": function(data, type, row) {
+                                if(row.deal_amount) {
+                                    var currency = row.currency ? row.currency.toLowerCase(): 'gbp';
+                                    return '<i class="fa fa-'+currency+'"></i> ' + row.deal_amount;
+                                }
+                                return "";
+                            } // end of function
+                        },
+                        { "mRender": function(data, type, row) {
+                                if(row.percentage) {
+                                    return row.percentage + ' <i class="fa fa-percent"></i> ';
+                                }
+                                return "";
+                            } // end of function
+                        }
                     ]
                 }); // end of dataTable
 
@@ -176,9 +196,29 @@
                         { mData: 'title' },
                         { mData: 'start_date' },
                         { mData: 'end_date' },
-                        { mData: 'actual_amount' },
-                        { mData: 'deal_amount' },
-                        { mData: 'percentage' }
+                        { "mRender": function(data, type, row) {
+                                if(row.actual_amount) {
+                                    var currency = row.currency ? row.currency.toLowerCase(): 'gbp';
+                                    return '<i class="fa fa-'+currency+'"></i> ' + row.actual_amount;
+                                }
+                                return "";
+                            } // end of function
+                        },
+                        { "mRender": function(data, type, row) {
+                                if(row.deal_amount) {
+                                    var currency = row.currency ? row.currency.toLowerCase(): 'gbp';
+                                    return '<i class="fa fa-'+currency+'"></i> ' + row.deal_amount;
+                                }
+                                return "";
+                            } // end of function
+                        },
+                        { "mRender": function(data, type, row) {
+                                if(row.percentage) {
+                                    return row.percentage + ' <i class="fa fa-percent"></i> ';
+                                }
+                                return "";
+                            } // end of function
+                        }
                     ]
                 }); // end of dataTable
 
@@ -197,9 +237,29 @@
                         { mData: 'title' },
                         { mData: 'start_date' },
                         { mData: 'end_date' },
-                        { mData: 'actual_amount' },
-                        { mData: 'deal_amount' },
-                        { mData: 'percentage' }
+                        { "mRender": function(data, type, row) {
+                                if(row.actual_amount) {
+                                    var currency = row.currency ? row.currency.toLowerCase(): 'gbp';
+                                    return '<i class="fa fa-'+currency+'"></i> ' + row.actual_amount;
+                                }
+                                return "";
+                            } // end of function
+                        },
+                        { "mRender": function(data, type, row) {
+                                if(row.deal_amount) {
+                                    var currency = row.currency ? row.currency.toLowerCase(): 'gbp';
+                                    return '<i class="fa fa-'+currency+'"></i> ' + row.deal_amount;
+                                }
+                                return "";
+                            } // end of function
+                        },
+                        { "mRender": function(data, type, row) {
+                                if(row.percentage) {
+                                    return row.percentage + ' <i class="fa fa-percent"></i> ';
+                                }
+                                return "";
+                            } // end of function
+                        }
                     ]
                 }); // end of dataTable
             }); // end of dealsForm
