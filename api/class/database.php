@@ -44,10 +44,11 @@
                $response_array['return_code'] = 0;
                $response_array['return_message'] = mysqli_error($this->link);
             } else {
+                $response_array['inserted_id'] = mysqli_insert_id($this->link);
                 mysqli_commit($this->link);
             }
-
-            $this->json_response($response_array);
+            //return $this->json_response($response_array);
+            return $response_array;
         }
 
         function update($table_name, $column, $where_condition = null)

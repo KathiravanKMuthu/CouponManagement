@@ -1,6 +1,7 @@
-<form role="form" enctype="multipart/form-data" name="childDealForm" id="childDealForm">
+<form role="form" enctype="multipart/form-data" name="dealForm" id="dealForm">
 <input type="hidden" value="add_child_deal" name="action" id="action"/>
 <input type="hidden" value="" name="deal_id" id="deal_id"/>
+<input type="hidden" value="" name="parent_deal_id" id="parent_deal_id"/>
 <input type="hidden" value="GBP" name="currency" id="currency"/>
 <input type="hidden" value="1" name="is_active" id="is_active"/>
 
@@ -11,6 +12,14 @@
             <div class="col-md-9 input-group">
                 <span class="input-group-addon">@</span>
                 <select id="merchant_id" name="merchant_id" class="form-control" required=""></select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-3 control-label" for="parent_deal_name">Parent Deal</label>
+            <div class="col-md-9 input-group">
+            <span class="input-group-addon"><i class="fa fa-tags"></i></span>
+                <select id="parent_deal_name" name="parent_deal_name" class="form-control" required=""></select>
             </div>
         </div>
 
@@ -67,22 +76,14 @@
                 <textarea class="form-control" id="description" name="description" required=""></textarea>
             </div>
         </div>
-
-        <div class="form-group">
-            <label class="col-md-3 control-label" for="image_dir">Upload Images</label>
-            <div class="col-md-9">
-                <input id="image_dir" name="image_dir[]" class="input-file" type="file" required="" multiple>
-            </div>
-        </div>
-
     </div> <!-- col-lg-6 -->
     
 </div> <!-- row -->
 <div class="row">
     <div class="col-lg-5"></div>
     <div class="col-lg-2">
-        <input type="submit" name="submit" class="btn btn-danger submitBtn" value="Save Deal Info"/>
-        <input type="reset" name="reset" class="btn btn-info submitBtn" value="Reset"/>
+        <input type="submit" name="submit" class="btn btn-danger submitBtn" value="Submit"/>
+        <input type="button" name="resetBtn" id="resetBtn" class="btn btn-info submitBtn" value="Reset"/>
     </div>
     <div class="col-lg-5"></div>
 </div> <!-- row -->

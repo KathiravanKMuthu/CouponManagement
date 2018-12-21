@@ -11,56 +11,6 @@
         tr.shown td.details-control {
             background: url('../images/details_close.png') no-repeat center center;
         }
-
-        .panel.with-nav-tabs .panel-heading{
-            padding: 5px 5px 0 5px;
-        }
-        .panel.with-nav-tabs .nav-tabs{
-            border-bottom: none;
-        }
-        .panel.with-nav-tabs .nav-justified{
-            margin-bottom: -1px;
-        }
-        /********************************************************************/
-        /*** PANEL PRIMARY ***/
-        .with-nav-tabs.panel-primary .nav-tabs > li > a,
-        .with-nav-tabs.panel-primary .nav-tabs > li > a:hover,
-        .with-nav-tabs.panel-primary .nav-tabs > li > a:focus {
-            color: #fff;
-        }
-        .with-nav-tabs.panel-primary .nav-tabs > .open > a,
-        .with-nav-tabs.panel-primary .nav-tabs > .open > a:hover,
-        .with-nav-tabs.panel-primary .nav-tabs > .open > a:focus,
-        .with-nav-tabs.panel-primary .nav-tabs > li > a:hover,
-        .with-nav-tabs.panel-primary .nav-tabs > li > a:focus {
-            color: #fff;
-            background-color: #3071a9;
-            border-color: transparent;
-        }
-        .with-nav-tabs.panel-primary .nav-tabs > li.active > a,
-        .with-nav-tabs.panel-primary .nav-tabs > li.active > a:hover,
-        .with-nav-tabs.panel-primary .nav-tabs > li.active > a:focus {
-            color: #428bca;
-            background-color: #fff;
-            border-color: #428bca;
-            border-bottom-color: transparent;
-        }
-        .with-nav-tabs.panel-primary .nav-tabs > li.dropdown .dropdown-menu {
-            background-color: #428bca;
-            border-color: #3071a9;
-        }
-        .with-nav-tabs.panel-primary .nav-tabs > li.dropdown .dropdown-menu > li > a {
-            color: #fff;   
-        }
-        .with-nav-tabs.panel-primary .nav-tabs > li.dropdown .dropdown-menu > li > a:hover,
-        .with-nav-tabs.panel-primary .nav-tabs > li.dropdown .dropdown-menu > li > a:focus {
-            background-color: #3071a9;
-        }
-        .with-nav-tabs.panel-primary .nav-tabs > li.dropdown .dropdown-menu > .active > a,
-        .with-nav-tabs.panel-primary .nav-tabs > li.dropdown .dropdown-menu > .active > a:hover,
-        .with-nav-tabs.panel-primary .nav-tabs > li.dropdown .dropdown-menu > .active > a:focus {
-            background-color: #4a9fe9;
-        }
     </style>
 </head>
 
@@ -79,22 +29,23 @@
             <!-- /.row -->
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="panel with-nav-tabs panel-primary">
+                    <div class="panel panel-info">
                         <div class="panel-heading">
-                            <p class="statusMsg"></p>
-                            <ul class="nav nav-tabs">
-                                <li class="active"><a href="#tab1primary" data-toggle="tab">Add / Edit Parent Deal</a></li>
-                                <li><a href="#tab2primary" data-toggle="tab">Add / Edit Child Deal</a></li>
-                            </ul>
+                            Add / Edit Deal <p class="statusMsg"></p>
                         </div>
                         <div class="panel-body">
-                            <div class="tab-content">
+                            <div class="form-group col-md-12">
+                                <div class="input-group">
+                                    <label class="radio-inline">
+                                        <input type="radio" name="deal_type_radio" id="parent_deal" value="1" checked>Parent Deal
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="deal_type_radio" id="child_deal" value="0">Child Deal
+                                    </label>
+                                </div>
+                            </div>
+
                             <div class="tab-pane fade in active" id="tab1primary">
-                                <?php include_once('parent_deals.php'); ?> <!-- parent deal file -->
-                            </div>
-                            <div class="tab-pane fade" id="tab2primary">
-                                <?php include_once('child_deals.php'); ?> <!-- parent deal file -->
-                            </div>
                             </div>
                         </div> <!-- panel-body -->
                     </div> <!-- panel panel-info -->
@@ -133,28 +84,31 @@
     <script>
         $(document).ready(function(e){
             var selected = [];
-
             //file type validation + preview
-            $("#image_dir").change(function() {
-                var file = this.files[0];
-                var imagefile = file.type;
+            $("#deal_images").change(function() {
                 var match= ["image/jpeg","image/png","image/jpg"];
-                if(!((imagefile==match[0]) || (imagefile==match[1]) || (imagefile==match[2]))){
-                    alert('Please select a valid image file (JPEG/JPG/PNG).');
-                    $("#image_dir").val('');
-                    return false;
-                }
 
-                var filereader = new FileReader();
-                var $img=jQuery.parseHTML("<img src=''>");
-                filereader.onload = function(){
-                    $img[0].src=this.result;
-                    $img[0].style.width="80px";
-                    $img[0].style.height="80px";
-                    $img[0].style.padding="5px";
-                };
-                filereader.readAsDataURL(this.files[0]);
-                $(".filearray").append($img);
+                //$(".filearray").empty();//you can remove this code if you want previous user input
+                for(let i=0;i<this.files.length;++i)
+                {
+                    var imagefile = this.files[i].type;
+                    if(!((imagefile==match[0]) || (imagefile==match[1]) || (imagefile==match[2]))){
+                        alert('Please select a valid image file (JPEG/JPG/PNG).');
+                        $("#deal_images").val('');
+                        return false;
+                    }
+
+                    let filereader = new FileReader();
+                    let $img=jQuery.parseHTML("<img src=''>");
+                    filereader.onload = function(){
+                        $img[0].src=this.result;
+                        $img[0].style.width="80px";
+                        $img[0].style.height="80px";
+                        $img[0].style.padding="5px";
+                    };
+                    filereader.readAsDataURL(this.files[i]);
+                    $(".filearray").append($img);
+                }
             });
 
             var dataTable = $('#dealTable').DataTable({
@@ -202,7 +156,7 @@
                         }
                     },
                     {"mRender": function ( data, type, row ) {
-                        var retStr = '<a class="editForm" href="#" data-id='+row.deal_id+'>Edit</a> ';
+                        var retStr = '<a class="editForm" href="#" data-deal="parent" data-id='+row.deal_id+'>Edit</a> ';
                         retStr += '/ <a class="deleteForm" href="#" data-active='+row.is_active+' data-id='+row.deal_id+'>Toggle Status</a>';
                         return retStr;
                         } // end of function
@@ -272,7 +226,7 @@
             }
 
             function formatTableBody( record ) {
-                var actionStr = '<a class="editForm" href="#" data-id='+record.deal_id+'>Edit</a>';
+                var actionStr = '<a class="editForm" href="#" data-deal="child" data-id='+record.deal_id+'>Edit</a>';
                 actionStr += ' / <a class="deleteForm" href="#" data-active='+record.is_active+' data-id='+record.deal_id+'>Toggle Status</a>';
 
                 var actual_amount = deal_amount = percentage = "";
@@ -311,8 +265,8 @@
                         $('.statusMsg').html('');
                         if(msg.return_code == 1){
                             $('.statusMsg').html('<span style="font-size:18px;color:#34A853">Deal status is toggled successfully.</span>');
-                            $('#dealForm')[0].reset();
                             $('#dealTable').DataTable().ajax.reload();
+                            $("#resetBtn").click();
                         }else{
                             $('.statusMsg').html('<span style="font-size:18px;color:#EA4335">Some problem occurred, please try again.</span>');
                         }
@@ -321,7 +275,15 @@
             });
 
             $(document).on('click',".editForm",function(){
-                $.ajax({
+                var isParent = ($(this).data('deal') === "parent") ? true : false;
+                if(isParent) {
+                    $("#parent_deal").trigger('click');
+                }
+                else {
+                    $("#child_deal").trigger('click');
+                }
+
+                 $.ajax({
                     type: 'GET',
                     url: '../controller/deal_controller.php?action=load_deal&deal_id=' + $(this).data('id'),
                     contentType: false,
@@ -331,7 +293,15 @@
                         $('.statusMsg').html('');
                         if(msg.return_code == 1 && msg.return_message[0] != undefined){
                             var merchantObj = msg.return_message[0];
+                            if(isParent) {
+                                $('#action').val("update_parent_deal");
+                            }
+                            else {
+                                $('#action').val("update_child_deal");
+                            }
+
                             $('#merchant_id').val(merchantObj.merchant_id);
+                            $('#merchant_id').prop("disabled", "disabled");
                             $('#title').val(merchantObj.title);
                             $('#actual_amount').val(merchantObj.actual_amount);
                             $('#deal_amount').val(merchantObj.deal_amount);
@@ -339,6 +309,10 @@
                             $('#start_date').val(merchantObj.start_date);
                             $('#end_date').val(merchantObj.end_date);
                             $('#description').val(merchantObj.description);
+                            $('#redemption_count').val(merchantObj.redemption_count);
+                            $("input[name=is_active][value=" + merchantObj.is_active + "]").prop('checked', true);
+                            $('#imageDiv').html("");
+
                         }else{
                             $('.statusMsg').html('<span style="font-size:18px;color:#EA4335">Some problem occurred, please try again.</span>');
                         }
@@ -346,11 +320,7 @@
                 });           
             });
 
-            $("#parentDealForm").on('reset', function(e){ 
-                $(".filearray").html("");
-            });
-
-            $("#parentDealForm").on('submit', function(e){
+            $(document).on('submit', "#dealForm", function() {
                 e.preventDefault();
                 $.ajax({
                     type: 'POST',
@@ -361,41 +331,83 @@
                     processData:false,
                     beforeSend: function(){
                         $('.submitBtn').attr("disabled","disabled");
-                        $('#parentDealForm').css("opacity",".5");
+                        $('#dealForm').css("opacity",".5");
                     },
                     success: function(msg){
                         $('.statusMsg').html('');
                         if(msg.return_code == 1){
-                            $('#parentDealForm')[0].reset();
-                            $('.statusMsg').html('<span style="font-size:18px;color:#34A853">Parent Deal added successfully.</span>');
+                            $('.statusMsg').html('<span style="font-size:18px;color:#34A853">Deal added successfully.</span>');
                             $('#dealTable').DataTable().ajax.reload();
+                            $("#resetBtn").click();
                         }else{
                             $('.statusMsg').html('<span style="font-size:18px;color:#EA4335">Some problem occurred, please try again.</span>');
                         }
-                        $('#parentDealForm').css("opacity","");
+                        $('#dealForm').css("opacity","");
                         $(".submitBtn").removeAttr("disabled");
                     }
                 });
             });
 
-            // function to populate merchant names
-            $.ajax({
-                type: "GET",
-                url: '../controller/merchant_controller.php?action=all_merchants_for_dropdown',
-                contentType: false,
-                cache: false,
-                processData:false,
-                success: function(msg)
-                {
-                    if(msg.return_code == 1) {
-                        var data = [];
-                        $.each(msg.return_message, function(key,value) {
-                            data.push({"id": value.merchant_id, "name": value.business_name});
-                        }); 
+            $("#resetBtn").on('click', function(e){ 
+                $(".filearray").html("");
+                $("#dealForm")[0].reset();
+            });
 
-                        helpers.buildDropdown(data, $('#merchant_id'),'Select a Merchant');
+            // function to populate merchant names
+            var populateMerchantNames = function() {
+                $.ajax({
+                    type: "GET",
+                    url: '../controller/merchant_controller.php?action=all_merchants_for_dropdown',
+                    contentType: false,
+                    cache: false,
+                    processData:false,
+                    success: function(msg)
+                    {
+                        if(msg.return_code == 1) {
+                            var data = [];
+                            $.each(msg.return_message, function(key,value) {
+                                data.push({"id": value.merchant_id, "name": value.business_name});
+                            }); 
+
+                            helpers.buildDropdown(data, $('#merchant_id'),'Select a Merchant');
+                        }
                     }
+                });
+            }
+
+            // function to populate parent deals
+            var populateParentDeals = function(selected_merchant_id) {
+                $.ajax({
+                    type: "GET",
+                    url: '../controller/deal_controller.php?action=load_parent_deals',
+                    contentType: false,
+                    cache: false,
+                    processData:false,
+                    success: function(msg)
+                    {
+                        if(msg.iTotalRecords >= 1) {
+                            var data = [];
+                            $.each(msg.aaData, function(key,value) {
+                                if(value.merchant_id == selected_merchant_id)
+                                    data.push({"id": value.deal_id, "name": value.title});
+                            }); 
+
+                            helpers.buildDropdown(data, $('#parent_deal_name'),'Select a Deal');
+                        }
+                    }
+                });
+            }
+
+            $(document).on('change', "#merchant_id", function() {
+                $("#business_name").val($("#merchant_id option:selected").text());
+
+                if($("#parent_deal_name") != undefined) {
+                    populateParentDeals($("#merchant_id option:selected").val())
                 }
+            });
+
+            $(document).on('change', "#parent_deal_name", function() {
+                $("#parent_deal_id").val($("#parent_deal_name option:selected").val());
             });
 
             $(".date").datetimepicker({
@@ -432,7 +444,42 @@
 
                 return value;
             }
+            
+            // function to populate Parent Deal form
+            $(document).on('click', "#parent_deal", function() {
+                //$('#tab1primary').html("");
+                $.ajax({
+                    type: "GET",
+                    url: 'parent_deals.php',
+                    contentType: false,
+                    cache: false,
+                    processData:false,
+                    success: function(html)
+                    {
+                        $('#tab1primary').html(html);
+                    }
+                });
+                populateMerchantNames();
+            });
+            $("#parent_deal").trigger('click'); // Trigger the click event
 
+
+            // function to populate Parent Deal form
+            $(document).on('click', "#child_deal", function() {
+                $('#tab1primary').html("");
+                $.ajax({
+                    type: "GET",
+                    url: 'child_deals.php',
+                    contentType: false,
+                    cache: false,
+                    processData:false,
+                    success: function(html)
+                    {
+                        populateMerchantNames();
+                        $('#tab1primary').html(html);
+                    }
+                });
+            });
         });
     </script>
 

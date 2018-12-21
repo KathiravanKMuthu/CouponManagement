@@ -1,8 +1,9 @@
-<form role="form" enctype="multipart/form-data" name="parentDealForm" id="parentDealForm">
+<form role="form" enctype="multipart/form-data" name="dealForm" id="dealForm">
 <input type="hidden" value="add_parent_deal" name="action" id="action"/>
 <input type="hidden" value="" name="deal_id" id="deal_id"/>
 <input type="hidden" value="0" name="parent_deal_id" id="parent_deal_id"/>
 <input type="hidden" value="1" name="is_active" id="is_active"/>
+<input type="hidden" value="" name="business_name" id="business_name"/>
 
 <div class="row">
     <div class="col-lg-6">
@@ -71,7 +72,7 @@
             <label class="col-md-3 control-label" for="business_name">Offer Period</label>
             <div class="col-md-9 input-group">
                 <div class='input-group date' id='start_datetimepicker'>
-                    <input type='text' name="stat_date" id="start_date" placeholder="From" class="form-control" required=""/>
+                    <input type='text' name="start_date" id="start_date" placeholder="From" class="form-control" required=""/>
                     <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
                 </div>
                 <div class='input-group date' id='end_datetimepicker'>
@@ -101,12 +102,11 @@
             </div>
         </div>
 
-
-
-        <div class="form-group">
+        <div class="form-group" id="imageDiv">
             <label class="col-md-3 control-label" for="image_dir">Upload Images</label>
             <div class="col-md-9">
-                <input id="image_dir" name="image_dir[]" class="input-file" type="file" required="" multiple>
+                <input id="deal_images" name="image_dir[]" class="input-file" type="file" required="" accepts="image/*" multiple>
+                <span style="color:red">*Add All files together</span>
             </div>
         </div>
 
@@ -120,8 +120,8 @@
 <div class="row">
     <div class="col-lg-5"></div>
     <div class="col-lg-2">
-        <input type="submit" name="submit" class="btn btn-danger submitBtn" value="Save Deal Info"/>
-        <input type="reset" name="reset" class="btn btn-info submitBtn" value="Reset"/>
+        <input type="submit" name="submit" class="btn btn-danger submitBtn" value="Submit"/>
+        <input type="button" name="resetBtn" id="resetBtn" class="btn btn-info submitBtn" value="Reset"/>
     </div>
     <div class="col-lg-5"></div>
 </div> <!-- row -->
