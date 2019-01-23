@@ -57,32 +57,32 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="col-md-4 control-label" for="phone_number">Phone Number</label>  
+                                        <label class="col-md-4 control-label" for="phone_number">Phone Number</label>
                                         <div class="col-md-8">
                                             <input id="phone_number" name="phone_number" type="text" placeholder="Phone Number " class="form-control input-md" required="">
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="col-md-4 control-label" for="address1">Address</label>  
+                                        <label class="col-md-4 control-label" for="address1">Address</label>
                                         <div class="col-md-8">
                                             <input id="address1" name="address1" type="text" placeholder="Door no / Building name" class="form-control input-md" required="">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-md-4 control-label" for="address2"></label>  
+                                        <label class="col-md-4 control-label" for="address2"></label>
                                         <div class="col-md-8">
                                             <input id="address2" name="address2" type="text" placeholder="Street" class="form-control input-md">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-md-4 control-label" for="state"></label>  
+                                        <label class="col-md-4 control-label" for="state"></label>
                                         <div class="col-md-8">
                                             <input id="state" name="state" type="text" placeholder="State" class="form-control input-md" required="">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-md-4 control-label" for="postal_code"></label>  
+                                        <label class="col-md-4 control-label" for="postal_code"></label>
                                         <div class="col-md-8">
                                             <input id="postal_code" name="postal_code" type="text" placeholder="Postal Code" class="form-control input-md" required="">
                                         </div>
@@ -98,39 +98,39 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="col-md-4 control-label" for="operating_time">Operating Hours</label>  
+                                        <label class="col-md-4 control-label" for="operating_time">Operating Hours</label>
                                         <div class="col-md-8">
-                                            <input id="operating_time" name="operating_time" type="text" placeholder="Operating Hours" class="form-control input-md" required="">
+                                            <textarea class="form-control" id="operating_time" name="operating_time" required="" rows=5 placeholder="Format is 'Day1: start time - end time; Day2: start time - end time;'"></textarea>
                                         </div>
                                     </div>
 
                                 </div> <!-- col-lg-6 -->
-                                
+
                                 <div class="col-lg-6">
 
                                     <div class="form-group">
-                                        <label class="col-md-4 control-label" for="website">Website</label>  
+                                        <label class="col-md-4 control-label" for="website">Website</label>
                                         <div class="col-md-8">
                                             <input id="website" name="website" type="text" placeholder="Website" class="form-control input-md">
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="col-md-4 control-label" for="facebook">Facebook</label>  
+                                        <label class="col-md-4 control-label" for="facebook">Facebook</label>
                                         <div class="col-md-8">
                                             <input id="facebook" name="facebook" type="text" placeholder="Facebook" class="form-control input-md">
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="col-md-4 control-label" for="youtube">Youtube</label>  
+                                        <label class="col-md-4 control-label" for="youtube">Youtube</label>
                                         <div class="col-md-8">
                                             <input id="youtube" name="youtube" type="text" placeholder="Youtube" class="form-control input-md">
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="col-md-4 control-label" for="instagram">Instagram</label>  
+                                        <label class="col-md-4 control-label" for="instagram">Instagram</label>
                                         <div class="col-md-8">
                                             <input id="instagram" name="instagram" type="text" placeholder="Instagram" class="form-control input-md">
                                         </div>
@@ -138,19 +138,19 @@
 
                                     <div class="form-group">
                                         <label class="col-md-4 control-label" for="description">Business Description</label>
-                                        <div class="col-md-8">                     
+                                        <div class="col-md-8">
                                             <textarea class="form-control" id="description" name="description" required="" rows=5></textarea>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="col-md-4 control-label" for="latitude">Map Location</label>  
+                                        <label class="col-md-4 control-label" for="latitude">Map Location</label>
                                         <div class="col-md-8">
                                             <input id="latitude" name="latitude" type="text" placeholder="Latitude" class="form-control input-md" required="">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-md-4 control-label" for="longitude"></label>  
+                                        <label class="col-md-4 control-label" for="longitude"></label>
                                         <div class="col-md-8">
                                             <input id="longitude" name="longitude" type="text" placeholder="Longitude" class="form-control input-md" required="">
                                         </div>
@@ -168,10 +168,11 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-group">
-                                        <label class="col-md-4 control-label" for="image_dir">Upload Image</label>
+                                    <div class="form-group" id="imageDiv">
+                                        <label class="col-md-4 control-label" for="image_dir">Upload Images</label>
                                         <div class="col-md-8">
-                                            <input id="image_dir" name="image_dir" class="input-file" type="file">
+                                            <input id="merchant_images" name="image_dir[]" class="input-file" type="file" required="" accepts="image/*" multiple>
+                                            <span style="color:red">*Add All files together</span>
                                         </div>
                                     </div>
 
@@ -227,6 +228,32 @@
     <script>
         $(document).ready(function(e){
             var selected = [];
+            //file type validation + preview
+            $("#merchant_images").change(function() {
+                var match= ["image/jpeg","image/png","image/jpg"];
+
+                //$(".filearray").empty();//you can remove this code if you want previous user input
+                for(let i=0;i<this.files.length;++i)
+                {
+                    var imagefile = this.files[i].type;
+                    if(!((imagefile==match[0]) || (imagefile==match[1]) || (imagefile==match[2]))){
+                        alert('Please select a valid image file (JPEG/JPG/PNG).');
+                        $("#merchant_images").val('');
+                        return false;
+                    }
+
+                    let filereader = new FileReader();
+                    let $img=jQuery.parseHTML("<img src=''>");
+                    filereader.onload = function(){
+                        $img[0].src=this.result;
+                        $img[0].style.width="80px";
+                        $img[0].style.height="80px";
+                        $img[0].style.padding="5px";
+                    };
+                    filereader.readAsDataURL(this.files[i]);
+                    $(".filearray").append($img);
+                }
+            });
 
             $("#show_password").hover(function functionName() { // Show Hide password
                     //Change the attribute to text
@@ -261,7 +288,7 @@
                     { mData: 'country' },
                     { mData: 'postal_code' },
                     {"mRender": function ( data, type, row ) {
-                        return (row.is_active == true) ? "Active" : "Inactive"; 
+                        return (row.is_active == true) ? "Active" : "Inactive";
                         } // end function
                     },
                     { mData: 'image_dir',
@@ -276,7 +303,7 @@
                         } // end of function
                     }
                 ]
-            }); 
+            });
 
             $(document).on('click',".deleteForm",function(){
                 $.ajax({
@@ -295,7 +322,7 @@
                             $('.statusMsg').html('<span style="font-size:18px;color:#EA4335">Some problem occurred, please try again.</span>');
                         }
                     }
-                });           
+                });
             });
 
             $(document).on('click',".editForm",function(){
@@ -330,15 +357,12 @@
                             $('#latitude').val(mapObj.latitude);
                             $('#longitude').val(mapObj.longitude);
                             $("input[name=is_active][value=" + merchantObj.is_active + "]").prop('checked', true);
-
-                            //$('#image_dir').val(merchantObj.image_dir);
-
-                            $(".filearray").html("<img src='../" + $.trim(merchantObj.image_dir) + "' style='width:80px;height:80px'>");
+                            //$('#imageDiv').html("");
                         }else{
                             $('.statusMsg').html('<span style="font-size:18px;color:#EA4335">Some problem occurred, please try again.</span>');
                         }
                     }
-                });           
+                });
             });
 
             $("#merchantForm").on('submit', function(e){
@@ -369,8 +393,8 @@
                     }
                 });
             });
-            
-            $("#resetBtn").on('click', function(e){ 
+
+            $("#resetBtn").on('click', function(e){
                 $(".filearray").html("");
                 $("#merchantForm")[0].reset();
             });

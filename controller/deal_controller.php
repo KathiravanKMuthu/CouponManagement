@@ -75,10 +75,11 @@ if($request_method == 'POST')
                             $file_name = basename($image_name);
                             if($key == 0)
                                 $updated_image_dir = $image_dir . "/" . $key . "_" . $file_name;
+
                             $targetFilePath = "../" . $image_dir . "/" . $key . "_" . $file_name;
 
                             $file_type = pathinfo($targetFilePath, PATHINFO_EXTENSION);
-                            if(in_array($file_type, $allow_types)){    
+                            if(in_array($file_type, $allow_types)){
                                 if(move_uploaded_file($tmp_name, $targetFilePath)){
                                     $images_arr[] = $targetFilePath;
                                 }
@@ -91,9 +92,8 @@ if($request_method == 'POST')
                         $where_condition = 'deal_id= '. $deal_id;
                         $response_array = $db->update($table_name, $column_array, $where_condition);
                     } // deal_id is not empty
-    
-                }
-            }
+                } // end else
+            }// end image_dir if
             break;
         }
         case "delete_deal":
@@ -110,7 +110,7 @@ if($request_method == 'POST')
                 );
                 $where_condition = 'deal_id= '.$deal_id;
                 $response_array = $db->update($table_name, $column_array, $where_condition);
-            }  
+            }
             break;
         }
         default:
@@ -132,7 +132,7 @@ elseif($request_method == 'GET')
             $response_array = $db->get_by_query($query);
 
             $data = [];
-            
+
             if($response_array["return_code"] == 1) {
                 $data = $response_array["return_message"];
             }
@@ -152,7 +152,7 @@ elseif($request_method == 'GET')
             $response_array = $db->get_by_query($query);
 
             $data = [];
-            
+
             if($response_array["return_code"] == 1) {
                 $data = $response_array["return_message"];
             }
@@ -175,7 +175,7 @@ elseif($request_method == 'GET')
             $response_array = $db->get_by_query($query);
 
             $data = [];
-            
+
             if($response_array["return_code"] == 1) {
                 $data = $response_array["return_message"];
             }
@@ -201,7 +201,7 @@ elseif($request_method == 'GET')
                 $where_condition = 'deal_id= '.$deal_id;
                 $response_array['where_condition'] = $where_condition;
                 $response_array = $db->delete($table_name, $where_condition);
-            }           
+            }
             break;
         }*/
         case "load_user_accepted_deals":
@@ -265,5 +265,5 @@ elseif($request_method == 'GET')
     }
 
 }
-    
+
 $token->json_response($response_array);

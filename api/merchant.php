@@ -123,6 +123,39 @@ header("Content-Type: application/json; charset=UTF-8");
               $token->json_response($response_array);
               break;
           }
+          case "images":
+          {
+              $merchant_id = $_GET['merchant_id'];
+              $where_condition = " merchant_id = " . $merchant_id;
+              $parent_row = $db->get($table_name, $where_condition);
+              $record = json_encode($parent_row["return_message"][0]["image_dir"], false);
+
+              $path_parts = pathinfo(json_decode($record));
+              $dirname = $path_parts["dirname"];
+              $root = (!empty($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . '/';
+              $image_arr = [];
+
+              $url = $_SERVER['REQUEST_URI']; //returns the current URL
+              $parts = explode('/',$url);
+
+            if($dirname != "images/Merchant") {
+                  $images = glob(__DIR__ . "/../" . $dirname . "/*.*");
+                  foreach($images as $image) {
+                      $image_arr[] = substr_replace($image, $root . $parts[1] . "/", 0, strpos($image, "../")+3);
+                      #$image_arr[] = substr_replace($image, $root . $parts[1] . "/" . $parts[2] . "/", 0, strpos($image, "../")+3); // for live
+                  }
+              }
+              else {
+                  $image = $parent_row["return_message"][0]["image_dir"];
+                  $image_arr[] = substr_replace($image, $root . $parts[1] . "/", 0, strpos($image, "../"));
+              }
+
+              $response_array["return_code"] = "1";
+              $response_array["return_message"] = $image_arr;
+              $response_array["dirname"] = $dirname;
+              $response_array["root"] = $root;
+              break;
+          }
           default:
           {
               // retieve merchant based on login

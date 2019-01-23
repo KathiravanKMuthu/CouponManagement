@@ -23,22 +23,12 @@ if($request_method == 'POST')
             $response_array['return_message'] = 'Adding a Merchant is failed!';
 
             $insert_column_array = array();
-            if(!empty($_FILES['image_dir']['name'])) {
-                $uploadedFile = '';
-                if(!empty($_FILES["image_dir"]["type"])){
-                    $image_dir = $image_dir . $_POST['business_name'].'_'.time().'_'.$_FILES['image_dir']['name'];
-                    $valid_extensions = array("jpeg", "jpg", "png", "JPEG", "JPG", "PNG");
-                    $temporary = explode(".", $_FILES["image_dir"]["name"]);
-                    $file_extension = end($temporary);
-                    if((($_FILES["image_dir"]["type"] == "image/png") || ($_FILES["image_dir"]["type"] == "image/jpg") || ($_FILES["image_dir"]["type"] == "image/jpeg")) && in_array($file_extension, $valid_extensions)){
-                        $sourcePath = $_FILES['image_dir']['tmp_name'];
-                        $upload_dir = "../" . $image_dir;
-                        if(move_uploaded_file($sourcePath, $upload_dir)){
-                            $uploadedFile = $image_dir;
-                        }
-                    }
-                }
 
+            /* Check required fields */
+            $allow_types = array('jpg','png','jpeg','JPG','PNG','JPEG');
+            $image_dir = $image_dir . $token->change_camel_case($_POST['business_name']);
+
+            if(!empty($_FILES['image_dir']['name'])) {
                 $password = $_POST['password'];
                 $email = $_POST['merchant_email'];
                 $map_position = '{"latitude":' . $_POST['latitude'] . ', "longitude":' . $_POST['longitude'] . '}';
@@ -53,7 +43,7 @@ if($request_method == 'POST')
                                     'state' => $_POST['state'],
                                     'country' => $_POST['country'],
                                     'postal_code' => $_POST['postal_code'],
-                                    'image_dir' => $image_dir,
+                                    //'image_dir' => $image_dir,
                                     'website' => $_POST['website'],
                                     'facebook' => $_POST['facebook'],
                                     'youtube' => $_POST['youtube'],
@@ -66,15 +56,59 @@ if($request_method == 'POST')
 
                 $dup_where_condition = "merchant_email = '".$email."'";
                 $response_array = $db->get($table_name, $dup_where_condition);
-                if($response_array['return_code'] == 0 )
+                if($response_array['return_code'] == 1 )
                 {
-                    $response_array = $db->insert($table_name, $insert_column_array);
-                }
-                else {
                     $response_array['return_message'] = 'Merchant Email already exists!';
                     $response_array['return_code'] = 0;
                 }
-            }
+                else {
+                    $response_array = $db->insert($table_name, $insert_column_array);
+
+                    if($response_array['return_code'] == 0) {
+                        $response_array['return_message'] = 'Adding a Merchant is failed before uploading a file!';
+                        $response_array['return_code'] = 0;
+                    }
+                    else {
+                        $merchant_id = $response_array["inserted_id"];
+
+                        if($merchant_id > 0) {
+                            $image_dir = $image_dir . '_' . $merchant_id;
+                            $updated_image_dir = "";
+
+                            if (!file_exists("../" . $image_dir)) {
+                                $response_array['image_dir'] = $image_dir;
+                                mkdir("../" . $image_dir, 0777, true);
+                            }
+
+                            $images_arr = array();
+                            foreach($_FILES['image_dir']['name'] as $key=>$val) {
+                                $image_name = $_FILES['image_dir']['name'][$key];
+                                $tmp_name   = $_FILES['image_dir']['tmp_name'][$key];
+                                $type       = $_FILES['image_dir']['type'][$key];
+
+                                $file_name = basename($image_name);
+                                if($key == 0)
+                                    $updated_image_dir = $image_dir . "/" . $key . "_" . $file_name;
+
+                                $targetFilePath = "../" . $image_dir . "/" . $key . "_" . $file_name;
+
+                                $file_type = pathinfo($targetFilePath, PATHINFO_EXTENSION);
+                                if(in_array($file_type, $allow_types)){
+                                    if(move_uploaded_file($tmp_name, $targetFilePath)){
+                                        $images_arr[] = $targetFilePath;
+                                    }
+                                }
+                            }
+
+                            $column_array = array(
+                                'image_dir' => $updated_image_dir
+                            );
+                            $where_condition = 'merchant_id= '. $merchant_id;
+                            $response_array = $db->update($table_name, $column_array, $where_condition);
+                        } // merchant_id is not empty
+                    } // end insert else
+                } // end get else
+            } // end image_dir if
             break;
         }
         case "update_merchant" :
@@ -82,6 +116,9 @@ if($request_method == 'POST')
             $response_array['return_message'] = 'Updating a Merchant is failed!';
 
             $insert_column_array = array();
+            /* Check required fields */
+            $allow_types = array('jpg','png','jpeg','JPG','PNG','JPEG');
+            $image_dir = $image_dir . $token->change_camel_case($_POST['business_name']);
 
             $password = $_POST['password'];
             $email = $_POST['merchant_email'];
@@ -106,33 +143,62 @@ if($request_method == 'POST')
                                 'map_position' => $map_position,
                     );
 
-            if(!empty($_FILES['image_dir']['name'])) {
-                $uploadedFile = '';
-                if(!empty($_FILES["image_dir"]["type"])){
-                    $image_dir = $image_dir . $_POST['business_name'].'_'.time().'_'.$_FILES['image_dir']['name'];
-                    $valid_extensions = array("jpeg", "jpg", "png", "JPEG", "JPG", "PNG");
-                    $temporary = explode(".", $_FILES["image_dir"]["name"]);
-                    $file_extension = end($temporary);
-
-                    if((($_FILES["image_dir"]["type"] == "image/png") || ($_FILES["image_dir"]["type"] == "image/jpg") || ($_FILES["image_dir"]["type"] == "image/jpeg")) && in_array($file_extension, $valid_extensions)){
-                        $sourcePath = $_FILES['image_dir']['tmp_name'];
-                        $insert_column_array['image_dir'] = $image_dir;
-                        $upload_dir = "../" . $image_dir;
-                        if(move_uploaded_file($sourcePath, $upload_dir)){
-                            $uploadedFile = $image_dir;
-                        }                    }
-                }
-            }
-
             $where_condition = "merchant_email = '".$email."'";
             $response_array = $db->get($table_name, $where_condition);
-            if($response_array['return_code'] == 1)
+            if($response_array['return_code'] == 0)
             {
-                $response_array = $db->update($table_name, $insert_column_array, $where_condition);
-            }
-            else {
                 $response_array['return_message'] = "Merchant email doesn't exist!";
                 $response_array['return_code'] = 0;
+            }
+            else {
+                $response_array = $db->update($table_name, $insert_column_array, $where_condition);
+
+                if($response_array['return_code'] == 0 )
+                {
+                    $response_array['return_message'] = 'Updating a Merchant is failed!';
+                    $response_array['return_code'] = 0;
+                }
+                else {
+                    if(!empty($_FILES['image_dir']['name'])) {
+                        $merchant_id = $_POST["merchant_id"];
+
+                        if($merchant_id > 0) {
+                            $image_dir = $image_dir . '_' . $merchant_id;
+                            $updated_image_dir = "";
+
+                            if (!file_exists("../" . $image_dir)) {
+                                $response_array['image_dir'] = $image_dir;
+                                mkdir("../" . $image_dir, 0777, true);
+                            }
+
+                            $images_arr = array();
+                            foreach($_FILES['image_dir']['name'] as $key=>$val) {
+                                $image_name = $_FILES['image_dir']['name'][$key];
+                                $tmp_name   = $_FILES['image_dir']['tmp_name'][$key];
+                                $type       = $_FILES['image_dir']['type'][$key];
+
+                                $file_name = basename($image_name);
+                                if($key == 0)
+                                    $updated_image_dir = $image_dir . "/" . $key . "_" . $file_name;
+
+                                $targetFilePath = "../" . $image_dir . "/" . $key . "_" . $file_name;
+
+                                $file_type = pathinfo($targetFilePath, PATHINFO_EXTENSION);
+                                if(in_array($file_type, $allow_types)){
+                                    if(move_uploaded_file($tmp_name, $targetFilePath)){
+                                        $images_arr[] = $targetFilePath;
+                                    }
+                                }
+                            }
+
+                            $column_array = array(
+                                'image_dir' => $updated_image_dir
+                            );
+                            $where_condition = 'merchant_id= '. $merchant_id;
+                            $response_array = $db->update($table_name, $column_array, $where_condition);
+                        } // merchant_id is not empty
+                    } // end image_dir if
+                } // end update else
             }
             break;
         }
@@ -152,7 +218,7 @@ if($request_method == 'POST')
                 );
                 $where_condition = 'merchant_id= '.$merchant_id;
                 $response_array = $db->update($table_name, $column_array, $where_condition);
-            }           
+            }
             break;
         }
         default:
@@ -209,7 +275,7 @@ elseif($request_method == 'GET')
                     $password_str = base64_decode(base64_decode(rtrim($record["encrypted_password"],'=')));
                     $response_array['return_message'][0]["encrypted_password"] = $password_str;
                 }
-            }           
+            }
             break;
         }
         default:
@@ -227,5 +293,5 @@ elseif($request_method == 'GET')
     }
 
 }
-    
+
 $token->json_response($response_array);
