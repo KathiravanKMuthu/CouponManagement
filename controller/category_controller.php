@@ -11,6 +11,11 @@ if($request_method == 'POST')
 {
     $action_data = $_POST['action'];
 
+    if(empty($_GET) && empty($_POST)){
+        $post_data = json_decode(file_get_contents('php://input'), true);
+        $action_data = $post_data['action'];
+    }
+
     switch ($action_data) {
         case "add_category" :
         {
@@ -21,37 +26,37 @@ if($request_method == 'POST')
 
             $category_id = $_POST['category_id'];
             $category_name = $_POST['category_name'];
-            
-            $insert_column_array = array(
+
+            $column_array = array(
                 'category_name' => $category_name
-                );
+            );
 
             if(empty($category_id))
             {
-                $insert_column_array = array(
-                    'category_name' => $category_name,
-                    );
-
-                $response_array = $db->insert($table_name, $insert_column_array);
+                $response_array = $db->insert($table_name, $column_array);
             }
             else {
                 $where_condition = 'category_id= '.$category_id;
-                $response_array = $db->update($table_name, $insert_column_array, $where_condition);
+                $response_array = $db->update($table_name, $column_array, $where_condition);
                 $response_array['return_message'] = 'Sucessfully updated the category!';
             }
             break;
         }
         case "delete_category":
         {
-            $response_array['return_message'] = 'Failed to delete category!';
+            $response_array['return_message'] = 'Failed to toggle the status!';
 
             // retieve merchant based on category_id
-            $category_id = $_GET['category_id'];
+            $category_id = $post_data['category_id'];
             $where_condition = null;
             if($category_id)
             {
+                $column_array = array(
+                    'is_active' => ($post_data['is_active'] == "1") ? "0" : "1"
+                );
+
                 $where_condition = 'category_id= '.$category_id;
-                $response_array = $db->delete($table_name, $where_condition);
+                $response_array = $db->update($table_name, $column_array, $where_condition);
             }
             break;
         }
@@ -80,17 +85,30 @@ elseif($request_method == 'GET')
                 "aaData"=>$data);
             break;
         }
+        case "all_categories_for_dropdown" :
+        {
+            $response_array['return_message'] = 'Failed to retrieve category details!';
+            $where_condition = 'is_active= 1';
+
+            // Retrieve all merchant details for web / mobile applicaitons
+            $response_array = $db->get($table_name, $where_condition);
+            break;
+        }
         case "delete_category":
         {
-            $response_array['return_message'] = 'Failed to delete category!';
+            $response_array['return_message'] = 'Failed to toggle status!';
 
             // retieve merchant based on category_id
             $category_id = $_GET['category_id'];
             $where_condition = null;
             if($category_id)
             {
-                $where_condition = 'category_id= '.$category_id;
-                $response_array = $db->delete($table_name, $where_condition);
+              $column_array = array(
+                  'is_active' => ($post_data['is_active'] == "1") ? "0" : "1"
+              );
+
+              $where_condition = 'category_id= '.$category_id;
+              $response_array = $db->update($table_name, $column_array, $where_condition);
             }
             break;
         }
@@ -100,7 +118,7 @@ elseif($request_method == 'GET')
             // Retrieve all merchant details for web / mobile applicaitons
             $response_array = $db->get($table_name);
 
-            // retieve merchant based on category_id                   
+            // retieve merchant based on category_id
             $category_id = $_GET['category_id'];
             $where_condition = null;
             if($category_id)
@@ -113,5 +131,5 @@ elseif($request_method == 'GET')
     }
 
 }
-    
+
 $token->json_response($response_array);

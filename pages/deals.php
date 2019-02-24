@@ -15,7 +15,6 @@
 </head>
 
 <body>
-
     <div id="wrapper">
         <?php include_once('../includes/nav.php'); ?>
 
@@ -32,10 +31,7 @@
                     <div class="panel panel-info">
                         <div class="panel-heading">
                             Add / Edit Deal <p class="statusMsg"></p>
-                        </div>
-                        <div class="panel-body">
-                            <div class="form-group col-md-12">
-                                <div class="input-group">
+                                <div class="input-group" id="deal_header">
                                     <label class="radio-inline">
                                         <input type="radio" name="deal_type_radio" id="parent_deal" value="1" checked>Parent Deal
                                     </label>
@@ -43,8 +39,9 @@
                                         <input type="radio" name="deal_type_radio" id="child_deal" value="0">Child Deal
                                     </label>
                                 </div>
-                            </div>
+                        </div>
 
+                        <div class="panel-body">
                             <div class="tab-pane fade in active" id="tab1primary">
                             </div>
                         </div> <!-- panel-body -->
@@ -84,8 +81,9 @@
     <script>
         $(document).ready(function(e){
             var selected = [];
+
             //file type validation + preview
-            $("#deal_images").change(function() {
+            $(document).on('change', "#deal_images", function() {
                 var match= ["image/jpeg","image/png","image/jpg"];
 
                 //$(".filearray").empty();//you can remove this code if you want previous user input
@@ -109,6 +107,63 @@
                     filereader.readAsDataURL(this.files[i]);
                     $(".filearray").append($img);
                 }
+            });
+
+            // function to populate merchant names
+            var populateMerchantNames = function() {
+                $.ajax({
+                    type: "GET",
+                    url: '../controller/merchant_controller.php?action=all_merchants_for_dropdown',
+                    contentType: false,
+                    cache: false,
+                    processData:false,
+                    success: function(msg)
+                    {
+                        if(msg.return_code == 1) {
+                            var data = [];
+                            $.each(msg.return_message, function(key,value) {
+                                data.push({"id": value.merchant_id, "name": value.business_name});
+                            });
+
+                            helpers.buildDropdown(data, $('#merchant_id'),'Select a Merchant');
+                        }
+                    }
+                });
+            }
+
+            // function to populate parent deals
+            var populateParentDeals = function(selected_merchant_id) {
+                $.ajax({
+                    type: "GET",
+                    url: '../controller/deal_controller.php?action=load_parent_deals',
+                    contentType: false,
+                    cache: false,
+                    processData:false,
+                    success: function(msg)
+                    {
+                        if(msg.iTotalRecords >= 1) {
+                            var data = [];
+                            $.each(msg.aaData, function(key,value) {
+                                if(value.merchant_id == selected_merchant_id)
+                                    data.push({"id": value.deal_id, "name": value.title});
+                            });
+
+                            helpers.buildDropdown(data, $('#parent_deal_name'),'Select a Deal');
+                        }
+                    }
+                });
+            }
+
+            $(document).on('change', "#merchant_id", function() {
+                $("#business_name").val($("#merchant_id option:selected").text());
+
+                if($("#parent_deal_name") != undefined) {
+                    populateParentDeals($("#merchant_id option:selected").val())
+                }
+            });
+
+            $(document).on('change', "#parent_deal_name", function() {
+                $("#parent_deal_id").val($("#parent_deal_name option:selected").val());
             });
 
             var dataTable = $('#dealTable').DataTable({
@@ -147,7 +202,7 @@
                         } // end of function
                     },
                     {"mRender": function ( data, type, row ) {
-                        return (row.is_active == true) ? "Active" : "Inactive"; 
+                        return (row.is_active == true) ? "Active" : "Inactive";
                         } // end function
                     },
                     { mData: 'image_dir',
@@ -183,7 +238,7 @@
             function getChildDeals ( deal_id ) {
                 var div = $('<div/>')
                 .addClass( 'loading' )
-                .text( 'Fetching Child Deals...' ); 
+                .text( 'Fetching Child Deals...' );
 
                 $.ajax( {
                     type: "GET",
@@ -200,7 +255,7 @@
                         div
                             .html(content)
                             .removeClass( 'loading' );
-                        
+
                         var subtable = $('#table_messages_' + deal_id).DataTable({
                             "paging": false,
                             "searching": false,
@@ -241,7 +296,7 @@
                     percentage = record.percentage + ' <i class="fa fa-percent"></i> ';
                 }
 
-                var retStr = 
+                var retStr =
                 '<tr>'+
                     '<td>'+record.title+'</td>'+
                     '<td>'+actual_amount+'</td>'+
@@ -271,160 +326,72 @@
                             $('.statusMsg').html('<span style="font-size:18px;color:#EA4335">Some problem occurred, please try again.</span>');
                         }
                     }
-                });           
+                });
             });
 
             $(document).on('click',".editForm",function(){
+                $('#tab1primary').html("");
                 var isParent = ($(this).data('deal') === "parent") ? true : false;
+                var deal_id = $(this).data('id');
                 if(isParent) {
                     $("#parent_deal").trigger('click');
                 }
                 else {
                     $("#child_deal").trigger('click');
                 }
+                setTimeout(function() {
+                     $.ajax({
+                        type: 'GET',
+                        url: '../controller/deal_controller.php?action=load_deal&deal_id=' + deal_id,
+                        contentType: false,
+                        cache: false,
+                        processData:false,
+                        success: function(msg){
+                            $('.statusMsg').html('');
+                            if(msg.return_code == 1 && msg.return_message[0] != undefined){
+                                var merchantObj = msg.return_message[0];
+                                if(isParent) {
+                                    $('#action').val("update_parent_deal");
+                                }
+                                else {
+                                    $('#action').val("update_child_deal");
+                                }
 
-                 $.ajax({
-                    type: 'GET',
-                    url: '../controller/deal_controller.php?action=load_deal&deal_id=' + $(this).data('id'),
-                    contentType: false,
-                    cache: false,
-                    processData:false,
-                    success: function(msg){
-                        $('.statusMsg').html('');
-                        if(msg.return_code == 1 && msg.return_message[0] != undefined){
-                            var merchantObj = msg.return_message[0];
-                            if(isParent) {
-                                $('#action').val("update_parent_deal");
+                                $('#deal_id').val(merchantObj.deal_id);
+                                $('#merchant_id').val(merchantObj.merchant_id);
+                                $('#merchant_id').prop("disabled", "disabled");
+                                $('#title').val(merchantObj.title);
+                                $('#actual_amount').val(merchantObj.actual_amount);
+                                $('#deal_amount').val(merchantObj.deal_amount);
+                                $('#percentage').val(merchantObj.percentage);
+                                $('#start_date').val(merchantObj.start_date);
+                                $('#end_date').val(merchantObj.end_date);
+                                $('#description').val(merchantObj.description);
+                                $('#redemption_count').val(merchantObj.redemption_count);
+                                $("input[name=is_active][value=" + merchantObj.is_active + "]").prop('checked', true);
+                                $('#imageDiv').html("");
+
+                                if(!isParent) {
+                                    $('#parent_deal_id').val(merchantObj.parent_deal_id);
+                                    $("#merchant_id").trigger('change');
+                                    setTimeout(function() {
+                                        $('#parent_deal_name').val(merchantObj.parent_deal_id);
+                                    }, 100);
+                                }
+
+                            }else{
+                                $('.statusMsg').html('<span style="font-size:18px;color:#EA4335">Some problem occurred, please try again.</span>');
                             }
-                            else {
-                                $('#action').val("update_child_deal");
-                            }
-
-                            $('#merchant_id').val(merchantObj.merchant_id);
-                            $('#merchant_id').prop("disabled", "disabled");
-                            $('#title').val(merchantObj.title);
-                            $('#actual_amount').val(merchantObj.actual_amount);
-                            $('#deal_amount').val(merchantObj.deal_amount);
-                            $('#percentage').val(merchantObj.percentage);
-                            $('#start_date').val(merchantObj.start_date);
-                            $('#end_date').val(merchantObj.end_date);
-                            $('#description').val(merchantObj.description);
-                            $('#redemption_count').val(merchantObj.redemption_count);
-                            $("input[name=is_active][value=" + merchantObj.is_active + "]").prop('checked', true);
-                            $('#imageDiv').html("");
-
-                        }else{
-                            $('.statusMsg').html('<span style="font-size:18px;color:#EA4335">Some problem occurred, please try again.</span>');
                         }
-                    }
-                });           
+                    }); // end ajax
+                },500); // parent_deal_name setTimeout
             });
 
-            $(document).on('submit', "#dealForm", function() {
-                e.preventDefault();
-                $.ajax({
-                    type: 'POST',
-                    url: '../controller/deal_controller.php',
-                    data: new FormData(this),
-                    contentType: false,
-                    cache: false,
-                    processData:false,
-                    beforeSend: function(){
-                        $('.submitBtn').attr("disabled","disabled");
-                        $('#dealForm').css("opacity",".5");
-                    },
-                    success: function(msg){
-                        $('.statusMsg').html('');
-                        if(msg.return_code == 1){
-                            $('.statusMsg').html('<span style="font-size:18px;color:#34A853">Deal added successfully.</span>');
-                            $('#dealTable').DataTable().ajax.reload();
-                            $("#resetBtn").click();
-                        }else{
-                            $('.statusMsg').html('<span style="font-size:18px;color:#EA4335">Some problem occurred, please try again.</span>');
-                        }
-                        $('#dealForm').css("opacity","");
-                        $(".submitBtn").removeAttr("disabled");
-                    }
-                });
-            });
-
-            $("#resetBtn").on('click', function(e){ 
+            $("#resetBtn").on('click', function(e){
                 $(".filearray").html("");
                 $("#dealForm")[0].reset();
             });
 
-            // function to populate merchant names
-            var populateMerchantNames = function() {
-                $.ajax({
-                    type: "GET",
-                    url: '../controller/merchant_controller.php?action=all_merchants_for_dropdown',
-                    contentType: false,
-                    cache: false,
-                    processData:false,
-                    success: function(msg)
-                    {
-                        if(msg.return_code == 1) {
-                            var data = [];
-                            $.each(msg.return_message, function(key,value) {
-                                data.push({"id": value.merchant_id, "name": value.business_name});
-                            }); 
-
-                            helpers.buildDropdown(data, $('#merchant_id'),'Select a Merchant');
-                        }
-                    }
-                });
-            }
-
-            // function to populate parent deals
-            var populateParentDeals = function(selected_merchant_id) {
-                $.ajax({
-                    type: "GET",
-                    url: '../controller/deal_controller.php?action=load_parent_deals',
-                    contentType: false,
-                    cache: false,
-                    processData:false,
-                    success: function(msg)
-                    {
-                        if(msg.iTotalRecords >= 1) {
-                            var data = [];
-                            $.each(msg.aaData, function(key,value) {
-                                if(value.merchant_id == selected_merchant_id)
-                                    data.push({"id": value.deal_id, "name": value.title});
-                            }); 
-
-                            helpers.buildDropdown(data, $('#parent_deal_name'),'Select a Deal');
-                        }
-                    }
-                });
-            }
-
-            $(document).on('change', "#merchant_id", function() {
-                $("#business_name").val($("#merchant_id option:selected").text());
-
-                if($("#parent_deal_name") != undefined) {
-                    populateParentDeals($("#merchant_id option:selected").val())
-                }
-            });
-
-            $(document).on('change', "#parent_deal_name", function() {
-                $("#parent_deal_id").val($("#parent_deal_name option:selected").val());
-            });
-
-            $(".date").datetimepicker({
-                format:'DD-MM-YYYY HH:mm'
-                }).find('input:first').on("blur",function () {
-                    // check if the date is correct. We can accept dd-mm-yyyy and yyyy-mm-dd.
-                    // update the format if it's yyyy-mm-dd
-                    var date = parseDate($(this).val());
-
-                    if (! isValidDate(date)) {
-                        //create date based on momentjs (we have that)
-                        date = moment().format('DD-MM-YYYY HH:mm');
-                    }
-
-                    $(this).val(date);
-            });
-    
             var isValidDate = function(value, format) {
                 format = format || false;
                     // lets parse the date to the best of our knowledge
@@ -436,7 +403,7 @@
 
                 return isNaN(timestamp) == false;
             }
-            
+
             var parseDate = function(value) {
                 var m = value.match(/^(\d{1,2})(\/|-)?(\d{1,2})(\/|-)?(\d{4})$/);
                 if (m)
@@ -444,7 +411,7 @@
 
                 return value;
             }
-            
+
             // function to populate Parent Deal form
             $(document).on('click', "#parent_deal", function() {
                 //$('#tab1primary').html("");
@@ -457,14 +424,29 @@
                     success: function(html)
                     {
                         $('#tab1primary').html(html);
+
+                        $(".date").datetimepicker({
+                            format:'DD-MM-YYYY HH:mm'
+                            }).find('input:first').on("blur",function () {
+                              console.log("inside datepicker");
+
+                                // check if the date is correct. We can accept dd-mm-yyyy and yyyy-mm-dd.
+                                // update the format if it's yyyy-mm-dd
+                                var date = parseDate($(this).val());
+
+                                if (! isValidDate(date)) {
+                                    //create date based on momentjs (we have that)
+                                    date = moment().format('DD-MM-YYYY HH:mm');
+                                }
+
+                                $(this).val(date);
+                        });
                     }
                 });
                 populateMerchantNames();
             });
-            $("#parent_deal").trigger('click'); // Trigger the click event
 
-
-            // function to populate Parent Deal form
+            // function to populate Child Deal form
             $(document).on('click', "#child_deal", function() {
                 $('#tab1primary').html("");
                 $.ajax({
@@ -477,10 +459,53 @@
                     {
                         populateMerchantNames();
                         $('#tab1primary').html(html);
+
+                        $(".date").datetimepicker({
+                            format:'DD-MM-YYYY HH:mm'
+                            }).find('input:first').on("blur",function () {
+                                // check if the date is correct. We can accept dd-mm-yyyy and yyyy-mm-dd.
+                                // update the format if it's yyyy-mm-dd
+                                var date = parseDate($(this).val());
+
+                                if (! isValidDate(date)) {
+                                    //create date based on momentjs (we have that)
+                                    date = moment().format('DD-MM-YYYY HH:mm');
+                                }
+
+                                $(this).val(date);
+                        });
                     }
                 });
             });
+            $("#parent_deal").trigger('click'); // Trigger the click event
         });
+
+        function submitForm() {
+            $.ajax({
+                type: 'POST',
+                url: '../controller/deal_controller.php',
+                data: new FormData(document.forms[0]),
+                contentType: false,
+                cache: false,
+                processData:false,
+                beforeSend: function(){
+                    $('.submitBtn').attr("disabled","disabled");
+                    $('#dealForm').css("opacity",".5");
+                },
+                success: function(msg){
+                    $('.statusMsg').html('');
+                    if(msg.return_code == 1){
+                        $('.statusMsg').html('<span style="font-size:18px;color:#34A853">'+msg.return_message+'</span>');
+                        $('#dealTable').DataTable().ajax.reload();
+                        $("#resetBtn").click();
+                    }else{
+                        $('.statusMsg').html('<span style="font-size:18px;color:#EA4335">Some problem occurred, please try again.</span>');
+                    }
+                    $('#dealForm').css("opacity","");
+                    $(".submitBtn").removeAttr("disabled");
+                }
+            });
+        }
     </script>
 
 </body>

@@ -39,14 +39,14 @@
 
                                     <div class="form-group">
                                         <label class="col-md-4 control-label" for="password">Merchant Password</label>
-                                        <div class="col-md-6">
+                                        <div class="col-md-8">
                                             <input id="password" name="password" type="password" placeholder="Merchant Password" class="form-control input-md" required="">
                                         </div>
-                                        <div class="col-md-2">
+                                        <!--div class="col-md-2">
                                             <button id="show_password" class="btn btn-default" type="button">
                                                 <span class="glyphicon glyphicon-eye-close"></span>
                                             </button>
-                                        </div>
+                                        </div-->
                                     </div>
 
                                     <div class="form-group">
@@ -92,7 +92,7 @@
                                         <div class="col-md-8">
                                             <select id="country" name="country" class="form-control">
                                             <option value="UK">United Kingdom</option>
-                                            <option value="India">India</option>
+                                            <!--option value="India">India</option-->
                                             </select>
                                         </div>
                                     </div>
@@ -107,6 +107,13 @@
                                 </div> <!-- col-lg-6 -->
 
                                 <div class="col-lg-6">
+
+                                  <div class="form-group">
+                                      <label class="col-md-4 control-label" for="country">Business Category</label>
+                                      <div class="col-md-8">
+                                          <select id="category_id" name="category_id" class="form-control" required=""></select>
+                                      </div>
+                                  </div>
 
                                     <div class="form-group">
                                         <label class="col-md-4 control-label" for="website">Website</label>
@@ -212,6 +219,7 @@
                                         <th>Country</th>
                                         <th>Postal Code</th>
                                         <th>Status</th>
+                                        <th>Category</th>
                                         <th>Image</th>
                                         <th>Action</th>
                                     </tr>
@@ -222,7 +230,6 @@
                     </div><!-- /.col-lg-12 -->
             </div> <!-- row -->
         </div> <!-- /#wrapper -->
-
 
     <?php include_once('../includes/js.php'); ?>
     <script>
@@ -357,6 +364,7 @@
                             $('#latitude').val(mapObj.latitude);
                             $('#longitude').val(mapObj.longitude);
                             $("input[name=is_active][value=" + merchantObj.is_active + "]").prop('checked', true);
+                            $('#category_id').val(merchantObj.category_id);
                             //$('#imageDiv').html("");
                         }else{
                             $('.statusMsg').html('<span style="font-size:18px;color:#EA4335">Some problem occurred, please try again.</span>');
@@ -399,28 +407,31 @@
                 $("#merchantForm")[0].reset();
             });
 
-            //file type validation
-            $("#image_dir").change(function() {
-                $(".filearray").html("");
-                var file = this.files[0];
-                var imagefile = file.type;
-                var match= ["image/jpeg","image/png","image/jpg"];
-                if(!((imagefile==match[0]) || (imagefile==match[1]) || (imagefile==match[2]))){
-                    alert('Please select a valid image file (JPEG/JPG/PNG).');
-                    $("#image_dir").val('');
-                    return false;
-                }
-                var filereader = new FileReader();
-                var $img=jQuery.parseHTML("<img src=''>");
-                filereader.onload = function(){
-                    $img[0].src=this.result;
-                    $img[0].style.width="80px";
-                    $img[0].style.height="80px";
-                    $img[0].style.padding="5px";
-                };
-                filereader.readAsDataURL(this.files[0]);
-                $(".filearray").html($img);
-            });
+
+            // function to populate categories
+            var populateCategories = function() {
+                $.ajax({
+                    type: "GET",
+                    url: '../controller/category_controller.php?action=all_categories_for_dropdown',
+                    contentType: false,
+                    cache: false,
+                    processData:false,
+                    success: function(msg)
+                    {
+                        if(msg.return_code == 1) {
+                            var data = [];
+                            $.each(msg.return_message, function(key,value) {
+                                data.push({"id": value.category_id, "name": value.category_name});
+                            });
+
+                            helpers.buildDropdown(data, $('#category_id'),'Select a category');
+                        }
+                    }
+                });
+            }
+
+            populateCategories();
+
         });
     </script>
 

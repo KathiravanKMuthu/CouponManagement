@@ -16,7 +16,7 @@
         </div>
 
         <div class="form-group">
-            <label class="col-md-3 control-label" for="title">Title</label>  
+            <label class="col-md-3 control-label" for="title">Title</label>
             <div class="col-md-9 input-group">
                 <span class="input-group-addon"><i class="fa fa-header"></i></span>
                 <input id="title" name="title" type="text" placeholder="Deal Title" class="form-control input-md" required="">
@@ -48,7 +48,7 @@
                 <input id="deal_amount" name="deal_amount" class="form-control" placeholder="Offer Price" type="text">
             </div>
         </div>
-        
+
         <div class="form-group">
             <label class="col-md-3 control-label" for="business_name">Percentage</label>
             <div class="col-md-9 input-group">
@@ -120,8 +120,8 @@
 <div class="row">
     <div class="col-lg-5"></div>
     <div class="col-lg-2">
-        <input type="submit" name="submit" class="btn btn-danger submitBtn" value="Submit"/>
-        <input type="button" name="resetBtn" id="resetBtn" class="btn btn-info submitBtn" value="Reset"/>
+        <input type="button" name="submitBtn" class="btn btn-danger submitBtn" value="Submit" onClick="submitForm()"/>
+        <input type="button" name="resetBtn" id="resetBtn" class="btn btn-info submitBtn" value="Reset" />
     </div>
     <div class="col-lg-5"></div>
 </div> <!-- row -->

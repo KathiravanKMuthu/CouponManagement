@@ -96,6 +96,65 @@ if($request_method == 'POST')
             }// end image_dir if
             break;
         }
+        case "add_child_deal":
+        {
+            $response_array['return_message'] = 'Adding a Deal is failed!';
+
+            $insert_column_array = array(
+                                'merchant_id' => $_POST['merchant_id'],
+                                'parent_deal_id' => $_POST['parent_deal_id'],
+                                'title' => $_POST['title'],
+                                'deal_amount' => $_POST['deal_amount'],
+                                'currency' => $_POST['currency'],
+                                'actual_amount' => $_POST['actual_amount'],
+                                'start_date' => date('Y-m-d H:i', strtotime($_POST['start_date'])),
+                                'end_date' => date('Y-m-d H:i', strtotime($_POST['end_date'])),
+                                'is_active' => $_POST['is_active'],
+                                'percentage' => $_POST['percentage'],
+                                'redemption_count' => 0,
+                                'description' => $_POST['description']
+                                );
+
+            $response_array = $db->insert($table_name, $insert_column_array);
+
+            if($response_array['return_code'] == 0) {
+                $response_array['return_message'] = 'Failed to add a deal!';
+                $response_array['return_code'] = 0;
+            }
+            break;
+        }
+        case "update_parent_deal":
+        case "update_child_deal":
+        {
+            $response_array['return_message'] = 'Updating a Deal is failed!';
+
+            $deal_id = $_POST['deal_id'];
+            $insert_column_array = array(
+                                'parent_deal_id' => $_POST['parent_deal_id'],
+                                'title' => $_POST['title'],
+                                'deal_amount' => $_POST['deal_amount'],
+                                'currency' => $_POST['currency'],
+                                'actual_amount' => $_POST['actual_amount'],
+                                'start_date' => date('Y-m-d H:i', strtotime($_POST['start_date'])),
+                                'end_date' => date('Y-m-d H:i', strtotime($_POST['end_date'])),
+                                'is_active' => $_POST['is_active'],
+                                'percentage' => $_POST['percentage'],
+                                'redemption_count' => 0,
+                                'description' => $_POST['description']
+                                );
+                                
+            $where_condition = "deal_id = '".$deal_id."'";
+            $response_array = $db->get($table_name, $where_condition);
+            if($response_array['return_code'] == 0)
+            {
+                $response_array['return_message'] = "Deal doesn't exist!";
+                $response_array['return_code'] = 0;
+            }
+            else {
+                $response_array = $db->update($table_name, $insert_column_array, $where_condition);
+            }
+            break;
+        }
         case "delete_deal":
         {
             $response_array['return_message'] = 'Failed to delete deal details!';

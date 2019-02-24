@@ -1,4 +1,4 @@
-<form role="form" enctype="multipart/form-data" name="dealForm" id="dealForm">
+<form role="form" name="dealForm" id="dealForm">
 <input type="hidden" value="add_child_deal" name="action" id="action"/>
 <input type="hidden" value="" name="deal_id" id="deal_id"/>
 <input type="hidden" value="" name="parent_deal_id" id="parent_deal_id"/>
@@ -24,7 +24,7 @@
         </div>
 
         <div class="form-group">
-            <label class="col-md-3 control-label" for="title">Title</label>  
+            <label class="col-md-3 control-label" for="title">Title</label>
             <div class="col-md-9 input-group">
                 <span class="input-group-addon"><i class="fa fa-header"></i></span>
                 <input id="title" name="title" type="text" placeholder="Deal Title" class="form-control input-md" required="">
@@ -46,7 +46,7 @@
                 <input id="deal_amount" name="deal_amount" class="form-control" placeholder="Offer Price" type="text">
             </div>
         </div>
-        
+
         <div class="form-group">
             <label class="col-md-3 control-label" for="business_name">Percentage</label>
             <div class="col-md-9 input-group">
@@ -58,11 +58,11 @@
         <div class="form-group">
             <label class="col-md-3 control-label" for="business_name">Offer Period</label>
             <div class="col-md-9 input-group">
-                <div class='input-group date' id='start_datetimepicker'>
-                    <input type='text' name="stat_date" id="start_date" placeholder="From" class="form-control" required=""/>
+                <div class='input-group date' id='start_child_datetimepicker'>
+                    <input type='text' name="start_date" id="start_date" placeholder="From" class="form-control" required=""/>
                     <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
                 </div>
-                <div class='input-group date' id='end_datetimepicker'>
+                <div class='input-group date' id='end_child_datetimepicker'>
                     <input type='text' name="end_date" id="end_date" placeholder="To" class="form-control" required=""/>
                     <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
                 </div>
@@ -77,12 +77,12 @@
             </div>
         </div>
     </div> <!-- col-lg-6 -->
-    
+
 </div> <!-- row -->
 <div class="row">
     <div class="col-lg-5"></div>
     <div class="col-lg-2">
-        <input type="submit" name="submit" class="btn btn-danger submitBtn" value="Submit"/>
+        <input type="button" name="submitBtn" id="submitBtn" class="btn btn-danger submitBtn" value="Submit" onClick="submitForm()"/>
         <input type="button" name="resetBtn" id="resetBtn" class="btn btn-info submitBtn" value="Reset"/>
     </div>
     <div class="col-lg-5"></div>

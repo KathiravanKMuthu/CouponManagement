@@ -51,6 +51,7 @@ if($request_method == 'POST')
                                     'operating_time' => $_POST['operating_time'],
                                     'description' => $_POST['description'],
                                     'is_active' => $_POST['is_active'],
+                                    'category_id' => $_POST['category_id'],
                                     'map_position' => $map_position,
                                     );
 
@@ -140,6 +141,7 @@ if($request_method == 'POST')
                                 'operating_time' => $_POST['operating_time'],
                                 'description' => $_POST['description'],
                                 'is_active' => $_POST['is_active'],
+                                'category_id' => $_POST['category_id'],
                                 'map_position' => $map_position,
                     );
 
@@ -235,7 +237,7 @@ elseif($request_method == 'GET')
         case "all_merchants" :
         {
             $response_array['return_message'] = 'Failed to retrieve merchant details!';
-
+            
             // Retrieve all merchant details for web / mobile applicaitons
             $response_array = $db->get($table_name);
 

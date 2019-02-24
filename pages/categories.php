@@ -37,7 +37,7 @@
                                         <div class="col-md-3">
                                             <input type="submit" name="submit" class="btn btn-danger submitBtn" value="Submit"/>
                                         </div>
-                                </div> <!-- col-lg-6 -->
+                                </div> <!-- col-lg-12 -->
                             </div> <!-- row -->
                             </form>
                         </div> <!-- panel-body -->
@@ -56,6 +56,7 @@
                                         <th>Category Id</th>
                                         <th>Seq No</th>
                                         <th>Category Name</th>
+                                        <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                     </thead>
@@ -85,18 +86,21 @@
                     { mData: 'category_id' } ,
                     { mData: 'category_name' } ,
                     {"mRender": function ( data, type, row ) {
-                        return '<a class="editForm" href="#" data-id='+row.category_id+'>Edit</a> / <a class="deleteForm" href="#" data-id='+row.category_id+'>Delete</a>';}
+                        return (row.is_active == true) ? "Active" : "Inactive";
+                        } // end function
+                    },
+                    {"mRender": function ( data, type, row ) {
+                        return '<a class="editForm" href="#" data-id='+row.category_id+'>Edit</a> / <a class="deleteForm" href="#" data-active='+row.is_active+' data-id='+row.category_id+'>Toggle Status</a>';}
                     }
                 ]
-            }); 
+            });
 
             $(document).on('click',".deleteForm",function(){
                 $.ajax({
-                    type: 'GET',
-                    url: '../controller/category_controller.php?action=delete_category&category_id=' + $(this).data('id'),
-                    contentType: false,
-                    cache: false,
-                    processData:false,
+                    type: 'POST',
+                    url: '../controller/category_controller.php', //?action=delete_merchant&merchant_id=' + $(this).data('id'),
+                    data: JSON.stringify({action: "delete_category", category_id: $(this).data('id'), "is_active": $(this).data('active')}),
+                    contentType: 'application/json; charset=utf-8',
                     success: function(msg){
                         $('.statusMsg').html('');
                         if(msg.return_code == 1){
@@ -107,7 +111,7 @@
                             $('.statusMsg').html('<span style="font-size:18px;color:#EA4335">Some problem occurred, please try again.</span>');
                         }
                     }
-                });           
+                });
             });
 
             $(document).on('click',".editForm",function(){
@@ -127,7 +131,7 @@
                             $('.statusMsg').html('<span style="font-size:18px;color:#EA4335">Some problem occurred, please try again.</span>');
                         }
                     }
-                });           
+                });
             });
 
             $("#categoryForm").on('submit', function(e){
