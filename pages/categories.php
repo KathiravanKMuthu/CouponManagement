@@ -30,14 +30,30 @@
                             <input type="hidden" value="" name="category_id" id="category_id"/>
                             <div class="row">
                                 <div class="col-lg-12">
-                                        <label class="col-md-3 control-label" for="category_name">Category Name</label>
-                                        <div class="col-md-6">
-                                            <input id="category_name" name="category_name" class="form-control" placeholder="Category Name" type="text" required="">
+                                    <label class="col-md-3 control-label" for="category_name">Category Name</label>
+                                    <div class="col-md-9">
+                                        <input id="category_name" name="category_name" class="form-control" placeholder="Category Name" type="text" required="">
+                                    </div>
+                                    <div class="form-group" id="imageDiv">
+                                        <label class="col-md-3 control-label" for="image_dir">Upload Images</label>
+                                        <div class="col-md-9">
+                                            <input id="category_images" name="image_dir" class="input-file" type="file" required="" accepts="image/*" multiple>
                                         </div>
-                                        <div class="col-md-3">
-                                            <input type="submit" name="submit" class="btn btn-danger submitBtn" value="Submit"/>
-                                        </div>
+                                    </div>
+
+                                    <div class="append_pre_p_v">
+                                        <div class="filearray"> </div>
+                                    </div>
                                 </div> <!-- col-lg-12 -->
+                            </div> <!-- row -->
+                            <br/>
+                            <div class="row">
+                                <div class="col-lg-5"></div>
+                                <div class="col-lg-2">
+                                    <input type="submit" name="submit" class="btn btn-danger submitBtn" value="Submit"/>
+                                    <input type="button" name="resetBtn" id="resetBtn" class="btn btn-info submitBtn" value="Reset"/>
+                                </div>
+                                <div class="col-lg-5"></div>
                             </div> <!-- row -->
                             </form>
                         </div> <!-- panel-body -->
@@ -57,6 +73,7 @@
                                         <th>Seq No</th>
                                         <th>Category Name</th>
                                         <th>Status</th>
+                                        <th>Image</th>
                                         <th>Action</th>
                                     </tr>
                                     </thead>
@@ -72,6 +89,34 @@
     <script>
         $(document).ready(function(e){
             var selected = [];
+
+            //file type validation + preview
+            $("#category_images").change(function() {
+                var match= ["image/jpeg","image/png","image/jpg"];
+
+                $(".filearray").empty();//you can remove this code if you want previous user input
+                for(let i=0;i<this.files.length;++i)
+                {
+                    var imagefile = this.files[i].type;
+                    if(!((imagefile==match[0]) || (imagefile==match[1]) || (imagefile==match[2]))){
+                        alert('Please select a valid image file (JPEG/JPG/PNG).');
+                        $("#merchant_images").val('');
+                        return false;
+                    }
+
+                    let filereader = new FileReader();
+                    let $img=jQuery.parseHTML("<img src=''>");
+                    filereader.onload = function(){
+                        $img[0].src=this.result;
+                        $img[0].style.width="80px";
+                        $img[0].style.height="80px";
+                        $img[0].style.padding="5px";
+                    };
+                    filereader.readAsDataURL(this.files[i]);
+                    $(".filearray").append($img);
+                }
+            });
+
             var dataTable = $('#categoryTable').dataTable({
                 "paging": false,
                 "bProcessing": true,
@@ -86,8 +131,12 @@
                     { mData: 'category_id' } ,
                     { mData: 'category_name' } ,
                     {"mRender": function ( data, type, row ) {
-                        return (row.is_active == true) ? "Active" : "Inactive";
+                            return (row.is_active == true) ? "Active" : "Inactive";
                         } // end function
+                    },
+                    { "mRender": function ( data, type, row ) {
+                            return '<img src="../'+row.image_file+'" style="width:80px;height:50px">'
+                        }
                     },
                     {"mRender": function ( data, type, row ) {
                         return '<a class="editForm" href="#" data-id='+row.category_id+'>Edit</a> / <a class="deleteForm" href="#" data-active='+row.is_active+' data-id='+row.category_id+'>Toggle Status</a>';}
@@ -127,11 +176,24 @@
                             var merchantObj = msg.return_message[0];
                             $('#category_id').val(merchantObj.category_id);
                             $('#category_name').val(merchantObj.category_name);
+                            $('#category_images').attr("disabled","disabled");
+
+                            let $img=jQuery.parseHTML("<img src=''>");
+                                $img[0].src="../" + merchantObj.image_file;
+                                $img[0].style.width="80px";
+                                $img[0].style.height="80px";
+                                $img[0].style.padding="5px";
+                            $(".filearray").append($img);
                         }else{
                             $('.statusMsg').html('<span style="font-size:18px;color:#EA4335">Some problem occurred, please try again.</span>');
                         }
                     }
                 });
+            });
+
+            $("#resetBtn").on('click', function(e){
+                $(".filearray").html("");
+                $("#categoryForm")[0].reset();
             });
 
             $("#categoryForm").on('submit', function(e){
@@ -157,6 +219,7 @@
                             $('.statusMsg').html('<span style="font-size:18px;color:#EA4335">Some problem occurred, please try again.</span>');
                         }
                         $('#categoryForm').css("opacity","");
+                        $(".filearray").html("");
                         $(".submitBtn").removeAttr("disabled");
                     }
                 });

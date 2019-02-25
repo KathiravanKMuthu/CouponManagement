@@ -1,6 +1,7 @@
 <?php
 include('../api/config/app_config.php');
 
+$image_dir = "images/category/";
 $response_array['return_message'] = 'Invalid Action!';
 $response_array['return_code'] = 0;
 
@@ -21,15 +22,36 @@ if($request_method == 'POST')
         {
             $response_array['return_message'] = 'Adding a Category is failed!';
 
-            $insert_column_array = array();
-
-
+            $column_array = array();
             $category_id = $_POST['category_id'];
             $category_name = $_POST['category_name'];
 
             $column_array = array(
                 'category_name' => $category_name
             );
+
+            if(!empty($_FILES['image_dir']['name']))
+            {
+                $uploadedFile = '';
+                if(!empty($_FILES["image_dir"]["type"]))
+                {
+                    $valid_extensions = array("jpeg", "jpg", "png", "JPEG", "JPG", "PNG");
+                    $temporary = explode(".", $_FILES["image_dir"]["name"]);
+                    $file_extension = end($temporary);
+                    $image_dir = $image_dir . $token->change_camel_case($_POST['category_name']) . '.' . $file_extension;
+
+                    if((($_FILES["image_dir"]["type"] == "image/png") || ($_FILES["image_dir"]["type"] == "image/jpg") || ($_FILES["image_dir"]["type"] == "image/jpeg"))
+                          && in_array($file_extension, $valid_extensions))
+                    {
+                        $sourcePath = $_FILES['image_dir']['tmp_name'];
+                        $column_array['image_file'] = $image_dir; // DB value
+                        $upload_dir = "../" . $image_dir;
+                        if(move_uploaded_file($sourcePath, $upload_dir)){
+                            $uploadedFile = $image_dir;
+                        }
+                    }
+                }
+            }
 
             if(empty($category_id))
             {
