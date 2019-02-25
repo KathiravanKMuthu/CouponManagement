@@ -141,13 +141,14 @@ header("Content-Type: application/json; charset=UTF-8");
             if($dirname != "images/Merchant") {
                   $images = glob(__DIR__ . "/../" . $dirname . "/*.*");
                   foreach($images as $image) {
-                      $image_arr[] = substr_replace($image, $root . $parts[1] . "/", 0, strpos($image, "../")+3);
-                      #$image_arr[] = substr_replace($image, $root . $parts[1] . "/" . $parts[2] . "/", 0, strpos($image, "../")+3); // for live
+                      #$image_arr[] = substr_replace($image, $root . $parts[1] . "/", 0, strpos($image, "../")+3);
+                      $image_arr[] = substr_replace($image, $root . $parts[1] . "/" . $parts[2] . "/", 0, strpos($image, "../")+3); // for live
                   }
               }
               else {
                   $image = $parent_row["return_message"][0]["image_dir"];
-                  $image_arr[] = substr_replace($image, $root . $parts[1] . "/", 0, strpos($image, "../"));
+                  #$image_arr[] = substr_replace($image, $root . $parts[1] . "/", 0, strpos($image, "../"));
+                  $image_arr[] = substr_replace($image, $root . $parts[1] . "/" . $parts[2] . "/", 0, strpos($image, "../")); // for live
               }
 
               $response_array["return_code"] = "1";
